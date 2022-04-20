@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import WeatherToday from './components/Weather/WeatherToday';
-import WeatherWeek from './components/Weather/WeatherWeek';
+import WeatherCurrent from './components/Weather/WeatherCurrent';
+import WeatherForecast from './components/Weather/WeatherForecast';
 
 import './App.css';
 
@@ -48,8 +48,16 @@ const App = () => {
 
   return (
     <div className="app">
-      <WeatherToday weatherData={weatherData} locationData={locationData} />
-      <WeatherWeek weatherData={weatherData} locationData={locationData} />
+      <WeatherCurrent
+        weatherData={weatherData}
+        locationData={locationData}
+        reloadHandler={reloadHandler}
+      />
+      <WeatherForecast
+        weatherData={weatherData}
+        locationData={locationData}
+        reloadHandler={reloadHandler}
+      />
     </div>
   );
 };

@@ -1,38 +1,38 @@
-.card__time {
+.current__time {
   font-size: 1.5rem;
   font-weight: normal;
   margin-left: 0.5rem;
 }
 
-.card__temperature {
+.current__temperature {
   font-size: 6rem;
 }
 
-.card__description {
+.current__description {
   font-size: 2rem;
 }
 
-.card__max-temp,
-.card__min-temp {
+.current__max,
+.current__min {
   font-size: 1.5rem;
   margin-right: 0.5rem;
 }
 
 @media screen and (max-width: 768px) {
-  .card__time {
+  .current__time {
     font-size: 1rem;
   }
 
-  .card__temperature {
+  .current__temperature {
     font-size: 3rem;
   }
 
-  .card__description {
+  .current__description {
     font-size: 1.25rem;
   }
 
-  .card__max-temp,
-  .card__min-temp {
+  .current__max,
+  .current__min {
     font-size: 1rem;
   }
 }

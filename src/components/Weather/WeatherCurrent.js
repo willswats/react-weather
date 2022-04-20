@@ -4,9 +4,9 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 import getCurrentTime from '../../helpers/getCurrentTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
-import classes from './WeatherToday.module.css';
+import classes from './WeatherCurrent.module.css';
 
-const WeatherToday = ({ weatherData, locationData }) => {
+const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
   if (
     locationData[0] !== undefined &&
     weatherData.current !== undefined &&
@@ -27,23 +27,26 @@ const WeatherToday = ({ weatherData, locationData }) => {
     return (
       <Card
         title={`${name}, ${country}, at ${time}`}
+        reloadHandler={reloadHandler}
         body={
-          <>
-            <p className={classes['card__temperature']}>{temperature}&#176;</p>
-            <p className={classes['card__description']}>{description}</p>
+          <div className={classes['current']}>
+            <p className={classes['current__temperature']}>
+              {temperature}&#176;
+            </p>
+            <p className={classes['current__description']}>{description}</p>
             <div className="horizontal">
-              <p className={classes['card__max-temp']}>
+              <p className={classes['current__max']}>
                 H: {temperatureMax}&#176;
               </p>
-              <p className={classes['card__min-temp']}>
+              <p className={classes['current__min']}>
                 L: {temperatureMin}&#176;
               </p>
             </div>
-          </>
+          </div>
         }
       />
     );
-  } else return <LoadingSpinner />;
+  } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;
 };
 
-export default WeatherToday;
+export default WeatherCurrent;
