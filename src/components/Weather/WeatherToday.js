@@ -27,20 +27,24 @@ const WeatherToday = ({ weatherData, locationData, reloadHandler }) => {
 
     return (
       <div className={classes['card']}>
-        <div className={classes['card-top']}>
-          <h1>
-            {name}, {country}, at <CurrentTime />
+        <div className={classes['card__top']}>
+          <h1 className={classes['card__title']}>
+            {name}, {country},
+            <span className={classes['card__time']}>
+              at <CurrentTime />
+            </span>
           </h1>
-          <span className={classes['card-reload']}>
+
+          <span className={classes['card__reload']}>
             <ReloadButton reloadHandler={reloadHandler} />
           </span>
         </div>
-        <div className={classes['card-body']}>
-          <p className={classes['temperature']}>{temperature}&#176;</p>
-          <p className={classes['description']}>{description}</p>
-          <div className={classes['min-max']}>
-            <p>H: {temperatureMax}&#176;</p>
-            <p>L: {temperatureMin}&#176;</p>
+        <div className={classes['card__body']}>
+          <p className={classes['card__temperature']}>{temperature}&#176;</p>
+          <p className={classes['card__description']}>{description}</p>
+          <div className="horizontal">
+            <p className={classes['card__max']}>H: {temperatureMax}&#176;</p>
+            <p className={classes['card__min']}>L: {temperatureMin}&#176;</p>
           </div>
         </div>
       </div>

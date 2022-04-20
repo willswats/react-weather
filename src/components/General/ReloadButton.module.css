@@ -5,7 +5,7 @@
   color: #fff;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .reload-btn {
     font-size: 2.5rem;
   }

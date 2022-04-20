@@ -7,58 +7,70 @@
   overflow: hidden;
 }
 
-.card-top {
+/* card__top */
+.card__top {
   display: flex;
   background-color: rgba(0, 0, 0, 0.25);
   padding: 2rem 2rem 1rem 2rem;
   position: relative;
 }
 
-.card-top h1 {
+.card__title {
   font-size: 2rem;
 }
 
-.card-reload {
+.card__time {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+.card__reload {
   position: absolute;
   top: 20px;
   right: 20px;
 }
 
-.card-body {
+/* card__body */
+.card__body {
   padding: 1rem 2rem 2rem 2rem;
 }
 
-.card-body .temperature {
+.card__temperature {
   font-size: 6rem;
 }
 
-.card-body .description {
+.card__description {
   font-size: 2rem;
 }
 
-.card-body .min-max {
-  display: flex;
-}
-
-.card-body .min-max p {
+.card__min,
+.card__max {
   font-size: 1.5rem;
   margin-right: 0.5rem;
 }
 
-@media screen and (max-width: 480px) {
-  .card-top h1 {
+@media screen and (max-width: 768px) {
+  /* card-top */
+  .card__title {
     font-size: 1.5rem;
   }
 
-  .card-body .temperature {
+  .card__time {
+    font-size: 1rem;
+  }
+
+  /* card-body */
+  .card__temperature {
     font-size: 3rem;
   }
 
-  .card-body .description {
+  .card__description {
     font-size: 1.5rem;
   }
 
-  .card-body .min-max p {
+  .card__min,
+  .card__max {
     font-size: 1.25rem;
   }
 }
