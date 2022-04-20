@@ -12,23 +12,17 @@
   display: flex;
   background-color: rgba(0, 0, 0, 0.25);
   padding: 2rem 2rem 1rem 2rem;
-  position: relative;
 }
 
 .card__title {
   font-size: 2rem;
+  width: 100%;
 }
 
 .card__time {
   font-size: 1.5rem;
   font-weight: normal;
   margin-left: 0.5rem;
-}
-
-.card__reload {
-  position: absolute;
-  top: 20px;
-  right: 20px;
 }
 
 /* card__body */
@@ -52,6 +46,10 @@
 
 @media screen and (max-width: 768px) {
   /* card-top */
+  .card__top {
+    padding: 1rem 1rem 0.5rem 1rem;
+  }
+
   .card__title {
     font-size: 1.25rem;
   }
@@ -61,6 +59,10 @@
   }
 
   /* card-body */
+  .card__body {
+    padding: 0.5rem 1rem 1rem 1rem;
+  }
+
   .card__temperature {
     font-size: 3rem;
   }

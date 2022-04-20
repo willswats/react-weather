@@ -34,10 +34,7 @@ const WeatherToday = ({ weatherData, locationData, reloadHandler }) => {
               at <CurrentTime />
             </span>
           </h1>
-
-          <span className={classes['card__reload']}>
-            <ReloadButton reloadHandler={reloadHandler} />
-          </span>
+          <ReloadButton reloadHandler={reloadHandler} />
         </div>
         <div className={classes['card__body']}>
           <p className={classes['card__temperature']}>{temperature}&#176;</p>

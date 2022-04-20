@@ -1,4 +1,15 @@
-.reload-btn {
+.reload-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.reload-container__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
   font-size: 3rem;
   border: none;
   background-color: transparent;
@@ -6,7 +17,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .reload-btn {
-    font-size: 2.5rem;
+  .reload-container__btn {
+    font-size: 2rem;
   }
 }
