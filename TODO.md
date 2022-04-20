@@ -3,7 +3,6 @@
 ## Security
 
 - [ ] Make API key secret
-- [ ] Re-generate API key
 
 ## Features
 

@@ -6,22 +6,30 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherToday.module.css';
 
-const WeatherToday = ({ weatherData, reloadHandler }) => {
-  if (weatherData.main !== undefined) {
-    const placeName = weatherData.name;
-    const countryName = weatherData.sys.country;
+const WeatherToday = ({ weatherData, locationData, reloadHandler }) => {
+  if (
+    locationData[0] !== undefined &&
+    weatherData.current !== undefined &&
+    weatherData.daily[0] !== undefined
+  ) {
+    const location = locationData[0];
+    const { name, country } = location;
+
+    const currentWeather = weatherData.current;
     const description = capitaliseFirstLetters(
-      weatherData.weather[0].description
+      currentWeather.weather[0].description
     );
-    const temperature = Math.round(weatherData.main.temp);
-    const temperatureMax = Math.round(weatherData.main.temp_max);
-    const temperatureMin = Math.round(weatherData.main.temp_min);
+    const temperature = Math.round(currentWeather.temp);
+
+    const dayWeather = weatherData.daily[0];
+    const temperatureMax = Math.round(dayWeather.temp.max);
+    const temperatureMin = Math.round(dayWeather.temp.min);
 
     return (
       <div className={classes['card']}>
         <div className={classes['card-top']}>
           <h1>
-            {placeName}, {countryName}, at <CurrentTime />
+            {name}, {country}, at <CurrentTime />
           </h1>
           <span className={classes['card-reload']}>
             <ReloadButton reloadHandler={reloadHandler} />
