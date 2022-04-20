@@ -53,7 +53,7 @@
 @media screen and (max-width: 768px) {
   /* card-top */
   .card__title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .card__time {
@@ -66,11 +66,11 @@
   }
 
   .card__description {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 
   .card__min,
   .card__max {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 }
