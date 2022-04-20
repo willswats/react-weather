@@ -1,0 +1,29 @@
+.card__forecast-container {
+  display: flex;
+}
+
+.card__forecast {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.card__day {
+  font-size: 2rem;
+}
+
+.card__max-temp {
+  font-size: 1.5rem;
+}
+
+.card__min-temp {
+  font-size: 1.5rem;
+}
+
+.card__description {
+  font-size: 1.25rem;
+}
+
+@media screen and (max-width: 768px) {
+}

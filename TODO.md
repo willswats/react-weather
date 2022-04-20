@@ -6,37 +6,14 @@
 
 ## Bug-fix
 
-- [ ] Fix api requests failing
+- [ ] Fix api requests failing at the start
 
 ## Features
 
-### Weather
-
-- [x] Show current weather
-- [ ] Show hourly forecast
-- [ ] Show daily forecast
-- [ ] Refresh button for each fetch
-- [ ] Refresh button for all of application
 - [ ] Add input for location
-- [ ] Background image changes with weather
-- [ ] Ability to change between metric or imperial
+- [ ] Add reload button for all of application
+- [ ] Add ability to change between metric or imperial
 - [ ] Default mesaurement (metric or imperial) based upon location
-
-#### Weather Extra
-
-- [ ] Show:
-  - [ ] Air pollution
-  - [ ] Humidity
-  - [ ] Sunset
-  - [ ] Sunrise
-  - [ ] UV Index
-  - [ ] Feels like
-  - [ ] Pressure
-  - [ ] Visibility
-  - [ ] Wind
-  - [ ] Rainfall
-  - [ ] Allergens
-
-### Map
-
+- [ ] Add card which is able to switch between "Today", "Hourly", and "Daily" weather
+- [ ] Add card for extra information, e.g. air pollution, humditity, etc.
 - [ ] Show location on map

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import WeatherToday from './components/Weather/WeatherToday';
+import WeatherWeek from './components/Weather/WeatherWeek';
 
 import './App.css';
 
@@ -26,7 +27,6 @@ const App = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setWeatherData(data);
         });
 
@@ -35,7 +35,6 @@ const App = () => {
       )
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           setLocationData(data);
         });
     };
@@ -49,11 +48,8 @@ const App = () => {
 
   return (
     <div className="app">
-      <WeatherToday
-        weatherData={weatherData}
-        locationData={locationData}
-        reloadHandler={reloadHandler}
-      />
+      <WeatherToday weatherData={weatherData} locationData={locationData} />
+      <WeatherWeek weatherData={weatherData} locationData={locationData} />
     </div>
   );
 };
