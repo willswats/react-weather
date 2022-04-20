@@ -1,0 +1,64 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  background-color: #3a3a3a;
+  width: 100%;
+  overflow: hidden;
+}
+
+.card-top {
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.25);
+  padding: 2rem 2rem 1rem 2rem;
+  position: relative;
+}
+
+.card-top h1 {
+  font-size: 2rem;
+}
+
+.card-reload {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.card-body {
+  padding: 1rem 2rem 2rem 2rem;
+}
+
+.card-body .temperature {
+  font-size: 6rem;
+}
+
+.card-body .description {
+  font-size: 2rem;
+}
+
+.card-body .min-max {
+  display: flex;
+}
+
+.card-body .min-max p {
+  font-size: 1.5rem;
+  margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  .card-top h1 {
+    font-size: 1.5rem;
+  }
+
+  .card-body .temperature {
+    font-size: 3rem;
+  }
+
+  .card-body .description {
+    font-size: 1.5rem;
+  }
+
+  .card-body .min-max p {
+    font-size: 1.25rem;
+  }
+}

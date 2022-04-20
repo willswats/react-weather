@@ -1,0 +1,12 @@
+.reload-btn {
+  font-size: 3rem;
+  border: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .reload-btn {
+    font-size: 2.5rem;
+  }
+}
