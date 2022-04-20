@@ -5,8 +5,8 @@
   margin: 4rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
   .app {
-    margin: 1rem;
+    margin: 0.5rem;
   }
 }

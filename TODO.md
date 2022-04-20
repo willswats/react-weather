@@ -4,6 +4,10 @@
 
 - [ ] Make API key secret
 
+## Bug-fix
+
+- [ ] Fix api requests failing
+
 ## Features
 
 ### Weather
