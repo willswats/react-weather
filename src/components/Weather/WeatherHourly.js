@@ -5,7 +5,7 @@ import getTime from '../../helpers/getTime';
 
 import classes from './WeatherHourly.module.css';
 
-const WeatherHourly = ({ weatherData, reloadHandler }) => {
+const WeatherHourly = ({ weatherData }) => {
   if (weatherData.hourly !== undefined) {
     const hourlyData = weatherData.hourly
       .map((hour) => {
@@ -20,11 +20,9 @@ const WeatherHourly = ({ weatherData, reloadHandler }) => {
       timesArr.push(`${getTime(i, 2)}:00`);
     }
 
-    const currentTime = getTime();
-
     return (
       <Card
-        title={`Hourly Forecast at ${currentTime}`}
+        title={'Hourly Forecast'}
         body={
           <div className={classes['hourly']}>
             {hourlyData.map((data, index) => {
@@ -37,7 +35,6 @@ const WeatherHourly = ({ weatherData, reloadHandler }) => {
             })}
           </div>
         }
-        reloadHandler={reloadHandler}
       />
     );
   } else {

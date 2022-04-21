@@ -43,6 +43,7 @@ const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
             </div>
           </div>
         }
+        reload={true}
         reloadHandler={reloadHandler}
       />
     );

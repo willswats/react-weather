@@ -2,12 +2,11 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getDay from '../../helpers/getDay';
-import getTime from '../../helpers/getTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherDaily.module.css';
 
-const WeatherDaily = ({ weatherData, reloadHandler }) => {
+const WeatherDaily = ({ weatherData }) => {
   if (weatherData.daily !== undefined) {
     const dailyData = weatherData.daily
       .map((day) => {
@@ -21,11 +20,9 @@ const WeatherDaily = ({ weatherData, reloadHandler }) => {
       })
       .slice(0, 8);
 
-    const currentTime = getTime();
-
     return (
       <Card
-        title={`Daily Forecast at ${currentTime}`}
+        title={'Daily Forecast'}
         body={
           <>
             {dailyData.map((data, index) => {
@@ -46,7 +43,6 @@ const WeatherDaily = ({ weatherData, reloadHandler }) => {
             })}
           </>
         }
-        reloadHandler={reloadHandler}
       />
     );
   } else {
