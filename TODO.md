@@ -11,6 +11,7 @@
 ## Features
 
 - [ ] Make reload buttons only work for their card
+- [ ] Timeout loading if nothing found
 - [ ] Input for location
 - [ ] Change between metric or imperial
 - [ ] Change the time and it's format based upon the location
