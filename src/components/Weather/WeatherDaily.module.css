@@ -14,16 +14,15 @@
   font-size: 2rem;
 }
 
-.day__max {
-  font-size: 1.5rem;
-}
-
+.day__max,
 .day__min {
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .day__description {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -31,10 +30,7 @@
     font-size: 1rem;
   }
 
-  .day__max {
-    font-size: 0.8rem;
-  }
-
+  .day__max,
   .day__min {
     font-size: 0.8rem;
   }

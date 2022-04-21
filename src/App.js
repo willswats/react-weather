@@ -29,7 +29,6 @@ const App = () => {
         .then((response) => response.json())
         .then((data) => {
           setWeatherData(data);
-          console.log(data);
         });
 
       await fetch(

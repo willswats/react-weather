@@ -26,7 +26,6 @@ const WeatherDaily = ({ weatherData, reloadHandler }) => {
     return (
       <Card
         title={`Daily Forecast at ${currentTime}`}
-        reloadHandler={reloadHandler}
         body={
           <>
             {dailyData.map((data, index) => {
@@ -47,6 +46,7 @@ const WeatherDaily = ({ weatherData, reloadHandler }) => {
             })}
           </>
         }
+        reloadHandler={reloadHandler}
       />
     );
   } else {

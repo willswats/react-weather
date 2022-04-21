@@ -27,7 +27,6 @@ const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
     return (
       <Card
         title={`${name}, ${country}, at ${currentTime}`}
-        reloadHandler={reloadHandler}
         body={
           <div className={classes['current']}>
             <p className={classes['current__temperature']}>
@@ -44,6 +43,7 @@ const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
             </div>
           </div>
         }
+        reloadHandler={reloadHandler}
       />
     );
   } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;

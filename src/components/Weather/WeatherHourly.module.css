@@ -8,16 +8,16 @@
   border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+.hour:last-child {
+  border-right: none;
+}
+
 .hour__title {
   font-size: 2rem;
 }
 
 .hour__temp {
   font-size: 1.8rem;
-}
-
-.hour:last-child {
-  border-right: none;
 }
 
 @media screen and (max-width: 768px) {

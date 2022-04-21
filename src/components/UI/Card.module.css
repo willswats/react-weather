@@ -28,12 +28,16 @@
 }
 
 @media screen and (max-width: 768px) {
+  .card {
+    margin-bottom: 0.5rem;
+  }
+
   .card__top {
     padding: 1rem 1rem 0.5rem 1rem;
   }
 
   .card__title {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .card__body {
