@@ -1,7 +1,7 @@
 import classes from './Card.module.css';
 import ReloadButton from '../UI/ReloadButton';
 
-const Card = ({ title, body, reload, reloadHandler }) => {
+const Card = ({ title, body, reloadHandler }) => {
   return (
     <div className={classes['card']}>
       <div className={classes['card__top']}>
