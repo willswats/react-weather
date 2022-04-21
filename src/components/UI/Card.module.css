@@ -5,6 +5,11 @@
   background-color: #3a3a3a;
   width: 100%;
   overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.card:last-child {
+  margin-bottom: 0;
 }
 
 .card__top {

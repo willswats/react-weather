@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 
 import WeatherCurrent from './components/Weather/WeatherCurrent';
-import WeatherForecast from './components/Weather/WeatherForecast';
+import WeatherHourly from './components/Weather/WeatherHourly';
+import WeatherDaily from './components/Weather/WeatherDaily';
 
 import './App.css';
 
@@ -28,6 +29,7 @@ const App = () => {
         .then((response) => response.json())
         .then((data) => {
           setWeatherData(data);
+          console.log(data);
         });
 
       await fetch(
@@ -53,11 +55,8 @@ const App = () => {
         locationData={locationData}
         reloadHandler={reloadHandler}
       />
-      <WeatherForecast
-        weatherData={weatherData}
-        locationData={locationData}
-        reloadHandler={reloadHandler}
-      />
+      <WeatherHourly weatherData={weatherData} reloadHandler={reloadHandler} />
+      <WeatherDaily weatherData={weatherData} reloadHandler={reloadHandler} />
     </div>
   );
 };

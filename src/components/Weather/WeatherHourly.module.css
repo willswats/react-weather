@@ -1,0 +1,31 @@
+.hourly {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.hour {
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.hour__title {
+  font-size: 2rem;
+}
+
+.hour__temp {
+  font-size: 1.8rem;
+}
+
+.hour:last-child {
+  border-right: none;
+}
+
+@media screen and (max-width: 768px) {
+  .hour__title {
+    font-size: 1rem;
+  }
+
+  .hour__temp {
+    font-size: 0.8rem;
+  }
+}

@@ -1,12 +1,13 @@
-.days {
-  display: flex;
+.day {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem 0 0.5rem 0;
+  width: 100%;
 }
 
-.day {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
+.day:last-child {
+  border-bottom: 0;
 }
 
 .day__title {
@@ -26,27 +27,19 @@
 }
 
 @media screen and (max-width: 768px) {
-  .days {
-    flex-direction: column;
-  }
-
-  .day {
-    align-items: flex-start;
-  }
-
   .day__title {
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 
   .day__max {
-    font-size: 1.5rem;
+    font-size: 0.8rem;
   }
 
   .day__min {
-    font-size: 1.25rem;
+    font-size: 0.8rem;
   }
 
   .day__description {
-    font-size: 1rem;
+    font-size: 0.8rem;
   }
 }

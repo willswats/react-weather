@@ -1,7 +1,7 @@
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import getCurrentTime from '../../helpers/getCurrentTime';
+import getTime from '../../helpers/getTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherCurrent.module.css';
@@ -22,11 +22,11 @@ const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
     const temperatureMax = Math.round(weatherData.daily[0].temp.max);
     const temperatureMin = Math.round(weatherData.daily[0].temp.min);
 
-    const time = getCurrentTime();
+    const currentTime = getTime();
 
     return (
       <Card
-        title={`${name}, ${country}, at ${time}`}
+        title={`${name}, ${country}, at ${currentTime}`}
         reloadHandler={reloadHandler}
         body={
           <div className={classes['current']}>
@@ -36,10 +36,10 @@ const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
             <p className={classes['current__description']}>{description}</p>
             <div className="horizontal">
               <p className={classes['current__max']}>
-                H: {temperatureMax}&#176;
+                H:{temperatureMax}&#176;
               </p>
               <p className={classes['current__min']}>
-                L: {temperatureMin}&#176;
+                L:{temperatureMin}&#176;
               </p>
             </div>
           </div>
