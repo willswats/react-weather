@@ -14,11 +14,10 @@ const WeatherHourly = ({ weatherData, reloadHandler }) => {
         };
       })
       .slice(0, 5);
-    console.log(hourlyData);
 
-    const nextFiveHours = ['Now'];
+    const timesArr = ['Now'];
     for (let i = 1; i <= 5; i++) {
-      nextFiveHours.push(`${getTime(i, 2)}:00`);
+      timesArr.push(`${getTime(i, 2)}:00`);
     }
 
     const currentTime = getTime();
@@ -31,9 +30,7 @@ const WeatherHourly = ({ weatherData, reloadHandler }) => {
             {hourlyData.map((data, index) => {
               return (
                 <div className={classes['hour']} key={index}>
-                  <h2 className={classes['hour__title']}>
-                    {nextFiveHours[index]}
-                  </h2>
+                  <h2 className={classes['hour__title']}>{timesArr[index]}</h2>
                   <p className={classes['hour__temp']}>{data.temp}&#176;</p>
                 </div>
               );

@@ -8,10 +8,6 @@
 
 - [ ] Fix api requests failing at the start
 
-## Re-factor
-
-- [ ] `WeatherForecast.js` `map()`
-
 ## Features
 
 - [ ] Make reload buttons only work for their card
