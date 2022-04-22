@@ -12,9 +12,12 @@ export const ACTIONS = {
   SET_LAT_LON: 'set-lat-lon',
   SET_WEATHER: 'set-weather',
   SET_LOCATION: 'set-location',
-  RELOAD_CURRENT: 'reload-current',
-  RELOAD_HOURLY: 'reload-hourly',
-  RELOAD_DAILY: 'reload-daily',
+};
+
+export const WEATHER_TYPES = {
+  CURRENT: 'current',
+  HOURLY: 'hourly',
+  DAILY: 'daily',
 };
 
 const initialState = {
@@ -44,6 +47,47 @@ const reducer = (state, { type, payload }) => {
         lon: payload.lon,
       };
     case ACTIONS.SET_WEATHER:
+      if (payload.reset === WEATHER_TYPES.CURRENT) {
+        return {
+          ...state,
+          currentWeather: {
+            time: initialState.currentWeather.time,
+            data: initialState.currentWeather.data,
+          },
+        };
+      } else if (payload.reset === WEATHER_TYPES.HOURLY) {
+        return {
+          ...state,
+          hourlyWeather: {
+            time: initialState.hourlyWeather.time,
+            data: initialState.hourlyWeather.data,
+          },
+        };
+      } else if (payload.reset === WEATHER_TYPES.DAILY) {
+        return {
+          ...state,
+          dailyWeather: {
+            time: initialState.dailyWeather.time,
+            data: initialState.dailyWeather.data,
+          },
+        };
+      }
+      if (payload.update === WEATHER_TYPES.CURRENT) {
+        return {
+          ...state,
+          currentWeather: { time: getTime(), data: payload.data.current },
+        };
+      } else if (payload.update === WEATHER_TYPES.HOURLY) {
+        return {
+          ...state,
+          hourlyWeather: { time: getTime(), data: payload.data.hourly },
+        };
+      } else if (payload.update === WEATHER_TYPES.DAILY) {
+        return {
+          ...state,
+          dailyWeather: { time: getTime(), data: payload.data.daily },
+        };
+      }
       return {
         ...state,
         currentWeather: { time: getTime(), data: payload.data.current },
@@ -52,21 +96,6 @@ const reducer = (state, { type, payload }) => {
       };
     case ACTIONS.SET_LOCATION:
       return { ...state, location: payload.data[0] };
-    case ACTIONS.RELOAD_CURRENT:
-      return {
-        ...state,
-        currentWeather: { time: getTime(), data: payload.data.current },
-      };
-    case ACTIONS.RELOAD_HOURLY:
-      return {
-        ...state,
-        hourlyWeather: { time: getTime(), data: payload.data.hourly },
-      };
-    case ACTIONS.RELOAD_DAILY:
-      return {
-        ...state,
-        dailyWeather: { time: getTime(), data: payload.data.daily },
-      };
     default:
       break;
   }

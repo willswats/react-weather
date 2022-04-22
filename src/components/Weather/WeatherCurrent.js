@@ -1,4 +1,5 @@
 import { ACTIONS } from '../../App';
+import { WEATHER_TYPES } from '../../App';
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
@@ -20,12 +21,19 @@ const WeatherCurrent = ({ weather, location, lat, lon, dispatch }) => {
     const temperature = Math.round(data.temp);
 
     const reloadHandler = () => {
+      dispatch({
+        type: ACTIONS.SET_WEATHER,
+        payload: { reset: WEATHER_TYPES.CURRENT },
+      });
       fetch(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
       )
         .then((response) => response.json())
         .then((data) => {
-          dispatch({ type: ACTIONS.RELOAD_CURRENT, payload: { data } });
+          dispatch({
+            type: ACTIONS.SET_WEATHER,
+            payload: { data, update: WEATHER_TYPES.CURRENT },
+          });
         });
     };
 
