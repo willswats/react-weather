@@ -107,37 +107,44 @@ const App = () => {
   const { currentWeather, hourlyWeather, dailyWeather, location, lat, lon } =
     state;
 
-  useEffect(() => {
-    const fetchAppData = async () => {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        dispatch({
-          type: ACTIONS.SET_LAT_LON,
-          payload: {
-            lat: position.coords.latitude,
-            lon: position.coords.longitude,
-          },
-        });
+  const getLatLon = () => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      dispatch({
+        type: ACTIONS.SET_LAT_LON,
+        payload: {
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        },
       });
-      if (lat && lon) {
-        await fetch(
-          `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
-          });
+    });
+  };
 
-        await fetch(
-          `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
-          });
-      }
-    };
+  const fetchWeatherData = (lat, lon) => {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
+      });
+  };
 
-    fetchAppData();
+  const fetchLocationData = (lat, lon) => {
+    fetch(
+      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
+      });
+  };
+
+  useEffect(() => {
+    getLatLon();
+    if (lat && lon) {
+      fetchWeatherData(lat, lon);
+      fetchLocationData(lat, lon);
+    }
   }, [lat, lon]);
 
   return (
