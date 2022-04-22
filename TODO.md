@@ -9,7 +9,7 @@
 ### Data
 
 - [ ] Input for location
-- [ ] Add reload button for all of app
+- [ ] Reload button for all cards
 - [ ] Handle not receiving data
 
 ### Measurements and Time
@@ -18,11 +18,16 @@
 - [ ] Change the measurements based upon the location
 - [ ] Change the time and it's format based upon the location
 
-### Database
+### Cards
+
+- [ ] Add card for extra information
+- [ ] Add card for map
+
+### Other
 
 - [ ] Store openweathermap.org data in database and update it every hour (24 requests a day)
 
-### Extra
+## Styling
 
-- [ ] Add card for extra information, e.g. air pollution, humditity, etc.
-- [ ] Show location on map
+- [ ] Add weather symbols
+- [ ] Change background images dependent upon weather
