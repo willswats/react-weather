@@ -1,49 +1,45 @@
+import { ACTIONS } from '../../App';
+
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import getTime from '../../helpers/getTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherCurrent.module.css';
 
-const WeatherCurrent = ({ weatherData, locationData, reloadHandler }) => {
+const WeatherCurrent = ({ weather, location, lat, lon, dispatch }) => {
   if (
-    locationData[0] !== undefined &&
-    weatherData.current !== undefined &&
-    weatherData.daily[0] !== undefined
+    weather.data !== undefined &&
+    weather.time !== undefined &&
+    location !== undefined
   ) {
-    const { name, country } = locationData[0];
+    const { time, data } = weather;
+    const { name, country } = location;
 
-    const description = capitaliseFirstLetters(
-      weatherData.current.weather[0].description
-    );
-    const temperature = Math.round(weatherData.current.temp);
+    const description = capitaliseFirstLetters(data.weather[0].description);
+    const temperature = Math.round(data.temp);
 
-    const temperatureMax = Math.round(weatherData.daily[0].temp.max);
-    const temperatureMin = Math.round(weatherData.daily[0].temp.min);
-
-    const currentTime = getTime();
+    const reloadHandler = () => {
+      fetch(
+        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          dispatch({ type: ACTIONS.RELOAD_CURRENT, payload: { data } });
+        });
+    };
 
     return (
       <Card
-        title={`${name}, ${country}, at ${currentTime}`}
+        title={`${name}, ${country}, at ${time}`}
         body={
           <div className={classes['current']}>
             <p className={classes['current__temperature']}>
               {temperature}&#176;
             </p>
             <p className={classes['current__description']}>{description}</p>
-            <div className="horizontal">
-              <p className={classes['current__max']}>
-                H:{temperatureMax}&#176;
-              </p>
-              <p className={classes['current__min']}>
-                L:{temperatureMin}&#176;
-              </p>
-            </div>
           </div>
         }
-        reload={true}
         reloadHandler={reloadHandler}
       />
     );
