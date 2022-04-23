@@ -6,28 +6,17 @@
 
 ## Features
 
-### Data
-
+- [ ] Handle not receiving data
 - [ ] Input for location
 - [ ] Reload button for all cards
-- [ ] Handle not receiving data
-
-### Measurements and Time
-
-- [ ] Option to change between metric or imperial
-- [ ] Change the measurements based upon the location
-- [ ] Change the time and it's format based upon the location
-
-### Cards
-
+- [ ] App info button with repository and website
+- [ ] Add options button with option to change between metric or imperial
+- [ ] Change the time based upon the location
 - [ ] Add card for extra information
 - [ ] Add card for map
-
-### Other
-
-- [ ] Store openweathermap.org data in database and update it every hour (24 requests a day)
 
 ## Styling
 
 - [ ] Add weather symbols
-- [ ] Change background images dependent upon weather
+- [ ] Add weather background images
+- [ ] Change symbols and images dependent upon weather
