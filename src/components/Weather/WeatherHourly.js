@@ -26,8 +26,8 @@ const WeatherHourly = ({ weather, location, dispatch }) => {
 
     const reloadHandler = async () => {
       dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { reset: WEATHER_TYPES.HOURLY },
+        type: ACTIONS.RESET_WEATHER,
+        payload: { weatherType: WEATHER_TYPES.HOURLY },
       });
       const weatherData = await fetchWeatherData(lat, lon);
       dispatch({

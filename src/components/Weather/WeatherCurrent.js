@@ -23,13 +23,13 @@ const WeatherCurrent = ({ weather, location, dispatch }) => {
 
     const reloadHandler = async () => {
       dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { reset: WEATHER_TYPES.CURRENT },
+        type: ACTIONS.RESET_WEATHER,
+        payload: { weatherType: WEATHER_TYPES.CURRENT },
       });
       const weatherData = await fetchWeatherData(lat, lon);
       dispatch({
         type: ACTIONS.SET_WEATHER,
-        payload: { weatherData, update: WEATHER_TYPES.CURRENT },
+        payload: { weatherData, weatherType: WEATHER_TYPES.CURRENT },
       });
     };
     return (

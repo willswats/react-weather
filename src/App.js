@@ -13,6 +13,7 @@ import './App.css';
 export const ACTIONS = {
   SET_WEATHER: 'set-weather',
   SET_LOCATION: 'set-location',
+  RESET_WEATHER: 'reset-weather',
 };
 
 export const WEATHER_TYPES = {
@@ -42,41 +43,7 @@ const initialState = {
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTIONS.SET_WEATHER:
-      if (payload.reset === WEATHER_TYPES.CURRENT) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            current: {
-              time: initialState.weather.current.time,
-              data: initialState.weather.current.data,
-            },
-          },
-        };
-      } else if (payload.reset === WEATHER_TYPES.HOURLY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            hourly: {
-              time: initialState.weather.hourly.time,
-              data: initialState.weather.hourly.data,
-            },
-          },
-        };
-      } else if (payload.reset === WEATHER_TYPES.DAILY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            daily: {
-              time: initialState.weather.daily.time,
-              data: initialState.weather.daily.data,
-            },
-          },
-        };
-      }
-      if (payload.update === WEATHER_TYPES.CURRENT) {
+      if (payload.weatherType === WEATHER_TYPES.CURRENT) {
         return {
           ...state,
           weather: {
@@ -84,7 +51,7 @@ const reducer = (state, { type, payload }) => {
             current: { time: getTime(), data: payload.weatherData.current },
           },
         };
-      } else if (payload.update === WEATHER_TYPES.HOURLY) {
+      } else if (payload.weatherType === WEATHER_TYPES.HOURLY) {
         return {
           ...state,
           weather: {
@@ -92,7 +59,7 @@ const reducer = (state, { type, payload }) => {
             hourly: { time: getTime(), data: payload.weatherData.hourly },
           },
         };
-      } else if (payload.update === WEATHER_TYPES.DAILY) {
+      } else if (payload.weatherType === WEATHER_TYPES.DAILY) {
         return {
           ...state,
           weather: {
@@ -111,6 +78,42 @@ const reducer = (state, { type, payload }) => {
       };
     case ACTIONS.SET_LOCATION:
       return { ...state, location: payload.locationData };
+    case ACTIONS.RESET_WEATHER:
+      if (payload.weatherType === WEATHER_TYPES.CURRENT) {
+        return {
+          ...state,
+          weather: {
+            ...state.weather,
+            current: {
+              time: initialState.weather.current.time,
+              data: initialState.weather.current.data,
+            },
+          },
+        };
+      } else if (payload.weatherType === WEATHER_TYPES.HOURLY) {
+        return {
+          ...state,
+          weather: {
+            ...state.weather,
+            hourly: {
+              time: initialState.weather.hourly.time,
+              data: initialState.weather.hourly.data,
+            },
+          },
+        };
+      } else if (payload.weatherType === WEATHER_TYPES.DAILY) {
+        return {
+          ...state,
+          weather: {
+            ...state.weather,
+            daily: {
+              time: initialState.weather.daily.time,
+              data: initialState.weather.daily.data,
+            },
+          },
+        };
+      }
+      return { ...initialState };
     default:
       break;
   }

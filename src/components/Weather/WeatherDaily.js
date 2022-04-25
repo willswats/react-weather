@@ -23,8 +23,8 @@ const WeatherDaily = ({ weather, location, dispatch }) => {
 
     const reloadHandler = async () => {
       dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { reset: WEATHER_TYPES.DAILY },
+        type: ACTIONS.RESET_WEATHER,
+        payload: { weatherType: WEATHER_TYPES.DAILY },
       });
       const weatherData = await fetchWeatherData(lat, lon);
       dispatch({
