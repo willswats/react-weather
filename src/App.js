@@ -4,12 +4,13 @@ import WeatherCurrent from './components/Weather/WeatherCurrent';
 import WeatherHourly from './components/Weather/WeatherHourly';
 import WeatherDaily from './components/Weather/WeatherDaily';
 
+import askForLatLon from './helpers/askForLatLon';
+import { fetchWeatherData, fetchLocationData } from './helpers/api';
 import getTime from './helpers/getTime';
 
 import './App.css';
 
 export const ACTIONS = {
-  SET_LAT_LON: 'set-lat-lon',
   SET_WEATHER: 'set-weather',
   SET_LOCATION: 'set-location',
 };
@@ -21,81 +22,95 @@ export const WEATHER_TYPES = {
 };
 
 const initialState = {
-  lat: undefined,
-  lon: undefined,
   location: [],
-  currentWeather: {
-    time: undefined,
-    data: [],
-  },
-  hourlyWeather: {
-    time: undefined,
-    data: [],
-  },
-  dailyWeather: {
-    time: undefined,
-    data: [],
+  weather: {
+    current: {
+      time: undefined,
+      data: [],
+    },
+    hourly: {
+      time: undefined,
+      data: [],
+    },
+    daily: {
+      time: undefined,
+      data: [],
+    },
   },
 };
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
-    case ACTIONS.SET_LAT_LON:
-      return {
-        ...state,
-        lat: payload.lat,
-        lon: payload.lon,
-      };
     case ACTIONS.SET_WEATHER:
       if (payload.reset === WEATHER_TYPES.CURRENT) {
         return {
           ...state,
-          currentWeather: {
-            time: initialState.currentWeather.time,
-            data: initialState.currentWeather.data,
+          weather: {
+            ...state.weather,
+            current: {
+              time: initialState.weather.current.time,
+              data: initialState.weather.current.data,
+            },
           },
         };
       } else if (payload.reset === WEATHER_TYPES.HOURLY) {
         return {
           ...state,
-          hourlyWeather: {
-            time: initialState.hourlyWeather.time,
-            data: initialState.hourlyWeather.data,
+          weather: {
+            ...state.weather,
+            hourly: {
+              time: initialState.weather.hourly.time,
+              data: initialState.weather.hourly.data,
+            },
           },
         };
       } else if (payload.reset === WEATHER_TYPES.DAILY) {
         return {
           ...state,
-          dailyWeather: {
-            time: initialState.dailyWeather.time,
-            data: initialState.dailyWeather.data,
+          weather: {
+            ...state.weather,
+            daily: {
+              time: initialState.weather.daily.time,
+              data: initialState.weather.daily.data,
+            },
           },
         };
       }
       if (payload.update === WEATHER_TYPES.CURRENT) {
         return {
           ...state,
-          currentWeather: { time: getTime(), data: payload.data.current },
+          weather: {
+            ...state.weather,
+            current: { time: getTime(), data: payload.weatherData.current },
+          },
         };
       } else if (payload.update === WEATHER_TYPES.HOURLY) {
         return {
           ...state,
-          hourlyWeather: { time: getTime(), data: payload.data.hourly },
+          weather: {
+            ...state.weather,
+            hourly: { time: getTime(), data: payload.weatherData.hourly },
+          },
         };
       } else if (payload.update === WEATHER_TYPES.DAILY) {
         return {
           ...state,
-          dailyWeather: { time: getTime(), data: payload.data.daily },
+          weather: {
+            ...state.weather,
+            daily: { time: getTime(), data: payload.weatherData.daily },
+          },
         };
       }
       return {
         ...state,
-        currentWeather: { time: getTime(), data: payload.data.current },
-        hourlyWeather: { time: getTime(), data: payload.data.hourly },
-        dailyWeather: { time: getTime(), data: payload.data.daily },
+        weather: {
+          current: { time: getTime(), data: payload.weatherData.current },
+          hourly: { time: getTime(), data: payload.weatherData.hourly },
+          daily: { time: getTime(), data: payload.weatherData.daily },
+        },
       };
     case ACTIONS.SET_LOCATION:
-      return { ...state, location: payload.data[0] };
+      return { ...state, location: payload.locationData };
     default:
       break;
   }
@@ -104,70 +119,31 @@ const reducer = (state, { type, payload }) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { currentWeather, hourlyWeather, dailyWeather, location, lat, lon } =
-    state;
-
-  const getLatLon = () => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      dispatch({
-        type: ACTIONS.SET_LAT_LON,
-        payload: {
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
-        },
-      });
-    });
-  };
-
-  const fetchWeatherData = (lat, lon) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
-      });
-  };
-
-  const fetchLocationData = (lat, lon) => {
-    fetch(
-      `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-    )
-      .then((response) => response.json())
-      .then((data) => {
-        dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
-      });
-  };
+  const { weather, location } = state;
+  const { current, hourly, daily } = weather;
 
   useEffect(() => {
-    getLatLon();
-    if (lat && lon) {
-      fetchWeatherData(lat, lon);
-      fetchLocationData(lat, lon);
-    }
-  }, [lat, lon]);
+    const getAppData = async () => {
+      const { lat, lon } = await askForLatLon();
+
+      const weatherData = await fetchWeatherData(lat, lon);
+      dispatch({ type: ACTIONS.SET_WEATHER, payload: { weatherData } });
+
+      const locationData = await fetchLocationData(lat, lon);
+      dispatch({ type: ACTIONS.SET_LOCATION, payload: { locationData } });
+    };
+    getAppData();
+  }, [location]);
 
   return (
     <div className="app">
       <WeatherCurrent
-        weather={currentWeather}
+        weather={current}
         location={location}
-        lat={lat}
-        lon={lon}
         dispatch={dispatch}
       />
-      <WeatherHourly
-        weather={hourlyWeather}
-        lat={lat}
-        lon={lon}
-        dispatch={dispatch}
-      />
-      <WeatherDaily
-        weather={dailyWeather}
-        lat={lat}
-        lon={lon}
-        dispatch={dispatch}
-      />
+      <WeatherHourly weather={hourly} location={location} dispatch={dispatch} />
+      <WeatherDaily weather={daily} location={location} dispatch={dispatch} />
     </div>
   );
 };

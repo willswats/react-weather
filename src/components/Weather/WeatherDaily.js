@@ -4,34 +4,34 @@ import { WEATHER_TYPES } from '../../App';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
+import { fetchWeatherData } from '../../helpers/api';
 import getDay from '../../helpers/getDay';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherDaily.module.css';
 
-const WeatherDaily = ({ weather, lat, lon, dispatch }) => {
-  if (weather.data !== undefined && weather.time !== undefined) {
+const WeatherDaily = ({ weather, location, dispatch }) => {
+  if (
+    weather.data !== undefined &&
+    weather.time !== undefined &&
+    location !== undefined
+  ) {
     const { time, data } = weather;
+    const { lat, lon } = location;
 
     const days = data.slice(0, 8);
 
-    const reloadHandler = () => {
+    const reloadHandler = async () => {
       dispatch({
         type: ACTIONS.SET_WEATHER,
         payload: { reset: WEATHER_TYPES.DAILY },
       });
-      fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({
-            type: ACTIONS.SET_WEATHER,
-            payload: { data, update: WEATHER_TYPES.DAILY },
-          });
-        });
+      const weatherData = await fetchWeatherData(lat, lon);
+      dispatch({
+        type: ACTIONS.SET_WEATHER,
+        payload: { weatherData, update: WEATHER_TYPES.DAILY },
+      });
     };
-
     return (
       <Card
         title={`Daily Forecast at ${time}`}

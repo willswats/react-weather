@@ -4,13 +4,19 @@ import { WEATHER_TYPES } from '../../App';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
+import { fetchWeatherData } from '../../helpers/api';
 import getTime from '../../helpers/getTime';
 
 import classes from './WeatherHourly.module.css';
 
-const WeatherHourly = ({ weather, lat, lon, dispatch }) => {
-  if (weather.data !== undefined && weather.time !== undefined) {
+const WeatherHourly = ({ weather, location, dispatch }) => {
+  if (
+    weather.data !== undefined &&
+    weather.time !== undefined &&
+    location !== undefined
+  ) {
     const { time, data } = weather;
+    const { lat, lon } = location;
 
     const hours = data.slice(0, 5);
     const times = ['Now'];
@@ -18,21 +24,16 @@ const WeatherHourly = ({ weather, lat, lon, dispatch }) => {
       times.push(`${getTime(i, 2)}:00`);
     }
 
-    const reloadHandler = () => {
+    const reloadHandler = async () => {
       dispatch({
         type: ACTIONS.SET_WEATHER,
         payload: { reset: WEATHER_TYPES.HOURLY },
       });
-      fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({
-            type: ACTIONS.SET_WEATHER,
-            payload: { data, update: WEATHER_TYPES.HOURLY },
-          });
-        });
+      const weatherData = await fetchWeatherData(lat, lon);
+      dispatch({
+        type: ACTIONS.SET_WEATHER,
+        payload: { weatherData, update: WEATHER_TYPES.HOURLY },
+      });
     };
 
     return (

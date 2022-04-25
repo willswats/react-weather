@@ -4,39 +4,34 @@ import { WEATHER_TYPES } from '../../App';
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
+import { fetchWeatherData } from '../../helpers/api';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherCurrent.module.css';
 
-const WeatherCurrent = ({ weather, location, lat, lon, dispatch }) => {
+const WeatherCurrent = ({ weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
     location !== undefined
   ) {
     const { time, data } = weather;
-    const { name, country } = location;
+    const { name, country, lat, lon } = location;
 
     const description = capitaliseFirstLetters(data.weather[0].description);
     const temperature = Math.round(data.temp);
 
-    const reloadHandler = () => {
+    const reloadHandler = async () => {
       dispatch({
         type: ACTIONS.SET_WEATHER,
         payload: { reset: WEATHER_TYPES.CURRENT },
       });
-      fetch(
-        `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=minutely,alerts&appid=${process.env.REACT_APP_WEATHER_API_KEY}&units=metric`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          dispatch({
-            type: ACTIONS.SET_WEATHER,
-            payload: { data, update: WEATHER_TYPES.CURRENT },
-          });
-        });
+      const weatherData = await fetchWeatherData(lat, lon);
+      dispatch({
+        type: ACTIONS.SET_WEATHER,
+        payload: { weatherData, update: WEATHER_TYPES.CURRENT },
+      });
     };
-
     return (
       <Card
         title={`${name}, ${country}, at ${time}`}
