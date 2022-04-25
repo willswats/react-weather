@@ -14,7 +14,8 @@ const WeatherDaily = ({ weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
-    location !== undefined
+    location.lat !== undefined &&
+    location.lon !== undefined
   ) {
     const { time, data } = weather;
     const { lat, lon } = location;

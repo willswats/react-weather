@@ -13,7 +13,10 @@ const WeatherCurrent = ({ weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
-    location !== undefined
+    location.name !== undefined &&
+    location.country !== undefined &&
+    location.lat !== undefined &&
+    location.lon !== undefined
   ) {
     const { time, data } = weather;
     const { name, country, lat, lon } = location;
