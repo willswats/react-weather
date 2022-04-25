@@ -136,7 +136,7 @@ const App = () => {
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { locationData } });
     };
     getAppData();
-  }, [location]);
+  }, []);
 
   return (
     <div className="app">
