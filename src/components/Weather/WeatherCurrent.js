@@ -1,4 +1,4 @@
-import { ACTIONS } from '../../App';
+import { ACTIONS, MEASUREMENTS } from '../../App';
 import { WEATHER_TYPES } from '../../App';
 
 import Card from '../UI/Card';
@@ -9,17 +9,15 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherCurrent.module.css';
 
-const WeatherCurrent = ({ weather, location, dispatch }) => {
+const WeatherCurrent = ({ measurement, weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
-    location.name !== undefined &&
-    location.country !== undefined &&
     location.lat !== undefined &&
     location.lon !== undefined
   ) {
     const { time, data } = weather;
-    const { name, country, lat, lon } = location;
+    const { lat, lon } = location;
 
     const description = capitaliseFirstLetters(data.weather[0].description);
     const temperature = Math.round(data.temp);
@@ -29,20 +27,27 @@ const WeatherCurrent = ({ weather, location, dispatch }) => {
         type: ACTIONS.RESET_WEATHER,
         payload: { weatherType: WEATHER_TYPES.CURRENT },
       });
-      const weatherData = await fetchWeatherData(lat, lon);
-      dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { weatherData, weatherType: WEATHER_TYPES.CURRENT },
-      });
+      if (measurement === MEASUREMENTS.METRIC) {
+        const weatherData = await fetchWeatherData(lat, lon, 'metric');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, weatherType: WEATHER_TYPES.CURRENT },
+        });
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        const weatherData = await fetchWeatherData(lat, lon, 'imperial');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, weatherType: WEATHER_TYPES.CURRENT },
+        });
+      }
     };
+
     return (
       <Card
-        title={`${name}, ${country}, at ${time}`}
+        title={`Current Forecast at ${time}`}
         body={
           <div className={classes['current']}>
-            <p className={classes['current__temperature']}>
-              {temperature}&#176;
-            </p>
+            <p className={classes['current__temperature']}>{temperature}</p>
             <p className={classes['current__description']}>{description}</p>
           </div>
         }

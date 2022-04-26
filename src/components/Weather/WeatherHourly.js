@@ -1,4 +1,4 @@
-import { ACTIONS } from '../../App';
+import { ACTIONS, MEASUREMENTS } from '../../App';
 import { WEATHER_TYPES } from '../../App';
 
 import Card from '../UI/Card';
@@ -9,7 +9,7 @@ import getTime from '../../helpers/getTime';
 
 import classes from './WeatherHourly.module.css';
 
-const WeatherHourly = ({ weather, location, dispatch }) => {
+const WeatherHourly = ({ measurement, weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
@@ -30,11 +30,19 @@ const WeatherHourly = ({ weather, location, dispatch }) => {
         type: ACTIONS.RESET_WEATHER,
         payload: { weatherType: WEATHER_TYPES.HOURLY },
       });
-      const weatherData = await fetchWeatherData(lat, lon);
-      dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { weatherData, update: WEATHER_TYPES.HOURLY },
-      });
+      if (measurement === MEASUREMENTS.METRIC) {
+        const weatherData = await fetchWeatherData(lat, lon, 'metric');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, update: WEATHER_TYPES.HOURLY },
+        });
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        const weatherData = await fetchWeatherData(lat, lon, 'imperial');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, update: WEATHER_TYPES.HOURLY },
+        });
+      }
     };
 
     return (
@@ -47,7 +55,7 @@ const WeatherHourly = ({ weather, location, dispatch }) => {
                 <div className={classes['hour']} key={index}>
                   <h2 className={classes['hour__title']}>{times[index]}</h2>
                   <p className={classes['hour__temp']}>
-                    {Math.round(hour.temp)}&#176;
+                    {Math.round(hour.temp)}
                   </p>
                 </div>
               );

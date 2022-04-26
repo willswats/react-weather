@@ -21,6 +21,7 @@
 
 ## Styling
 
+- [ ] Make measurment button a drop down
 - [ ] Add weather symbols
 - [ ] Add weather background images
 - [ ] Change symbols and images dependent upon weather

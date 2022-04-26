@@ -1,4 +1,4 @@
-import { ACTIONS } from '../../App';
+import { ACTIONS, MEASUREMENTS } from '../../App';
 import { WEATHER_TYPES } from '../../App';
 
 import Card from '../UI/Card';
@@ -10,7 +10,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherDaily.module.css';
 
-const WeatherDaily = ({ weather, location, dispatch }) => {
+const WeatherDaily = ({ measurement, weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
@@ -27,12 +27,21 @@ const WeatherDaily = ({ weather, location, dispatch }) => {
         type: ACTIONS.RESET_WEATHER,
         payload: { weatherType: WEATHER_TYPES.DAILY },
       });
-      const weatherData = await fetchWeatherData(lat, lon);
-      dispatch({
-        type: ACTIONS.SET_WEATHER,
-        payload: { weatherData, update: WEATHER_TYPES.DAILY },
-      });
+      if (measurement === MEASUREMENTS.METRIC) {
+        const weatherData = await fetchWeatherData(lat, lon, 'metric');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, update: WEATHER_TYPES.DAILY },
+        });
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        const weatherData = await fetchWeatherData(lat, lon, 'imperial');
+        dispatch({
+          type: ACTIONS.SET_WEATHER,
+          payload: { weatherData, update: WEATHER_TYPES.DAILY },
+        });
+      }
     };
+
     return (
       <Card
         title={`Daily Forecast at ${time}`}
@@ -47,10 +56,10 @@ const WeatherDaily = ({ weather, location, dispatch }) => {
                 <div className={classes['day']} key={index}>
                   <h2 className={classes['day__title']}>{today}</h2>
                   <p className={classes['day__max']}>
-                    H:{Math.round(day.temp.max)}&#176;
+                    H:{Math.round(day.temp.max)}
                   </p>
                   <p className={classes['day__min']}>
-                    L:{Math.round(day.temp.min)}&#176;
+                    L:{Math.round(day.temp.min)}
                   </p>
                   <p className={classes['day__description']}>
                     {capitaliseFirstLetters(day.weather[0].description)}

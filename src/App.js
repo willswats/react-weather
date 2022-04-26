@@ -1,11 +1,12 @@
 import { useEffect, useReducer } from 'react';
 
+import WeatherBar from './components/Weather/WeatherBar';
 import WeatherCurrent from './components/Weather/WeatherCurrent';
 import WeatherHourly from './components/Weather/WeatherHourly';
 import WeatherDaily from './components/Weather/WeatherDaily';
 
 import askForLatLon from './helpers/askForLatLon';
-import { fetchWeatherData, fetchLocationData } from './helpers/api';
+import { fetchWeatherData, fetchReverseGeocodingData } from './helpers/api';
 import getTime from './helpers/getTime';
 
 import './App.css';
@@ -14,15 +15,23 @@ export const ACTIONS = {
   SET_WEATHER: 'set-weather',
   SET_LOCATION: 'set-location',
   RESET_WEATHER: 'reset-weather',
+  SET_MEASUREMENT: 'set-measurement',
 };
 
 export const WEATHER_TYPES = {
   CURRENT: 'current',
   HOURLY: 'hourly',
   DAILY: 'daily',
+  ALL: 'all',
+};
+
+export const MEASUREMENTS = {
+  METRIC: 'metric',
+  IMPERIAL: 'imperial',
 };
 
 const initialState = {
+  measurement: MEASUREMENTS.METRIC,
   location: [],
   weather: {
     current: {
@@ -112,8 +121,28 @@ const reducer = (state, { type, payload }) => {
             },
           },
         };
+      } else if (payload.weatherType === WEATHER_TYPES.ALL) {
+        return {
+          ...state,
+          weather: {
+            ...initialState.weather,
+          },
+        };
       }
-      return { ...initialState };
+      break;
+    case ACTIONS.SET_MEASUREMENT:
+      if (payload.measurement === MEASUREMENTS.METRIC) {
+        return {
+          ...state,
+          measurement: MEASUREMENTS.METRIC,
+        };
+      } else if (payload.measurement === MEASUREMENTS.IMPERIAL) {
+        return {
+          ...state,
+          measurement: MEASUREMENTS.IMPERIAL,
+        };
+      }
+      break;
     default:
       break;
   }
@@ -122,17 +151,17 @@ const reducer = (state, { type, payload }) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { weather, location } = state;
+  const { measurement, weather, location } = state;
   const { current, hourly, daily } = weather;
 
   useEffect(() => {
     const getAppData = async () => {
       const { lat, lon } = await askForLatLon();
 
-      const weatherData = await fetchWeatherData(lat, lon);
+      const weatherData = await fetchWeatherData(lat, lon, 'metric');
       dispatch({ type: ACTIONS.SET_WEATHER, payload: { weatherData } });
 
-      const locationData = await fetchLocationData(lat, lon);
+      const locationData = await fetchReverseGeocodingData(lat, lon);
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { locationData } });
     };
     getAppData();
@@ -140,13 +169,29 @@ const App = () => {
 
   return (
     <div className="app">
+      <WeatherBar
+        measurement={measurement}
+        location={location}
+        dispatch={dispatch}
+      />
       <WeatherCurrent
+        measurement={measurement}
         weather={current}
         location={location}
         dispatch={dispatch}
       />
-      <WeatherHourly weather={hourly} location={location} dispatch={dispatch} />
-      <WeatherDaily weather={daily} location={location} dispatch={dispatch} />
+      <WeatherHourly
+        measurement={measurement}
+        weather={hourly}
+        location={location}
+        dispatch={dispatch}
+      />
+      <WeatherDaily
+        measurement={measurement}
+        weather={daily}
+        location={location}
+        dispatch={dispatch}
+      />
     </div>
   );
 };

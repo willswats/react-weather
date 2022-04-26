@@ -1,0 +1,25 @@
+.bar {
+  display: flex;
+  border-radius: 25px;
+  background-color: #212b3b;
+  width: 100%;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  padding: 1rem 2rem 1rem 2rem;
+}
+
+.bar__measurement-btn {
+  position: absolute;
+}
+
+.bar__title {
+  font-size: 2.5rem;
+  text-align: center;
+  width: 100%;
+}
+
+.bar__reload-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

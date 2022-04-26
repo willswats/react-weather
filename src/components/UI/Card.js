@@ -6,7 +6,9 @@ const Card = ({ title, body, reloadHandler }) => {
     <div className={classes['card']}>
       <div className={classes['card__top']}>
         <h1 className={classes['card__title']}>{title}</h1>
-        <ReloadButton reloadHandler={reloadHandler} />
+        <div className={classes['card__reload-btn']}>
+          {reloadHandler && <ReloadButton reloadHandler={reloadHandler} />}
+        </div>
       </div>
       <div className={classes['card__body']}>{body}</div>
     </div>

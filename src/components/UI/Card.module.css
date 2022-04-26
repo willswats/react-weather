@@ -23,6 +23,12 @@
   width: 100%;
 }
 
+.card__reload-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .card__body {
   padding: 1rem 2rem 2rem 2rem;
 }
