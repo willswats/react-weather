@@ -54,13 +54,13 @@ const WeatherBar = ({ measurement, location, dispatch }) => {
 
     return (
       <Bar
-        title={<WeatherSearch dispatch={dispatch} />}
-        reloadHandler={reloadHandler}
         measurement={measurement}
         measurementHandler={measurementHandler}
+        middle={<WeatherSearch />}
+        reloadHandler={reloadHandler}
       />
     );
-  } else return <Bar title={<LoadingSpinner />} />;
+  } else return <Bar middle={<LoadingSpinner />} />;
 };
 
 export default WeatherBar;

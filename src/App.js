@@ -170,26 +170,26 @@ const App = () => {
   return (
     <div className="app">
       <WeatherBar
-        measurement={measurement}
         location={location}
+        measurement={measurement}
         dispatch={dispatch}
       />
       <WeatherCurrent
-        measurement={measurement}
         weather={current}
         location={location}
+        measurement={measurement}
         dispatch={dispatch}
       />
       <WeatherHourly
-        measurement={measurement}
         weather={hourly}
         location={location}
+        measurement={measurement}
         dispatch={dispatch}
       />
       <WeatherDaily
-        measurement={measurement}
         weather={daily}
         location={location}
+        measurement={measurement}
         dispatch={dispatch}
       />
     </div>
