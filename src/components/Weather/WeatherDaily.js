@@ -1,50 +1,18 @@
-import { ACTIONS, MEASUREMENTS } from '../../App';
-import { WEATHER_TYPES } from '../../App';
-
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import { fetchWeatherData } from '../../helpers/api';
 import getDay from '../../helpers/getDay';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherDaily.module.css';
 
-const WeatherDaily = ({ measurement, weather, location, dispatch }) => {
-  if (
-    weather.data !== undefined &&
-    weather.time !== undefined &&
-    location.lat !== undefined &&
-    location.lon !== undefined
-  ) {
-    const { time, data } = weather;
-    const { lat, lon } = location;
-
-    const days = data.slice(0, 8);
-
-    const reloadHandler = async () => {
-      dispatch({
-        type: ACTIONS.RESET_WEATHER,
-        payload: { weatherType: WEATHER_TYPES.DAILY },
-      });
-      if (measurement === MEASUREMENTS.METRIC) {
-        const weatherData = await fetchWeatherData(lat, lon, 'metric');
-        dispatch({
-          type: ACTIONS.SET_WEATHER,
-          payload: { weatherData, update: WEATHER_TYPES.DAILY },
-        });
-      } else if (measurement === MEASUREMENTS.IMPERIAL) {
-        const weatherData = await fetchWeatherData(lat, lon, 'imperial');
-        dispatch({
-          type: ACTIONS.SET_WEATHER,
-          payload: { weatherData, update: WEATHER_TYPES.DAILY },
-        });
-      }
-    };
+const WeatherDaily = ({ weather }) => {
+  if (weather !== undefined) {
+    const days = weather.slice(0, 8);
 
     return (
       <Card
-        title={`Daily Forecast at ${time}`}
+        title={`Daily Forecast`}
         body={
           <>
             {days.map((day, index) => {
@@ -69,7 +37,6 @@ const WeatherDaily = ({ measurement, weather, location, dispatch }) => {
             })}
           </>
         }
-        reloadHandler={reloadHandler}
       />
     );
   } else {

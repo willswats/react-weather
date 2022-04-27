@@ -1,29 +1,25 @@
 import classes from './MeasurementButton.module.css';
 import { MEASUREMENTS } from '../../../App';
 
-const MeasurementButton = ({
-  measurement,
-  measurementHandler,
-  buttonMeasurement,
-}) => {
+const MeasurementButton = ({ measurement, measurementType, clickHandler }) => {
   return (
     <button
       className={`${classes['measurement-btn']} ${' '} ${
-        measurement === buttonMeasurement
+        measurement === measurementType
           ? classes['measurement-btn--selected']
           : ''
       }`}
-      onClick={measurementHandler}
+      onClick={clickHandler}
     >
       <span
         className={`
     ${
-      buttonMeasurement === MEASUREMENTS.METRIC
+      measurementType === MEASUREMENTS.METRIC
         ? classes['measurement-btn__celcius']
         : ''
     }
     ${
-      buttonMeasurement === MEASUREMENTS.IMPERIAL
+      measurementType === MEASUREMENTS.IMPERIAL
         ? classes['measurement-btn__fahrenheit']
         : ''
     }

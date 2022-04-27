@@ -1,13 +1,12 @@
 import { useEffect, useReducer } from 'react';
 
-import WeatherBar from './components/Weather/WeatherBar';
+import WeatherNav from './components/Weather/WeatherNav';
 import WeatherCurrent from './components/Weather/WeatherCurrent';
 import WeatherHourly from './components/Weather/WeatherHourly';
 import WeatherDaily from './components/Weather/WeatherDaily';
 
 import askForLatLon from './helpers/askForLatLon';
 import { fetchWeatherData, fetchReverseGeocodingData } from './helpers/api';
-import getTime from './helpers/getTime';
 
 import './App.css';
 
@@ -18,118 +17,31 @@ export const ACTIONS = {
   SET_MEASUREMENT: 'set-measurement',
 };
 
-export const WEATHER_TYPES = {
-  CURRENT: 'current',
-  HOURLY: 'hourly',
-  DAILY: 'daily',
-  ALL: 'all',
-};
-
 export const MEASUREMENTS = {
   METRIC: 'metric',
   IMPERIAL: 'imperial',
 };
 
 const initialState = {
-  measurement: MEASUREMENTS.METRIC,
   location: [],
-  weather: {
-    current: {
-      time: undefined,
-      data: [],
-    },
-    hourly: {
-      time: undefined,
-      data: [],
-    },
-    daily: {
-      time: undefined,
-      data: [],
-    },
-  },
+  weather: [],
+  measurement: MEASUREMENTS.METRIC,
 };
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTIONS.SET_WEATHER:
-      if (payload.weatherType === WEATHER_TYPES.CURRENT) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            current: { time: getTime(), data: payload.weatherData.current },
-          },
-        };
-      } else if (payload.weatherType === WEATHER_TYPES.HOURLY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            hourly: { time: getTime(), data: payload.weatherData.hourly },
-          },
-        };
-      } else if (payload.weatherType === WEATHER_TYPES.DAILY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            daily: { time: getTime(), data: payload.weatherData.daily },
-          },
-        };
-      }
       return {
         ...state,
-        weather: {
-          current: { time: getTime(), data: payload.weatherData.current },
-          hourly: { time: getTime(), data: payload.weatherData.hourly },
-          daily: { time: getTime(), data: payload.weatherData.daily },
-        },
+        weather: payload.data,
       };
     case ACTIONS.SET_LOCATION:
-      return { ...state, location: payload.locationData };
+      return { ...state, location: payload.data };
     case ACTIONS.RESET_WEATHER:
-      if (payload.weatherType === WEATHER_TYPES.CURRENT) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            current: {
-              time: initialState.weather.current.time,
-              data: initialState.weather.current.data,
-            },
-          },
-        };
-      } else if (payload.weatherType === WEATHER_TYPES.HOURLY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            hourly: {
-              time: initialState.weather.hourly.time,
-              data: initialState.weather.hourly.data,
-            },
-          },
-        };
-      } else if (payload.weatherType === WEATHER_TYPES.DAILY) {
-        return {
-          ...state,
-          weather: {
-            ...state.weather,
-            daily: {
-              time: initialState.weather.daily.time,
-              data: initialState.weather.daily.data,
-            },
-          },
-        };
-      } else if (payload.weatherType === WEATHER_TYPES.ALL) {
-        return {
-          ...state,
-          weather: {
-            ...initialState.weather,
-          },
-        };
-      }
-      break;
+      return {
+        ...state,
+        weather: initialState.weather,
+      };
     case ACTIONS.SET_MEASUREMENT:
       if (payload.measurement === MEASUREMENTS.METRIC) {
         return {
@@ -151,47 +63,38 @@ const reducer = (state, { type, payload }) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { measurement, weather, location } = state;
+  const { weather, location, measurement } = state;
   const { current, hourly, daily } = weather;
 
   useEffect(() => {
     const getAppData = async () => {
       const { lat, lon } = await askForLatLon();
 
-      const weatherData = await fetchWeatherData(lat, lon, 'metric');
-      dispatch({ type: ACTIONS.SET_WEATHER, payload: { weatherData } });
+      const getWeatherData = async () => {
+        const data = await fetchWeatherData(lat, lon, 'metric');
+        dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
+      };
 
-      const locationData = await fetchReverseGeocodingData(lat, lon);
-      dispatch({ type: ACTIONS.SET_LOCATION, payload: { locationData } });
+      const getlocationData = async () => {
+        const data = await fetchReverseGeocodingData(lat, lon);
+        dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
+      };
+      getWeatherData();
+      getlocationData();
     };
     getAppData();
   }, []);
 
   return (
     <div className="app">
-      <WeatherBar
+      <WeatherNav
         location={location}
         measurement={measurement}
         dispatch={dispatch}
       />
-      <WeatherCurrent
-        weather={current}
-        location={location}
-        measurement={measurement}
-        dispatch={dispatch}
-      />
-      <WeatherHourly
-        weather={hourly}
-        location={location}
-        measurement={measurement}
-        dispatch={dispatch}
-      />
-      <WeatherDaily
-        weather={daily}
-        location={location}
-        measurement={measurement}
-        dispatch={dispatch}
-      />
+      <WeatherCurrent weather={current} location={location} />
+      <WeatherHourly weather={hourly} />
+      <WeatherDaily weather={daily} />
     </div>
   );
 };

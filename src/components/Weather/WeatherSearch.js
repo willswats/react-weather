@@ -17,7 +17,6 @@ const WeatherSearch = () => {
   const changeHandler = (event) => {
     setSearch(event.target.value);
   };
-
   return (
     <Search
       submitHandler={submitHandler}

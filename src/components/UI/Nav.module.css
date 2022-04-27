@@ -1,4 +1,4 @@
-.bar {
+.nav {
   display: flex;
   border-radius: 25px;
   background-color: #212b3b;
@@ -8,21 +8,21 @@
   padding: 1rem 2rem 1rem 2rem;
 }
 
-.bar__measurement-btns {
+.nav__left {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   width: 200px;
 }
 
-.bar__middle {
+.nav__middle {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
 }
 
-.bar__reload-btn {
+.nav__right {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -30,7 +30,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .bar {
+  .nav {
     margin-bottom: 0.5rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
   }
