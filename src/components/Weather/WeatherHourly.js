@@ -55,7 +55,7 @@ const WeatherHourly = ({ measurement, weather, location, dispatch }) => {
                 <div className={classes['hour']} key={index}>
                   <h2 className={classes['hour__title']}>{times[index]}</h2>
                   <p className={classes['hour__temp']}>
-                    {Math.round(hour.temp)}
+                    {Math.round(hour.temp)}&#176;
                   </p>
                 </div>
               );

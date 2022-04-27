@@ -1,15 +1,27 @@
 import classes from './Bar.module.css';
-import ReloadButton from './ReloadButton';
-import MeasurementButton from './MeasurementButton';
+import ReloadButton from './Buttons/ReloadButton';
+import MeasurementButton from './Buttons/MeasurementButton';
+
+import { MEASUREMENTS } from '../../App';
 
 const Bar = ({ middle, reloadHandler, measurement, measurementHandler }) => {
   return (
     <div className={classes['bar']}>
-      <div className={classes['bar__measurement-btn']}>
+      <div className={classes['bar__measurement-btns']}>
         {measurementHandler && (
           <MeasurementButton
             measurement={measurement}
             measurementHandler={measurementHandler}
+            buttonMeasurement={MEASUREMENTS.METRIC}
+            content={'Metric'}
+          />
+        )}
+        {measurementHandler && (
+          <MeasurementButton
+            measurement={measurement}
+            measurementHandler={measurementHandler}
+            buttonMeasurement={MEASUREMENTS.IMPERIAL}
+            content={'Imperial'}
           />
         )}
       </div>

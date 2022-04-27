@@ -56,10 +56,10 @@ const WeatherDaily = ({ measurement, weather, location, dispatch }) => {
                 <div className={classes['day']} key={index}>
                   <h2 className={classes['day__title']}>{today}</h2>
                   <p className={classes['day__max']}>
-                    H:{Math.round(day.temp.max)}
+                    H:{Math.round(day.temp.max)}&#176;
                   </p>
                   <p className={classes['day__min']}>
-                    L:{Math.round(day.temp.min)}
+                    L:{Math.round(day.temp.min)}&#176;
                   </p>
                   <p className={classes['day__description']}>
                     {capitaliseFirstLetters(day.weather[0].description)}

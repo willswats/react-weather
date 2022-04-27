@@ -47,7 +47,9 @@ const WeatherCurrent = ({ measurement, weather, location, dispatch }) => {
         title={`Current Forecast at ${time}`}
         body={
           <div className={classes['current']}>
-            <p className={classes['current__temperature']}>{temperature}</p>
+            <p className={classes['current__temperature']}>
+              {temperature}&#176;
+            </p>
             <p className={classes['current__description']}>{description}</p>
           </div>
         }

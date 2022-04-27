@@ -1,5 +1,5 @@
 import classes from './Card.module.css';
-import ReloadButton from '../UI/ReloadButton';
+import ReloadButton from './Buttons/ReloadButton';
 
 const Card = ({ title, body, reloadHandler }) => {
   return (
