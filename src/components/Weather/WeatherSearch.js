@@ -23,7 +23,7 @@ const WeatherSearch = () => {
       submitHandler={submitHandler}
       changeHandler={changeHandler}
       value={search}
-      placeholder={'City'}
+      placeholder={'Search City'}
     />
   );
 };

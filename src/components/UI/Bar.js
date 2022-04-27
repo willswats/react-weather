@@ -13,7 +13,6 @@ const Bar = ({ middle, reloadHandler, measurement, measurementHandler }) => {
             measurement={measurement}
             measurementHandler={measurementHandler}
             buttonMeasurement={MEASUREMENTS.METRIC}
-            content={'Metric'}
           />
         )}
         {measurementHandler && (
@@ -21,7 +20,6 @@ const Bar = ({ middle, reloadHandler, measurement, measurementHandler }) => {
             measurement={measurement}
             measurementHandler={measurementHandler}
             buttonMeasurement={MEASUREMENTS.IMPERIAL}
-            content={'Imperial'}
           />
         )}
       </div>

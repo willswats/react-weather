@@ -56,7 +56,7 @@ const WeatherBar = ({ measurement, location, dispatch }) => {
       <Bar
         measurement={measurement}
         measurementHandler={measurementHandler}
-        middle={<WeatherSearch />}
+        middle={<WeatherSearch location={location} />}
         reloadHandler={reloadHandler}
       />
     );

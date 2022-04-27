@@ -13,11 +13,13 @@ const WeatherCurrent = ({ measurement, weather, location, dispatch }) => {
   if (
     weather.data !== undefined &&
     weather.time !== undefined &&
+    location.name !== undefined &&
+    location.country !== undefined &&
     location.lat !== undefined &&
     location.lon !== undefined
   ) {
     const { time, data } = weather;
-    const { lat, lon } = location;
+    const { name, country, lat, lon } = location;
 
     const description = capitaliseFirstLetters(data.weather[0].description);
     const temperature = Math.round(data.temp);
@@ -44,7 +46,7 @@ const WeatherCurrent = ({ measurement, weather, location, dispatch }) => {
 
     return (
       <Card
-        title={`Current Forecast at ${time}`}
+        title={`${name}, ${country} at ${time}`}
         body={
           <div className={classes['current']}>
             <p className={classes['current__temperature']}>
