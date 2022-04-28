@@ -11,7 +11,7 @@ import ReloadButton from '../UI/Buttons/ReloadButton';
 import { fetchWeatherData } from '../../helpers/api';
 
 const WeatherNav = ({ location, measurement, dispatch }) => {
-  if (location !== undefined) {
+  if (location.lat !== undefined && location.lon !== undefined) {
     const { lat, lon } = location;
 
     const reloadHandler = async () => {
