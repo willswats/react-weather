@@ -2,34 +2,40 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getTime from '../../helpers/getTime';
+import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherHourly.module.css';
 
 const WeatherHourly = ({ weather }) => {
   if (weather !== undefined) {
     const hours = weather.slice(0, 5);
-    const times = ['Now'];
-    for (let i = 1; i <= 5; i++) {
-      times.push(`${getTime(i, 2)}:00`);
-    }
 
     return (
       <Card
         title={`Hourly Forecast`}
         body={
-          <div className={classes['hourly']}>
+          <div className={classes['hours']}>
             {hours.map((hour, index) => {
+              let title = 'Now';
+              if (index > 0) {
+                title = getTime(index);
+              }
+
+              const icon = hour.weather[0].icon;
+              const description = capitaliseFirstLetters(
+                hour.weather[0].description
+              );
+              const temp = Math.round(hour.temp);
+
               return (
-                <div className={classes['hour']} key={index}>
-                  <h2 className={classes['hour__title']}>{times[index]}</h2>
-                  <p className={classes['hour__temp']}>
-                    {Math.round(hour.temp)}&#176;
-                  </p>
+                <div className={classes['hours__item']} key={index}>
+                  <h2 className={classes['hours__title']}>{title}</h2>
                   <img
-                    className={classes['hour__img']}
-                    src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
-                    alt={`${hour.weather[0].icon}`}
+                    className={classes['hours__img']}
+                    src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                    alt={`${description}`}
                   ></img>
+                  <p className={classes['hours__temp']}>{temp}&#176;</p>
                 </div>
               );
             })}

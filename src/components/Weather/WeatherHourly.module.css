@@ -1,40 +1,43 @@
-.hourly {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+.hours {
+  display: flex;
+  flex-grow: 1;
 }
 
-.hour {
-  text-align: center;
+.hours__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
-.hour:last-child {
+.hours__item:last-child {
   border-right: none;
 }
 
-.hour__title {
+.hours__title {
   font-size: 2rem;
 }
 
-.hour__temp {
+.hours__temp {
   font-size: 1.8rem;
 }
 
-.hour__img {
+.hours__img {
   width: 80px;
   height: 80px;
 }
 
 @media screen and (max-width: 768px) {
-  .hour__title {
+  .hours__title {
     font-size: 1rem;
   }
 
-  .hour__temp {
+  .hours__temp {
     font-size: 0.8rem;
   }
 
-  .hour__img {
+  .hours__img {
     width: 40px;
     height: 40px;
   }

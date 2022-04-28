@@ -24,16 +24,16 @@ const WeatherNow = ({ weather, location }) => {
       <Card
         title={`${name}, ${country} at ${time}`}
         body={
-          <div className={classes['current']}>
-            <div className={classes['current__left']}>
-              <p className={classes['current__temperature']}>
+          <div className="horizontal">
+            <div className={classes['left']}>
+              <p className={classes['left__temperature']}>
                 {temperature}&#176;
               </p>
-              <p className={classes['current__description']}>{description}</p>
+              <p className={classes['left__description']}>{description}</p>
             </div>
-            <div className={classes['current__right']}>
+            <div className={classes['right']}>
               <img
-                className={classes['current__img']}
+                className={classes['right__img']}
                 src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                 alt={`${description}`}
               ></img>

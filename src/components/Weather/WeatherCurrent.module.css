@@ -1,53 +1,38 @@
-.current {
-  display: flex;
-}
-
-.current__left {
+.left {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  flex-grow: 1;
 }
 
-.current__right {
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-}
-
-.current__temperature {
+.left__temperature {
   font-size: 6rem;
 }
 
-.current__description {
+.left__description {
   font-size: 2rem;
 }
 
-.current__max,
-.current__min {
-  font-size: 1.5rem;
-  margin-right: 0.5rem;
+.right {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
 }
 
-.current__img {
+.right__img {
   width: 152px;
   height: 152px;
 }
 
 @media screen and (max-width: 768px) {
-  .current__temperature {
+  .left__temperature {
     font-size: 3rem;
   }
 
-  .current__description {
+  .left__description {
     font-size: 1rem;
   }
 
-  .current__max,
-  .current__min {
-    font-size: 0.8rem;
-  }
-
-  .current__img {
+  .right__img {
     width: 76px;
     height: 76px;
   }

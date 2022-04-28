@@ -21,6 +21,7 @@
 
 .day__max,
 .day__min {
+  text-align: center;
   font-size: 1.5rem;
 }
 
@@ -36,10 +37,6 @@
 
   .day__max,
   .day__min {
-    font-size: 0.8rem;
-  }
-
-  .day__description {
     font-size: 0.8rem;
   }
 }
