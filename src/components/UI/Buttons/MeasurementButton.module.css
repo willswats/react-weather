@@ -1,5 +1,5 @@
 .measurement-btn {
-  font-size: 1.8rem;
+  font-size: 2rem;
   border: none;
   border-radius: 25px;
   background-color: rgba(0, 0, 0, 0);
@@ -26,6 +26,6 @@
 
 @media screen and (max-width: 768px) {
   .measurement-btn {
-    font-size: 0.8rem;
+    font-size: 1rem;
   }
 }

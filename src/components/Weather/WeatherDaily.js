@@ -28,16 +28,24 @@ const WeatherDaily = ({ weather }) => {
 
               return (
                 <div className={classes['day']} key={index}>
-                  <h2 className={classes['day__title']}>{title}</h2>
-                  <div className="center">
+                  <div
+                    className={`${classes['day__col']} ${classes['day__col--start']}`}
+                  >
+                    <h2 className={classes['day__title']}>{title}</h2>
+                  </div>
+                  <div className={classes['day__col']}>
                     <img
                       className={classes['day__img']}
-                      src={`https://openweathermap.org/img/wn/${icon}.png`}
+                      src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                       alt={`${description}`}
                     ></img>
                   </div>
-                  <p className={classes['day__min']}>H:{maxTemp}&#176;</p>
-                  <p className={classes['day__max']}>L:{minTemp}&#176;</p>
+                  <div className={classes['day__col']}>
+                    <p className={classes['day__max']}>H:{maxTemp}&#176;</p>
+                  </div>
+                  <div className={classes['day__col']}>
+                    <p className={classes['day__min']}>L:{minTemp}&#176;</p>
+                  </div>
                 </div>
               );
             })}

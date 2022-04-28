@@ -6,7 +6,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 import classes from './WeatherCurrent.module.css';
 import getTime from '../../helpers/getTime';
 
-const WeatherNow = ({ weather, location }) => {
+const WeatherCurrent = ({ weather, location }) => {
   if (
     weather !== undefined &&
     location.name !== undefined &&
@@ -34,7 +34,7 @@ const WeatherNow = ({ weather, location }) => {
             <div className={classes['right']}>
               <img
                 className={classes['right__img']}
-                src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
                 alt={`${description}`}
               ></img>
             </div>
@@ -45,4 +45,4 @@ const WeatherNow = ({ weather, location }) => {
   } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;
 };
 
-export default WeatherNow;
+export default WeatherCurrent;
