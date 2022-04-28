@@ -25,6 +25,11 @@ const WeatherHourly = ({ weather }) => {
                   <p className={classes['hour__temp']}>
                     {Math.round(hour.temp)}&#176;
                   </p>
+                  <img
+                    className={classes['hour__img']}
+                    src={`https://openweathermap.org/img/wn/${hour.weather[0].icon}@2x.png`}
+                    alt={`${hour.weather[0].icon}`}
+                  ></img>
                 </div>
               );
             })}

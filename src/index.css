@@ -22,6 +22,10 @@ body {
   background-color: #10161d;
 }
 
+.center {
+  text-align: center;
+}
+
 .horizontal {
   display: flex;
 }

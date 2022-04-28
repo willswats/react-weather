@@ -6,7 +6,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 import classes from './WeatherCurrent.module.css';
 import getTime from '../../helpers/getTime';
 
-const WeatherCurrent = ({ weather, location }) => {
+const WeatherNow = ({ weather, location }) => {
   if (
     weather !== undefined &&
     location.name !== undefined &&
@@ -14,8 +14,9 @@ const WeatherCurrent = ({ weather, location }) => {
   ) {
     const { name, country } = location;
 
-    const description = capitaliseFirstLetters(weather.weather[0].description);
     const temperature = Math.round(weather.temp);
+    const description = capitaliseFirstLetters(weather.weather[0].description);
+    const icon = weather.weather[0].icon;
 
     const time = getTime();
 
@@ -24,10 +25,19 @@ const WeatherCurrent = ({ weather, location }) => {
         title={`${name}, ${country} at ${time}`}
         body={
           <div className={classes['current']}>
-            <p className={classes['current__temperature']}>
-              {temperature}&#176;
-            </p>
-            <p className={classes['current__description']}>{description}</p>
+            <div className={classes['current__left']}>
+              <p className={classes['current__temperature']}>
+                {temperature}&#176;
+              </p>
+              <p className={classes['current__description']}>{description}</p>
+            </div>
+            <div className={classes['current__right']}>
+              <img
+                className={classes['current__img']}
+                src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                alt={`${description}`}
+              ></img>
+            </div>
           </div>
         }
       />
@@ -35,4 +45,4 @@ const WeatherCurrent = ({ weather, location }) => {
   } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;
 };
 
-export default WeatherCurrent;
+export default WeatherNow;
