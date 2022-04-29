@@ -13,12 +13,10 @@
 ## Features
 
 - [ ] Input for location
-- [ ] Links to repository and website
 - [ ] Card for extra information
 - [ ] Card for map
 
-## Styling
+## Other
 
-- [ ] Add weather symbols
-- [ ] Add weather background image for current weather
-- [ ] Change symbols and images dependent upon weather
+- [ ] Links to repository and website
+- [ ] Finish README.md
