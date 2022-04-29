@@ -1,13 +1,12 @@
-# React Weather
+# React Weather <!-- omit in toc -->
 
 A weather application built with React.
 
 ## Table of Contents <!-- omit in toc -->
 
-- [React Weather](#react-weather)
-  - [General Information](#general-information)
-  - [Features](#features)
-  - [Setup](#setup)
+- [General Information](#general-information)
+- [Features](#features)
+- [Setup](#setup)
 
 ## General Information
 
