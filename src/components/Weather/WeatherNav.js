@@ -7,46 +7,73 @@ import MeasurementButton from '../UI/Buttons/MeasurementButton';
 import WeatherSearch from './WeatherSearch';
 import ReloadButton from '../UI/Buttons/ReloadButton';
 
-const WeatherNav = ({ measurement, dispatch }) => {
-  const reloadHandler = async () => {
-    dispatch({ type: ACTIONS.RELOAD });
-  };
+const WeatherNav = ({ location, measurement, dispatch, getWeatherData }) => {
+  if (location.lat !== undefined && location.lon !== undefined) {
+    const { lat, lon } = location;
 
-  const measurementClickHandler = async () => {
-    if (measurement === MEASUREMENTS.METRIC) {
-      dispatch({
-        type: ACTIONS.SET_MEASUREMENT,
-        payload: { measurement: MEASUREMENTS.IMPERIAL },
-      });
-    } else if (measurement === MEASUREMENTS.IMPERIAL) {
-      dispatch({
-        type: ACTIONS.SET_MEASUREMENT,
-        payload: { measurement: MEASUREMENTS.METRIC },
-      });
-    }
-    dispatch({ type: ACTIONS.RELOAD });
-  };
-
-  return (
-    <Nav
-      left={
-        <>
-          <MeasurementButton
-            measurement={measurement}
-            measurementType={MEASUREMENTS.METRIC}
-            clickHandler={measurementClickHandler}
-          />
-          <MeasurementButton
-            measurement={measurement}
-            measurementType={MEASUREMENTS.IMPERIAL}
-            clickHandler={measurementClickHandler}
-          />
-        </>
+    const reloadHandler = async () => {
+      if (measurement === MEASUREMENTS.METRIC) {
+        getWeatherData(lat, lon, 'metric');
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        getWeatherData(lat, lon, 'imperial');
       }
-      middle={<WeatherSearch />}
-      right={<ReloadButton reloadHandler={reloadHandler} />}
-    />
-  );
+    };
+
+    const measurementClickHandler = async () => {
+      if (measurement === MEASUREMENTS.METRIC) {
+        dispatch({
+          type: ACTIONS.SET_MEASUREMENT,
+          payload: { measurement: MEASUREMENTS.IMPERIAL },
+        });
+        getWeatherData(lat, lon, 'imperial');
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        dispatch({
+          type: ACTIONS.SET_MEASUREMENT,
+          payload: { measurement: MEASUREMENTS.METRIC },
+        });
+        getWeatherData(lat, lon, 'metric');
+      }
+    };
+
+    return (
+      <Nav
+        left={
+          <>
+            <MeasurementButton
+              measurement={measurement}
+              measurementType={MEASUREMENTS.METRIC}
+              clickHandler={measurementClickHandler}
+            />
+            <MeasurementButton
+              measurement={measurement}
+              measurementType={MEASUREMENTS.IMPERIAL}
+              clickHandler={measurementClickHandler}
+            />
+          </>
+        }
+        middle={<WeatherSearch />}
+        right={<ReloadButton reloadHandler={reloadHandler} />}
+      />
+    );
+  } else
+    return (
+      <Nav
+        left={
+          <>
+            <MeasurementButton
+              measurement={measurement}
+              measurementType={MEASUREMENTS.METRIC}
+            />
+            <MeasurementButton
+              measurement={measurement}
+              measurementType={MEASUREMENTS.IMPERIAL}
+            />
+          </>
+        }
+        middle={<WeatherSearch />}
+        right={<ReloadButton />}
+      />
+    );
 };
 
 export default WeatherNav;
