@@ -55,7 +55,25 @@ const WeatherNav = ({ location, measurement, dispatch, getWeatherData }) => {
         right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
-  } else
+  } else {
+    const reloadHandler = () => {
+      window.location.reload();
+    };
+
+    const measurementClickHandler = () => {
+      if (measurement === MEASUREMENTS.METRIC) {
+        dispatch({
+          type: ACTIONS.SET_MEASUREMENT,
+          payload: { measurement: MEASUREMENTS.IMPERIAL },
+        });
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        dispatch({
+          type: ACTIONS.SET_MEASUREMENT,
+          payload: { measurement: MEASUREMENTS.METRIC },
+        });
+      }
+    };
+
     return (
       <Nav
         left={
@@ -63,17 +81,20 @@ const WeatherNav = ({ location, measurement, dispatch, getWeatherData }) => {
             <MeasurementButton
               measurement={measurement}
               measurementType={MEASUREMENTS.METRIC}
+              clickHandler={measurementClickHandler}
             />
             <MeasurementButton
               measurement={measurement}
               measurementType={MEASUREMENTS.IMPERIAL}
+              clickHandler={measurementClickHandler}
             />
           </>
         }
         middle={<WeatherSearch />}
-        right={<ReloadButton />}
+        right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
+  }
 };
 
 export default WeatherNav;
