@@ -6,8 +6,6 @@
 
 ## Fix bugs
 
-- [ ] Handle denied location permisions
-- [ ] Handle not receiving data from fetch requests
 - [ ] Sync time with location (not system time)
 
 ## Features

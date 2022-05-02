@@ -7,8 +7,8 @@ const askForLatLon = () => {
       });
     };
 
-    const failure = () => {
-      reject('Failed to get location permissions');
+    const failure = (error) => {
+      reject(error);
     };
 
     navigator.geolocation.getCurrentPosition(success, failure);

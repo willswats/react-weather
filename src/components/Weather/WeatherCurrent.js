@@ -25,15 +25,17 @@ const WeatherCurrent = ({ weather, location }) => {
         title={`${name}, ${country} at ${time}`}
         body={
           <div className="horizontal">
-            <div className={classes['left']}>
-              <p className={classes['left__temperature']}>
+            <div className={classes['current-left']}>
+              <p className={classes['current-left__temperature']}>
                 {temperature}&#176;
               </p>
-              <p className={classes['left__description']}>{description}</p>
+              <p className={classes['current-left__description']}>
+                {description}
+              </p>
             </div>
-            <div className={classes['right']}>
+            <div className={classes['current-right']}>
               <img
-                className={classes['right__img']}
+                className={classes['current-right__img']}
                 src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
                 alt={`${description}`}
               ></img>

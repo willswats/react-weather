@@ -1,38 +1,38 @@
-.left {
+.current-left {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-.left__temperature {
+.current-left__temperature {
   font-size: 6rem;
 }
 
-.left__description {
+.current-left__description {
   font-size: 2rem;
 }
 
-.right {
+.current-right {
   display: flex;
   justify-content: flex-end;
   flex-grow: 1;
 }
 
-.right__img {
+.current-right__img {
   width: 152px;
   height: 152px;
 }
 
 @media screen and (max-width: 768px) {
-  .left__temperature {
+  .current-left__temperature {
     font-size: 3rem;
   }
 
-  .left__description {
+  .current-left__description {
     font-size: 1rem;
   }
 
-  .right__img {
+  .current-right__img {
     width: 76px;
     height: 76px;
   }

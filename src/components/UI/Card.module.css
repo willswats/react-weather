@@ -27,6 +27,10 @@
   padding: 1rem 2rem 2rem 2rem;
 }
 
+.card__error {
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 768px) {
   .card {
     margin-bottom: 0.5rem;
@@ -42,5 +46,9 @@
 
   .card__body {
     padding: 0.5rem 1rem 1rem 1rem;
+  }
+
+  .card__error {
+    font-size: 1rem;
   }
 }
