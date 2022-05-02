@@ -57,7 +57,7 @@ const WeatherNav = ({ location, measurement, dispatch, getWeatherData }) => {
     );
   } else {
     const reloadHandler = () => {
-      window.location.reload();
+      dispatch({ type: ACTIONS.RESET });
     };
 
     const measurementClickHandler = () => {
