@@ -21,6 +21,7 @@ I built this project to further my understanding of interacing with API's. Throu
 - Use current location
 - Search for locations
 - Reload data without reloading the page
+- Displays the location's time
 - Error handling
 
 ## Setup
