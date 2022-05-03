@@ -6,7 +6,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherHourly.module.css';
 
-const WeatherHourly = ({ weather }) => {
+const WeatherHourly = ({ weather, timezone }) => {
   if (weather !== undefined) {
     const hours = weather.slice(0, 5);
 
@@ -18,7 +18,7 @@ const WeatherHourly = ({ weather }) => {
             {hours.map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
-                title = `${getTime(index, 2)}:00`;
+                title = `${getTime(index, 2, timezone)}:00`;
               }
 
               const icon = hour.weather[0].icon;

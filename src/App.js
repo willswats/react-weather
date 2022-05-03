@@ -74,7 +74,7 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { weather, location, measurement, error } = state;
-  const { current, hourly, daily } = weather;
+  const { current, hourly, daily, timezone } = weather;
 
   const setWeatherData = async (lat, lon, units) => {
     // Reset state
@@ -124,7 +124,6 @@ const App = () => {
     // Set state
     try {
       const data = await fetchGeocodingData(city);
-      console.log(data);
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
       if (measurement === MEASUREMENTS.METRIC) {
         setWeatherData(data[0].lat, data[0].lon, 'metric');
@@ -166,8 +165,14 @@ const App = () => {
         setDataThroughSearch={setDataThroughSearch}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
-      {!error && <WeatherCurrent weather={current} location={location} />}
-      {!error && <WeatherHourly weather={hourly} />}
+      {!error && (
+        <WeatherCurrent
+          weather={current}
+          location={location}
+          timezone={timezone}
+        />
+      )}
+      {!error && <WeatherHourly weather={hourly} timezone={timezone} />}
       {!error && <WeatherDaily weather={daily} />}
     </div>
   );

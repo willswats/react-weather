@@ -6,12 +6,13 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 import classes from './WeatherCurrent.module.css';
 import getTime from '../../helpers/getTime';
 
-const WeatherCurrent = ({ weather, location }) => {
+const WeatherCurrent = ({ weather, location, timezone }) => {
   if (
     weather !== undefined &&
     location !== undefined &&
     location.name !== undefined &&
-    location.country !== undefined
+    location.country !== undefined &&
+    timezone !== undefined
   ) {
     const { name, country } = location;
 
@@ -19,7 +20,7 @@ const WeatherCurrent = ({ weather, location }) => {
     const description = capitaliseFirstLetters(weather.weather[0].description);
     const icon = weather.weather[0].icon;
 
-    const time = getTime();
+    const time = getTime(0, 4, timezone);
 
     return (
       <Card
