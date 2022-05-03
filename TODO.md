@@ -10,7 +10,7 @@
 
 ## Features
 
-- [ ] Input for location
+- [ ] Suggest locations in input
 - [ ] Card for extra information
 - [ ] Card for map
 

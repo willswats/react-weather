@@ -59,17 +59,15 @@ const WeatherNav = ({
             />
           </>
         }
-        middle={
-          <WeatherSearch
-            location={location}
-            measurement={measurement}
-            setDataThroughSearch={setDataThroughSearch}
-          />
-        }
+        middle={<WeatherSearch setDataThroughSearch={setDataThroughSearch} />}
         right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
   } else {
+    const reloadHandler = () => {
+      dispatch({ type: ACTIONS.RESET });
+    };
+
     const measurementClickHandler = () => {
       if (measurement === MEASUREMENTS.METRIC) {
         dispatch({
@@ -99,14 +97,8 @@ const WeatherNav = ({
             />
           </>
         }
-        middle={
-          <WeatherSearch
-            location={location}
-            measurement={measurement}
-            setDataThroughSearch={setDataThroughSearch}
-          />
-        }
-        right={<ReloadButton />}
+        middle={<WeatherSearch setDataThroughSearch={setDataThroughSearch} />}
+        right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
   }

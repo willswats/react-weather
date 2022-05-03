@@ -21,6 +21,7 @@ export const ACTIONS = {
   SET_LOCATION: 'set-location',
   SET_MEASUREMENT: 'set-measurement',
   SET_ERROR: 'set-error',
+  RESET: 'reset',
 };
 
 export const MEASUREMENTS = {
@@ -33,6 +34,7 @@ const initialState = {
   location: [],
   measurement: MEASUREMENTS.METRIC,
   error: null,
+  reset: false,
 };
 
 const reducer = (state, { type, payload }) => {
@@ -65,6 +67,12 @@ const reducer = (state, { type, payload }) => {
         ...state,
         error: payload.message,
       };
+    case ACTIONS.RESET:
+      return {
+        ...initialState,
+        reset: !state.reset,
+        measurement: state.measurement,
+      };
     default:
       break;
   }
@@ -73,15 +81,17 @@ const reducer = (state, { type, payload }) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { weather, location, measurement, error } = state;
+  const { weather, location, measurement, error, reset } = state;
   const { current, hourly, daily } = weather;
 
   const setWeatherData = async (lat, lon, units) => {
+    // Reset state
     dispatch({
       type: ACTIONS.SET_ERROR,
       payload: { message: null },
     });
     dispatch({ type: ACTIONS.SET_WEATHER, payload: { data: [] } });
+    // Set state
     try {
       const data = await fetchWeatherData(lat, lon, units);
       dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
@@ -94,11 +104,13 @@ const App = () => {
   };
 
   const setLocationData = async (lat, lon) => {
+    // Reset state
     dispatch({
       type: ACTIONS.SET_ERROR,
       payload: { message: null },
     });
     dispatch({ type: ACTIONS.SET_LOCATION, payload: { data: [] } });
+    // Set state
     try {
       const data = await fetchReverseGeocodingData(lat, lon);
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
@@ -111,13 +123,16 @@ const App = () => {
   };
 
   const setDataThroughSearch = async (city) => {
+    // Reset state
     dispatch({
       type: ACTIONS.SET_ERROR,
       payload: { message: null },
     });
     dispatch({ type: ACTIONS.SET_LOCATION, payload: { data: [] } });
+    // Set state
     try {
       const data = await fetchGeocodingData(city);
+      console.log(data);
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
       if (measurement === MEASUREMENTS.METRIC) {
         setWeatherData(data[0].lat, data[0].lon, 'metric');
@@ -147,7 +162,7 @@ const App = () => {
       }
     };
     setAppData();
-  }, []);
+  }, [reset]);
 
   return (
     <div className="app">
