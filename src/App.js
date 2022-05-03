@@ -21,7 +21,6 @@ export const ACTIONS = {
   SET_LOCATION: 'set-location',
   SET_MEASUREMENT: 'set-measurement',
   SET_ERROR: 'set-error',
-  RESET: 'reset',
 };
 
 export const MEASUREMENTS = {
@@ -34,7 +33,6 @@ const initialState = {
   location: [],
   measurement: MEASUREMENTS.METRIC,
   error: null,
-  reset: false,
 };
 
 const reducer = (state, { type, payload }) => {
@@ -67,12 +65,6 @@ const reducer = (state, { type, payload }) => {
         ...state,
         error: payload.message,
       };
-    case ACTIONS.RESET:
-      return {
-        ...initialState,
-        reset: !state.reset,
-        measurement: state.measurement,
-      };
     default:
       break;
   }
@@ -81,7 +73,7 @@ const reducer = (state, { type, payload }) => {
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const { weather, location, measurement, error, reset } = state;
+  const { weather, location, measurement, error } = state;
   const { current, hourly, daily } = weather;
 
   const setWeatherData = async (lat, lon, units) => {
@@ -162,7 +154,7 @@ const App = () => {
       }
     };
     setAppData();
-  }, [reset]);
+  }, []);
 
   return (
     <div className="app">

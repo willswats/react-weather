@@ -64,10 +64,6 @@ const WeatherNav = ({
       />
     );
   } else {
-    const reloadHandler = () => {
-      dispatch({ type: ACTIONS.RESET });
-    };
-
     const measurementClickHandler = () => {
       if (measurement === MEASUREMENTS.METRIC) {
         dispatch({
@@ -98,7 +94,7 @@ const WeatherNav = ({
           </>
         }
         middle={<WeatherSearch setDataThroughSearch={setDataThroughSearch} />}
-        right={<ReloadButton reloadHandler={reloadHandler} />}
+        right={<ReloadButton />}
       />
     );
   }
