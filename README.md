@@ -10,7 +10,7 @@ A weather application built with React.
 
 ## General Information
 
-I built this project to further my understanding of interacing with API's. Through building this I have learnt more about `fetch`, as well as `async` and `await`.
+I built this project to further my understanding of interacing with API's. Through building this I have learnt more about `fetch`, `async`, `await`, and Promises. The main state of the application is all inside of React's `useEffect` hook.
 
 ## Features
 
@@ -21,6 +21,7 @@ I built this project to further my understanding of interacing with API's. Throu
 - Use current location
 - Search for locations
 - Reload data without reloading the page
+- Error handling
 
 ## Setup
 
