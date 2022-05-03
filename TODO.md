@@ -4,17 +4,12 @@
 
 - [ ] Make API key secret
 
-## Fix bugs
-
-- [ ] Sync time with location (not system time)
-
 ## Features
 
-- [ ] Suggest locations in input
+- [ ] Suggest locations whilst typing
 - [ ] Card for extra information
-- [ ] Card for map
+- [ ] Sync time with location (not system time)
 
 ## Other
 
 - [ ] Links to repository and website
-- [ ] Finish README.md

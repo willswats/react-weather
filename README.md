@@ -10,11 +10,22 @@ A weather application built with React.
 
 ## General Information
 
+I built this project to further my understanding of interacing with API's. Through building this I have learnt more about `fetch`, as well as `async` and `await`.
+
 ## Features
+
+- Current forecast
+- Hourly forecast
+- Daily forecast
+- Choice of celcius or fahrenheit
+- Use current location
+- Search for locations
+- Reload data without reloading the page
 
 ## Setup
 
-1. Run `npm install`.
-2. Create a `.env.local` file.
+1. Run `npm install`
+2. Create a `.env.local` file
 3. Generate an API key from [openweathermap.org](https://openweathermap.org).
-4. Insert the API key into the `.env.local` file, with the key as `REACT_APP_WEATHER_API_KEY`.
+4. Insert the API key into the `.env.local` file, with the key as `REACT_APP_WEATHER_API_KEY=`.
+5. Run `npm start`
