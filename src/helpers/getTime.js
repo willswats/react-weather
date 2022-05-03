@@ -1,4 +1,4 @@
-const getTime = (hoursToAdd = 0, digits = 4, timeZone) => {
+const getTime = (digits, timeZone, hoursToAdd = 0) => {
   const hourMilliseconds = 3600000;
   const time = new Date(Date.now() + hoursToAdd * hourMilliseconds);
   const convertTime = () => {
@@ -15,9 +15,7 @@ const getTime = (hoursToAdd = 0, digits = 4, timeZone) => {
           timeZone: timeZone,
         });
       default:
-        throw new Error(
-          `"digits" cannot be ${digits}. "digits" must be either 2 or 4.`
-        );
+        throw Error('"digits" must be either 2 or 4.');
     }
   };
   const convertedTime = convertTime();

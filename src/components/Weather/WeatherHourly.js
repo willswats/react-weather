@@ -18,7 +18,7 @@ const WeatherHourly = ({ weather, timezone }) => {
             {hours.map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
-                title = `${getTime(index, 2, timezone)}:00`;
+                title = `${getTime(2, timezone, index)}:00`;
               }
 
               const icon = hour.weather[0].icon;

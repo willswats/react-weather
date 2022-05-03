@@ -20,7 +20,7 @@ const WeatherCurrent = ({ weather, location, timezone }) => {
     const description = capitaliseFirstLetters(weather.weather[0].description);
     const icon = weather.weather[0].icon;
 
-    const time = getTime(0, 4, timezone);
+    const time = getTime(4, timezone);
 
     return (
       <Card
