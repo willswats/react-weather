@@ -9,6 +9,7 @@ import getTime from '../../helpers/getTime';
 const WeatherCurrent = ({ weather, location }) => {
   if (
     weather !== undefined &&
+    location !== undefined &&
     location.name !== undefined &&
     location.country !== undefined
   ) {

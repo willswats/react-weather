@@ -72,39 +72,50 @@ const App = () => {
   const { weather, location, measurement, error } = state;
   const { current, hourly, daily } = weather;
 
-  const getWeatherData = async (lat, lon, units) => {
+  const setWeatherData = async (lat, lon, units) => {
+    dispatch({
+      type: ACTIONS.SET_ERROR,
+      payload: { message: null },
+    });
     dispatch({ type: ACTIONS.SET_WEATHER, payload: { data: [] } });
-    const { status, data } = await fetchWeatherData(lat, lon, units);
-    if (status) {
+    try {
+      const data = await fetchWeatherData(lat, lon, units);
       dispatch({ type: ACTIONS.SET_WEATHER, payload: { data } });
-    } else {
+    } catch (error) {
       dispatch({
         type: ACTIONS.SET_ERROR,
-        payload: { message: data.message },
+        payload: { message: error.message },
       });
     }
   };
 
-  const getLocationData = async (lat, lon) => {
-    dispatch({ type: ACTIONS.SET_WEATHER, payload: { data: [] } });
-    const { status, data } = await fetchReverseGeocodingData(lat, lon);
-    if (status) {
+  const setLocationData = async (lat, lon) => {
+    dispatch({
+      type: ACTIONS.SET_ERROR,
+      payload: { message: null },
+    });
+    dispatch({ type: ACTIONS.SET_LOCATION, payload: { data: [] } });
+    try {
+      const data = await fetchReverseGeocodingData(lat, lon);
       dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
-    } else {
+    } catch (error) {
       dispatch({
         type: ACTIONS.SET_ERROR,
-        payload: { message: data.message },
+        payload: { message: error.message },
       });
     }
   };
 
   useEffect(() => {
-    const getAppData = async () => {
+    const setAppData = async () => {
+      dispatch({
+        type: ACTIONS.SET_ERROR,
+        payload: { message: null },
+      });
       try {
         const { lat, lon } = await askForLatLon();
-
-        getWeatherData(lat, lon, 'metric');
-        getLocationData(lat, lon);
+        setWeatherData(lat, lon, 'metric');
+        setLocationData(lat, lon);
       } catch (error) {
         dispatch({
           type: ACTIONS.SET_ERROR,
@@ -112,7 +123,7 @@ const App = () => {
         });
       }
     };
-    getAppData();
+    setAppData();
   }, []);
 
   return (
@@ -121,7 +132,7 @@ const App = () => {
         location={location}
         measurement={measurement}
         dispatch={dispatch}
-        getWeatherData={getWeatherData}
+        setWeatherData={setWeatherData}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
       {!error && <WeatherCurrent weather={current} location={location} />}
