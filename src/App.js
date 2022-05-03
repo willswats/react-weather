@@ -8,7 +8,11 @@ import WeatherHourly from './components/Weather/WeatherHourly';
 import WeatherDaily from './components/Weather/WeatherDaily';
 
 import askForLatLon from './helpers/askForLatLon';
-import { fetchWeatherData, fetchReverseGeocodingData } from './helpers/api';
+import {
+  fetchWeatherData,
+  fetchReverseGeocodingData,
+  fetchGeocodingData,
+} from './helpers/api';
 
 import './App.css';
 
@@ -106,12 +110,31 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
-    const setAppData = async () => {
+  const setDataThroughSearch = async (city) => {
+    dispatch({
+      type: ACTIONS.SET_ERROR,
+      payload: { message: null },
+    });
+    dispatch({ type: ACTIONS.SET_LOCATION, payload: { data: [] } });
+    try {
+      const data = await fetchGeocodingData(city);
+      dispatch({ type: ACTIONS.SET_LOCATION, payload: { data } });
+      if (measurement === MEASUREMENTS.METRIC) {
+        setWeatherData(data[0].lat, data[0].lon, 'metric');
+      }
+      if (measurement === MEASUREMENTS.IMPERIAL) {
+        setWeatherData(data[0].lat, data[0].lon, 'imperial');
+      }
+    } catch (error) {
       dispatch({
         type: ACTIONS.SET_ERROR,
-        payload: { message: null },
+        payload: { message: `"${city}" is not a city.` },
       });
+    }
+  };
+
+  useEffect(() => {
+    const setAppData = async () => {
       try {
         const { lat, lon } = await askForLatLon();
         setWeatherData(lat, lon, 'metric');
@@ -133,6 +156,7 @@ const App = () => {
         measurement={measurement}
         dispatch={dispatch}
         setWeatherData={setWeatherData}
+        setDataThroughSearch={setDataThroughSearch}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
       {!error && <WeatherCurrent weather={current} location={location} />}

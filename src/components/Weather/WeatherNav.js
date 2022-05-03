@@ -6,7 +6,13 @@ import MeasurementButton from '../UI/Buttons/MeasurementButton';
 import ReloadButton from '../UI/Buttons/ReloadButton';
 import WeatherSearch from './WeatherSearch';
 
-const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
+const WeatherNav = ({
+  location,
+  measurement,
+  dispatch,
+  setWeatherData,
+  setDataThroughSearch,
+}) => {
   if (
     location !== undefined &&
     location.lat !== undefined &&
@@ -55,16 +61,16 @@ const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
         }
         middle={
           <WeatherSearch
+            location={location}
             measurement={measurement}
-            dispatch={dispatch}
-            setWeatherData={setWeatherData}
+            setDataThroughSearch={setDataThroughSearch}
           />
         }
         right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
   } else {
-    const measurementClickHandler = async () => {
+    const measurementClickHandler = () => {
       if (measurement === MEASUREMENTS.METRIC) {
         dispatch({
           type: ACTIONS.SET_MEASUREMENT,
@@ -77,7 +83,6 @@ const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
         });
       }
     };
-
     return (
       <Nav
         left={
@@ -96,9 +101,9 @@ const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
         }
         middle={
           <WeatherSearch
+            location={location}
             measurement={measurement}
-            dispatch={dispatch}
-            setWeatherData={setWeatherData}
+            setDataThroughSearch={setDataThroughSearch}
           />
         }
         right={<ReloadButton />}
