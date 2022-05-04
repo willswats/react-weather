@@ -7,15 +7,15 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 import classes from './WeatherDaily.module.css';
 
 const WeatherDaily = ({ weather }) => {
-  if (weather !== undefined) {
-    const days = weather.slice(0, 8);
+  if (weather !== undefined && weather.daily !== undefined) {
+    const { daily } = weather;
 
     return (
       <Card
         title={`Daily Forecast`}
         body={
           <>
-            {days.map((day, index) => {
+            {daily.slice(0, 8).map((day, index) => {
               let title = 'Today';
               if (index > 0) {
                 title = getDay(index);

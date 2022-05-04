@@ -6,16 +6,20 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './WeatherHourly.module.css';
 
-const WeatherHourly = ({ weather, timezone }) => {
-  if (weather !== undefined) {
-    const hours = weather.slice(0, 5);
+const WeatherHourly = ({ weather }) => {
+  if (
+    weather !== undefined &&
+    weather.hourly !== undefined &&
+    weather.timezone !== undefined
+  ) {
+    const { hourly, timezone } = weather;
 
     return (
       <Card
         title={`Hourly Forecast`}
         body={
           <div className={classes['hours']}>
-            {hours.map((hour, index) => {
+            {hourly.slice(0, 5).map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
                 title = `${getTime(2, timezone, index)}:00`;

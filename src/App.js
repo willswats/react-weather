@@ -74,7 +74,6 @@ const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   const { weather, location, measurement, error } = state;
-  const { current, hourly, daily, timezone } = weather;
 
   const setWeatherData = async (lat, lon, units) => {
     // Reset state
@@ -165,15 +164,9 @@ const App = () => {
         setDataThroughSearch={setDataThroughSearch}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
-      {!error && (
-        <WeatherCurrent
-          weather={current}
-          location={location}
-          timezone={timezone}
-        />
-      )}
-      {!error && <WeatherHourly weather={hourly} timezone={timezone} />}
-      {!error && <WeatherDaily weather={daily} />}
+      {!error && <WeatherCurrent weather={weather} location={location} />}
+      {!error && <WeatherHourly weather={weather} />}
+      {!error && <WeatherDaily weather={weather} />}
     </div>
   );
 };
