@@ -6,13 +6,7 @@ import MeasurementButton from '../UI/Buttons/MeasurementButton';
 import ReloadButton from '../UI/Buttons/ReloadButton';
 import WeatherSearch from './WeatherSearch';
 
-const WeatherNav = ({
-  location,
-  measurement,
-  dispatch,
-  setWeatherData,
-  setDataThroughSearch,
-}) => {
+const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
   if (
     location !== undefined &&
     location.lat !== undefined &&
@@ -59,7 +53,13 @@ const WeatherNav = ({
             />
           </>
         }
-        middle={<WeatherSearch setDataThroughSearch={setDataThroughSearch} />}
+        middle={
+          <WeatherSearch
+            measurement={measurement}
+            dispatch={dispatch}
+            setWeatherData={setWeatherData}
+          />
+        }
         right={<ReloadButton reloadHandler={reloadHandler} />}
       />
     );
@@ -93,7 +93,13 @@ const WeatherNav = ({
             />
           </>
         }
-        middle={<WeatherSearch setDataThroughSearch={setDataThroughSearch} />}
+        middle={
+          <WeatherSearch
+            measurement={measurement}
+            dispatch={dispatch}
+            setWeatherData={setWeatherData}
+          />
+        }
         right={<ReloadButton />}
       />
     );
