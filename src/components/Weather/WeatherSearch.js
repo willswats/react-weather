@@ -1,13 +1,15 @@
 import { ACTIONS, MEASUREMENTS } from '../../App';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import Search from '../UI/Search';
+import Search from '../UI/Search/Search';
+import List from '../UI/Search/List';
 
 import { fetchGeocodingData } from '../../helpers/api';
 
 const WeatherSearch = ({ measurement, dispatch, setWeatherData }) => {
   const [search, setSearch] = useState('');
+  const [suggestions, setSuggestions] = useState([]);
 
   const submitHandler = async (event) => {
     event.preventDefault();
@@ -33,20 +35,41 @@ const WeatherSearch = ({ measurement, dispatch, setWeatherData }) => {
         payload: { message: `"${search}" is not a city.` },
       });
     }
+    // Reset state
     setSearch('');
+    setSuggestions([]);
   };
 
-  const changeHandler = async (event) => {
+  const changeHandler = (event) => {
     setSearch(event.target.value);
   };
 
+  useEffect(() => {
+    const timer = setTimeout(async () => {
+      if (search.length > 0) {
+        let dataArr = [];
+        const data = await fetchGeocodingData(search);
+        for (let i = 0; i < data.length; i++) {
+          dataArr.push({ name: data[i].name, country: data[i].country });
+        }
+        setSuggestions(dataArr);
+      } else {
+        setSuggestions([]);
+      }
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, [search]);
+
   return (
-    <Search
-      submitHandler={submitHandler}
-      changeHandler={changeHandler}
-      value={search}
-      placeholder={'Search City'}
-    />
+    <>
+      <Search
+        submitHandler={submitHandler}
+        changeHandler={changeHandler}
+        value={search}
+        placeholder={'Search City'}
+        list={<List items={suggestions} />}
+      />
+    </>
   );
 };
 

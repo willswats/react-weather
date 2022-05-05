@@ -22,6 +22,14 @@ body {
   background-color: #10161d;
 }
 
+button {
+  border: none;
+  outline: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: #fff;
+}
+
 .horizontal {
   display: flex;
 }
