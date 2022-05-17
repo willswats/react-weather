@@ -1,18 +1,18 @@
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import getTime from '../../helpers/getTime';
+import convertUnixTime from '../../helpers/convertUnixTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
-import classes from './WeatherHourly.module.css';
+import classes from './HourlyForecast.module.css';
 
-const WeatherHourly = ({ weather }) => {
+const HourlyForecast = ({ weather }) => {
   if (
     weather !== undefined &&
     weather.hourly !== undefined &&
     weather.timezone !== undefined
   ) {
-    const { hourly, timezone } = weather;
+    const { hourly } = weather;
 
     return (
       <Card
@@ -22,7 +22,7 @@ const WeatherHourly = ({ weather }) => {
             {hourly.slice(0, 5).map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
-                title = `${getTime(2, timezone, index)}:00`;
+                title = `${convertUnixTime(hour.dt, 2)}:00`;
               }
 
               const icon = hour.weather[0].icon;
@@ -52,4 +52,4 @@ const WeatherHourly = ({ weather }) => {
   }
 };
 
-export default WeatherHourly;
+export default HourlyForecast;

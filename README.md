@@ -7,10 +7,11 @@ A weather application built with React.
 - [General Information](#general-information)
 - [Features](#features)
 - [Setup](#setup)
+- [Acknowledgements](#acknowledgements)
 
 ## General Information
 
-I built this project to further my understanding of interacing with API's. Through building this I have learnt more about `fetch`, `async`, `await`, and Promises.
+The project uses OpenWeather's One Call 1.0 API to fetch the data. I built this project to further my understanding of interacting with API's, and I now have a better understanding of `fetch`, `async`, `await`, and Promises.
 
 ## Features
 
@@ -31,3 +32,7 @@ I built this project to further my understanding of interacing with API's. Throu
 3. Generate an API key from [openweathermap.org](https://openweathermap.org).
 4. Insert the API key into the `.env.local` file, with the key as `REACT_APP_WEATHER_API_KEY=`.
 5. Run `npm start`
+
+## Acknowledgements
+
+The svg icons are from [Remix Icon](https://github.com/Remix-Design/remixicon) and [feather](https://github.com/feathericons/feather).

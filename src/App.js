@@ -2,10 +2,11 @@ import { useEffect, useReducer } from 'react';
 
 import Card from './components/UI/Card';
 
-import WeatherNav from './components/Weather/WeatherNav';
-import WeatherCurrent from './components/Weather/WeatherCurrent';
-import WeatherHourly from './components/Weather/WeatherHourly';
-import WeatherDaily from './components/Weather/WeatherDaily';
+import AppNav from './components/App/AppNav';
+import CurrentForecast from './components/App/CurrentForecast';
+import HourlyForecast from './components/App/HourlyForecast';
+import DailyForecast from './components/App/DailyForecast';
+import CurrentWeather from './components/App/CurrentWeather';
 
 import askForLatLon from './helpers/askForLatLon';
 import { fetchWeatherData, fetchReverseGeocodingData } from './helpers/api';
@@ -127,16 +128,17 @@ const App = () => {
 
   return (
     <div className="app">
-      <WeatherNav
+      <AppNav
         location={location}
         measurement={measurement}
         dispatch={dispatch}
         setWeatherData={setWeatherData}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
-      {!error && <WeatherCurrent weather={weather} location={location} />}
-      {!error && <WeatherHourly weather={weather} />}
-      {!error && <WeatherDaily weather={weather} />}
+      {!error && <CurrentForecast weather={weather} location={location} />}
+      {!error && <HourlyForecast weather={weather} />}
+      {!error && <DailyForecast weather={weather} />}
+      {!error && <CurrentWeather weather={weather} />}
     </div>
   );
 };

@@ -6,7 +6,7 @@ import Search from '../UI/Search';
 
 import { fetchGeocodingData } from '../../helpers/api';
 
-const WeatherSearch = ({ measurement, dispatch, setWeatherData }) => {
+const AppNavSearch = ({ measurement, dispatch, setWeatherData }) => {
   const [search, setSearch] = useState('');
 
   const submitHandler = async (event) => {
@@ -52,4 +52,4 @@ const WeatherSearch = ({ measurement, dispatch, setWeatherData }) => {
   );
 };
 
-export default WeatherSearch;
+export default AppNavSearch;

@@ -4,9 +4,9 @@ import { MEASUREMENTS } from '../../App';
 import Nav from '../UI/Nav';
 import MeasurementButton from '../UI/Buttons/MeasurementButton';
 import ReloadButton from '../UI/Buttons/ReloadButton';
-import WeatherSearch from './WeatherSearch';
+import WeatherSearch from './AppNavSearch';
 
-const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
+const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
   if (
     location !== undefined &&
     location.lat !== undefined &&
@@ -106,4 +106,4 @@ const WeatherNav = ({ location, measurement, dispatch, setWeatherData }) => {
   }
 };
 
-export default WeatherNav;
+export default AppNav;

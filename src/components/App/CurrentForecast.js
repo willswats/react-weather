@@ -3,26 +3,25 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
-import classes from './WeatherCurrent.module.css';
-import getTime from '../../helpers/getTime';
+import classes from './CurrentForecast.module.css';
+import convertUnixTime from '../../helpers/convertUnixTime';
 
-const WeatherCurrent = ({ weather, location }) => {
+const CurrentForecast = ({ weather, location }) => {
   if (
     weather !== undefined &&
     weather.current !== undefined &&
-    weather.timezone !== undefined &&
     location !== undefined &&
     location.name !== undefined &&
     location.country !== undefined
   ) {
-    const { current, timezone } = weather;
+    const { current } = weather;
     const { name, country } = location;
 
     const temperature = Math.round(current.temp);
     const description = capitaliseFirstLetters(current.weather[0].description);
     const icon = current.weather[0].icon;
 
-    const time = getTime(4, timezone);
+    const time = convertUnixTime(current.dt, 4);
 
     return (
       <Card
@@ -51,4 +50,4 @@ const WeatherCurrent = ({ weather, location }) => {
   } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;
 };
 
-export default WeatherCurrent;
+export default CurrentForecast;

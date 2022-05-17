@@ -30,6 +30,10 @@ button {
   color: #fff;
 }
 
+svg {
+  fill: #fff;
+}
+
 .horizontal {
   display: flex;
 }
