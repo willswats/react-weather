@@ -24,7 +24,7 @@ const CurrentWeather = ({ weather }) => {
     const sunset = convertUnixTime(current.sunset, 4);
     const uvi = Math.round(current.uvi);
     const windSpeed = Math.round(current.wind_speed);
-    const rain = current.rain['1h'];
+    const rain = current.rain ? current.rain['1h'] : '0';
     const feelsLike = Math.round(current.feels_like);
     const humidity = current.humidity;
     const dewPoint = Math.round(current.dew_point);
