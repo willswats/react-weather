@@ -11,14 +11,17 @@ A weather application built with React.
 
 ## General Information
 
-The project uses OpenWeather's One Call 1.0 API to fetch the data. I built this project to further my understanding of interacting with API's, and I now have a better understanding of `fetch`, `async`, `await`, and Promises.
+This project uses the One Call 1.0 API from [openweathermap.org](https://openweathermap.org) to fetch data and then display it to the user.
+
+I built this project to further my understanding of interacting with API's, and I now have a better understanding of `fetch`, `async`, `await`, and Promises.
 
 ## Features
 
 - Current forecast
 - Hourly forecast
 - Daily forecast
-- Choice of celcius or fahrenheit
+- Current weather
+- Choice of metric or imperial
 - Use current location
 - Search for locations
 - Reload data without reloading the page
