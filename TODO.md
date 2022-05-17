@@ -2,14 +2,13 @@
 
 ## Security
 
-- [ ] Make API key secret
+- [ ] Make the API key secret
 
 ## Features
 
-- [ ] Add to WeatherDaily:
-  - [ ] Rainfall
-- [ ] Map with data from Weather Map 1.0 (openweathermap.org)
+- [ ] Add to rain data to hourly and daily forecasts
+- [ ] Add map with data from Weather Map 1.0 (openweathermap.org)
 
 ## Other
 
-- [ ] Links to repository and website
+- [ ] Add links to repository and website
