@@ -20,7 +20,7 @@ const CurrentWeather = ({ weather }) => {
   if (
     weather !== undefined &&
     weather.current !== undefined &&
-    weather.timeZone !== undefined
+    weather.timezone !== undefined
   ) {
     const { current } = weather;
 

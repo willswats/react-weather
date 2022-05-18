@@ -9,6 +9,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 }
 
+.extra__item:last-child {
+  border-bottom: none;
+}
+
 .extra__title {
   display: flex;
   justify-content: flex-start;
