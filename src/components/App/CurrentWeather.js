@@ -41,88 +41,88 @@ const CurrentWeather = ({ weather, measurement }) => {
       <Card
         title={`Current Weather`}
         body={
-          <div className={classes['extra']}>
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconSunrise className={classes['extra__svg']} />
+          <div className={classes['current']}>
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconSunrise className={classes['current__svg']} />
                 Sunrise
               </p>
-              <p className={classes['extra__info']}>{sunrise}</p>
+              <p className={classes['current__info']}>{sunrise}</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconSunset className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconSunset className={classes['current__svg']} />
                 Sunset
               </p>
-              <p className={classes['extra__info']}>{sunset}</p>
+              <p className={classes['current__info']}>{sunset}</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconSun className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconSun className={classes['current__svg']} />
                 UV Index
               </p>
-              <p className={classes['extra__info']}>{uvi}/10</p>
+              <p className={classes['current__info']}>{uvi}/10</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconWind className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconWind className={classes['current__svg']} />
                 Wind Speed
               </p>
-              <p className={classes['extra__info']}>
+              <p className={classes['current__info']}>
                 {windSpeed}
                 {measurement === MEASUREMENTS.METRIC ? 'm/s' : 'mph'}
               </p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconRain className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconRain className={classes['current__svg']} />
                 Rain
               </p>
-              <p className={classes['extra__info']}>{rain}mm</p>
+              <p className={classes['current__info']}>{rain}mm</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconTemp className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconTemp className={classes['current__svg']} />
                 Feels Like
               </p>
-              <p className={classes['extra__info']}>{feelsLike}&#176;</p>
+              <p className={classes['current__info']}>{feelsLike}&#176;</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconDrop className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconDrop className={classes['current__svg']} />
                 Humidity
               </p>
-              <p className={classes['extra__info']}>{humidity}%</p>
+              <p className={classes['current__info']}>{humidity}%</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconDropHalf className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconDropHalf className={classes['current__svg']} />
                 Dew Point
               </p>
-              <p className={classes['extra__info']}>{dewPoint}&#176;</p>
+              <p className={classes['current__info']}>{dewPoint}&#176;</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconEye className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconEye className={classes['current__svg']} />
                 Visibility
               </p>
-              <p className={classes['extra__info']}>{visibility}km</p>
+              <p className={classes['current__info']}>{visibility}km</p>
             </div>
 
-            <div className={classes['extra__item']}>
-              <p className={classes['extra__title']}>
-                <IconArrowUpDown className={classes['extra__svg']} />
+            <div className={classes['current__item']}>
+              <p className={classes['current__title']}>
+                <IconArrowUpDown className={classes['current__svg']} />
                 Pressure
               </p>
-              <p className={classes['extra__info']}>{pressure}hPa</p>
+              <p className={classes['current__info']}>{pressure}hPa</p>
             </div>
           </div>
         }

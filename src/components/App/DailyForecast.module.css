@@ -13,6 +13,7 @@
   align-items: center;
   flex-grow: 1;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
 }
 
 .days__item:last-child {
@@ -23,17 +24,17 @@
   font-size: 2rem;
 }
 
-.days__img {
-  width: 80px;
-  height: 80px;
-}
-
 .days__max {
   font-size: 2rem;
 }
 
 .days__min {
   font-size: 1.5rem;
+}
+
+.days__img {
+  width: 80px;
+  height: 80px;
 }
 
 .days__rain {
@@ -45,11 +46,6 @@
     font-size: 1rem;
   }
 
-  .days__img {
-    width: 40px;
-    height: 40px;
-  }
-
   .days__max {
     font-size: 1rem;
   }
@@ -58,7 +54,12 @@
     font-size: 0.8rem;
   }
 
+  .days__img {
+    width: 40px;
+    height: 40px;
+  }
+
   .days__rain {
-    font-size: 0.6rem;
+    font-size: 0.8rem;
   }
 }

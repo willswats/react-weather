@@ -9,6 +9,7 @@
   align-items: center;
   flex-grow: 1;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 0.5rem;
 }
 
 .hours__item:last-child {
@@ -23,13 +24,13 @@
   font-size: 2rem;
 }
 
-.hours__rain {
-  font-size: 1rem;
-}
-
 .hours__img {
   width: 80px;
   height: 80px;
+}
+
+.hours__rain {
+  font-size: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -41,12 +42,12 @@
     font-size: 1rem;
   }
 
-  .hours__rain {
-    font-size: 0.6rem;
-  }
-
   .hours__img {
     width: 40px;
     height: 40px;
+  }
+
+  .hours__rain {
+    font-size: 0.8rem;
   }
 }
