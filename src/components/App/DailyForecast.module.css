@@ -1,6 +1,7 @@
 .days {
   display: flex;
   flex-grow: 1;
+  overflow: scroll;
 }
 
 .day:last-child {

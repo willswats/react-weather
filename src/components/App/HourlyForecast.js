@@ -19,7 +19,7 @@ const HourlyForecast = ({ weather }) => {
         title={`Hourly Forecast`}
         body={
           <div className={classes['hours']}>
-            {hourly.slice(0, 5).map((hour, index) => {
+            {hourly.slice(0, 24).map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
                 title = `${getTime(hour.dt, weather.timezone, 2)}:00`;

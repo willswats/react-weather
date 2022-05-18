@@ -15,7 +15,7 @@ const DailyForecast = ({ weather }) => {
         title={`Daily Forecast`}
         body={
           <div className={classes['days']}>
-            {daily.slice(0, 5).map((day, index) => {
+            {daily.slice(0, 8).map((day, index) => {
               let title = 'Today';
               if (index > 0) {
                 title = getDay(index);
