@@ -26,6 +26,9 @@ const CurrentWeather = ({ weather, measurement }) => {
   ) {
     const { current } = weather;
 
+    console.log(weather);
+    console.log(weather.daily[0].temp);
+
     const sunrise = getTime(current.sunrise, weather.timeZone, 4);
     const sunset = getTime(current.sunset, weather.timeZone, 4);
     const uvi = Math.round(current.uvi);
@@ -34,7 +37,7 @@ const CurrentWeather = ({ weather, measurement }) => {
     const feelsLike = Math.round(current.feels_like);
     const humidity = current.humidity;
     const dewPoint = Math.round(current.dew_point);
-    const visibility = current.visibility;
+    const visibility = current.visibility / 1000;
     const pressure = current.pressure;
 
     return (
@@ -114,7 +117,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <IconEye className={classes['extra__svg']} />
                 Visibility
               </p>
-              <p className={classes['extra__info']}>{visibility}m</p>
+              <p className={classes['extra__info']}>{visibility}km</p>
             </div>
 
             <div className={classes['extra__item']}>

@@ -24,22 +24,23 @@ const HourlyForecast = ({ weather }) => {
               if (index > 0) {
                 title = `${getTime(hour.dt, weather.timezone, 2)}:00`;
               }
-
               const icon = hour.weather[0].icon;
               const description = capitaliseFirstLetters(
                 hour.weather[0].description
               );
               const temp = Math.round(hour.temp);
+              const rain = hour.rain ? hour.rain['1h'] : '0';
 
               return (
                 <div className={classes['hours__item']} key={index}>
                   <h2 className={classes['hours__title']}>{title}</h2>
+                  <p className={classes['hours__temp']}>{temp}&#176;</p>
                   <img
                     className={classes['hours__img']}
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['hours__temp']}>{temp}&#176;</p>
+                  <p className={classes['hours__rain']}>{rain}mm</p>
                 </div>
               );
             })}

@@ -24,8 +24,8 @@
 }
 
 .days__img {
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
 }
 
 .days__max {
@@ -36,14 +36,18 @@
   font-size: 1.5rem;
 }
 
+.days__rain {
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 768px) {
   .days__title {
     font-size: 1rem;
   }
 
   .days__img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
   }
 
   .days__max {
@@ -51,6 +55,10 @@
   }
 
   .days__min {
+    font-size: 0.8rem;
+  }
+
+  .days__rain {
     font-size: 0.8rem;
   }
 }

@@ -25,17 +25,19 @@ const DailyForecast = ({ weather }) => {
               const description = capitaliseFirstLetters(day.weather[0].icon);
               const maxTemp = Math.round(day.temp.max);
               const minTemp = Math.round(day.temp.min);
+              const rain = day.rain ? day.rain : '0';
 
               return (
                 <div className={`${classes['days__item']}`} key={index}>
                   <h2 className={classes['days__title']}>{title}</h2>
+                  <p className={classes['days__max']}>{maxTemp}&#176;</p>
+                  <p className={classes['days__min']}>{minTemp}&#176;</p>
                   <img
                     className={classes['days__img']}
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['days__max']}>{maxTemp}&#176;</p>
-                  <p className={classes['days__min']}>{minTemp}&#176;</p>
+                  <p className={classes['days__rain']}>{rain}mm</p>
                 </div>
               );
             })}
