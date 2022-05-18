@@ -28,14 +28,20 @@ const CurrentWeather = ({ weather, measurement }) => {
 
     const sunrise = getTime(current.sunrise, weather.timeZone, 4);
     const sunset = getTime(current.sunset, weather.timeZone, 4);
-    const uvi = Math.round(current.uvi);
-    const windSpeed = Math.round(current.wind_speed);
-    const rain = current.rain ? current.rain['1h'] : '0';
+    const uvi = `${Math.round(current.uvi)}/10`;
+    const windSpeed =
+      measurement === MEASUREMENTS.METRIC
+        ? `${Math.round(current.wind_speed)}m/s`
+        : `${Math.round(current.wind_speed)}mph`;
+    const rain = current.rain ? `${current.rain['1h']}mm` : '0mm';
     const feelsLike = Math.round(current.feels_like);
-    const humidity = current.humidity;
-    const dewPoint = Math.round(current.dew_point);
-    const visibility = current.visibility / 1000;
-    const pressure = current.pressure;
+    const humidity = `${current.humidity}%`;
+    const dewPoint = `${Math.round(current.dew_point)}`;
+    const visibility =
+      measurement === MEASUREMENTS.METRIC
+        ? `${Math.round(current.visibility / 1000)}km`
+        : `${Math.round((current.visibility / 1000) * 0.6213712)}mi`;
+    const pressure = `${current.pressure}hPa`;
 
     return (
       <Card
@@ -68,7 +74,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>UV Index</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>{uvi}/10</p>
+                <p className={classes['item__text']}>{uvi}</p>
               </div>
             </div>
 
@@ -78,10 +84,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>Wind Speed</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>
-                  {windSpeed}
-                  {measurement === MEASUREMENTS.METRIC ? 'm/s' : 'mph'}
-                </p>
+                <p className={classes['item__text']}>{windSpeed}</p>
               </div>
             </div>
 
@@ -91,7 +94,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>Rain</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>{rain}mm</p>
+                <p className={classes['item__text']}>{rain}</p>
               </div>
             </div>
 
@@ -111,7 +114,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>Humidity</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>{humidity}%</p>
+                <p className={classes['item__text']}>{humidity}</p>
               </div>
             </div>
 
@@ -131,7 +134,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>Visibility</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>{visibility}km</p>
+                <p className={classes['item__text']}>{visibility}</p>
               </div>
             </div>
 
@@ -141,7 +144,7 @@ const CurrentWeather = ({ weather, measurement }) => {
                 <p className={classes['item__text']}>Pressure</p>
               </div>
               <div className={classes['item__end']}>
-                <p className={classes['item__text']}>{pressure}hPa</p>
+                <p className={classes['item__text']}>{pressure}</p>
               </div>
             </div>
           </>

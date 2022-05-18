@@ -4,9 +4,9 @@ import { MEASUREMENTS } from '../../App';
 import Nav from '../UI/Nav';
 import MeasurementButton from '../UI/Buttons/MeasurementButton';
 import ReloadButton from '../UI/Buttons/ReloadButton';
-import WeatherSearch from './AppNavSearch';
+import WeatherSearch from './NavigationSearch';
 
-const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
+const Navigation = ({ location, measurement, dispatch, setWeatherData }) => {
   if (
     location !== undefined &&
     location.lat !== undefined &&
@@ -15,9 +15,11 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
     const { lat, lon } = location;
 
     const reloadHandler = async () => {
-      measurement === MEASUREMENTS.METRIC
-        ? setWeatherData(lat, lon, 'metric')
-        : setWeatherData(lat, lon, 'imperial');
+      if (measurement === MEASUREMENTS.METRIC) {
+        setWeatherData(lat, lon, 'metric');
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+        setWeatherData(lat, lon, 'imperial');
+      }
     };
 
     const measurementClickHandler = async () => {
@@ -27,7 +29,7 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
           payload: { measurement: MEASUREMENTS.IMPERIAL },
         });
         setWeatherData(lat, lon, 'imperial');
-      } else {
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
         dispatch({
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.METRIC },
@@ -69,7 +71,7 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.IMPERIAL },
         });
-      } else {
+      } else if (measurement === MEASUREMENTS.IMPERIAL) {
         dispatch({
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.METRIC },
@@ -105,4 +107,4 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
   }
 };
 
-export default AppNav;
+export default Navigation;

@@ -3,10 +3,10 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
-import classes from './CurrentForecast.module.css';
+import classes from './CurrentSummary.module.css';
 import getTime from '../../helpers/getTime';
 
-const CurrentForecast = ({ weather, location }) => {
+const CurrentSummary = ({ weather, location }) => {
   if (
     weather !== undefined &&
     weather.current !== undefined &&
@@ -34,6 +34,13 @@ const CurrentForecast = ({ weather, location }) => {
                 {temperature}&#176;
               </p>
               <p className={classes['start__description']}>{description}</p>
+              {weather.alerts !== undefined ? (
+                <button className={classes['start__alert-btn']}>
+                  {weather.alerts[0].event}!
+                </button>
+              ) : (
+                <></>
+              )}
             </div>
             <div className={classes['end']}>
               <img
@@ -49,4 +56,4 @@ const CurrentForecast = ({ weather, location }) => {
   } else return <Card title={<LoadingSpinner />} body={<LoadingSpinner />} />;
 };
 
-export default CurrentForecast;
+export default CurrentSummary;

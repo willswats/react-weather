@@ -12,6 +12,17 @@
   font-size: 2rem;
 }
 
+.start__alert-btn {
+  background-color: #212b3b;
+  font-size: 2rem;
+  border-radius: 25px;
+  transition: background-color 0.1s;
+}
+
+.start__alert-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .end {
   display: flex;
   justify-content: flex-end;
@@ -35,5 +46,9 @@
   .end__img {
     width: 76px;
     height: 76px;
+  }
+
+  .start__alert-btn {
+    font-size: 1rem;
   }
 }

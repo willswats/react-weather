@@ -2,8 +2,8 @@ import { useEffect, useReducer } from 'react';
 
 import Card from './components/UI/Card';
 
-import AppNav from './components/App/AppNav';
-import CurrentForecast from './components/App/CurrentForecast';
+import Navigation from './components/App/Navigation';
+import CurrentSummary from './components/App/CurrentSummary';
 import HourlyForecast from './components/App/HourlyForecast';
 import DailyForecast from './components/App/DailyForecast';
 import CurrentWeather from './components/App/CurrentWeather';
@@ -31,15 +31,6 @@ const initialState = {
   measurement: MEASUREMENTS.METRIC,
   error: null,
 };
-
-// const test = async () => {
-//   const test = await fetch(
-//     `https://tile.openweathermap.org/map/clouds_new/6/13/24.png?appid=${process.env.REACT_APP_WEATHER_API_KEY}`
-//   );
-//   // const test2 = await test.json();
-//   console.log(test);
-// };
-// test();
 
 const reducer = (state, { type, payload }) => {
   switch (type) {
@@ -137,14 +128,14 @@ const App = () => {
 
   return (
     <div className="app">
-      <AppNav
+      <Navigation
         location={location}
         measurement={measurement}
         dispatch={dispatch}
         setWeatherData={setWeatherData}
       />
       {error && <Card title={<>Something went wrong!</>} error={error} />}
-      {!error && <CurrentForecast weather={weather} location={location} />}
+      {!error && <CurrentSummary weather={weather} location={location} />}
       {!error && <HourlyForecast weather={weather} />}
       {!error && <DailyForecast weather={weather} />}
       {!error && <CurrentWeather weather={weather} measurement={measurement} />}
