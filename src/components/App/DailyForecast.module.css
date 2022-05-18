@@ -1,66 +1,60 @@
-.days {
+.daily {
   display: flex;
   flex-grow: 1;
-  overflow: scroll;
 }
 
-.day:last-child {
-  border-bottom: 0;
-}
-
-.days__item {
+.daily__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 0.5rem;
 }
 
-.days__item:last-child {
+.daily__item:last-child {
   border-right: none;
 }
 
-.days__title {
+.daily__title {
   font-size: 2rem;
 }
 
-.days__max {
+.daily__max {
   font-size: 2rem;
 }
 
-.days__min {
+.daily__min {
   font-size: 1.5rem;
 }
 
-.days__img {
+.daily__img {
   width: 80px;
   height: 80px;
 }
 
-.days__rain {
+.daily__rain {
   font-size: 1rem;
 }
 
 @media screen and (max-width: 768px) {
-  .days__title {
+  .daily__title {
     font-size: 1rem;
   }
 
-  .days__max {
+  .daily__max {
     font-size: 1rem;
   }
 
-  .days__min {
+  .daily__min {
     font-size: 0.8rem;
   }
 
-  .days__img {
+  .daily__img {
     width: 40px;
     height: 40px;
   }
 
-  .days__rain {
-    font-size: 0.8rem;
+  .daily__rain {
+    font-size: 0.6rem;
   }
 }

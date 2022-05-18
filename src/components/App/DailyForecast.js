@@ -6,7 +6,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './DailyForecast.module.css';
 
-const DailyForecast = ({ weather }) => {
+const Dailydaily = ({ weather }) => {
   if (weather !== undefined && weather.daily !== undefined) {
     const { daily } = weather;
 
@@ -14,8 +14,8 @@ const DailyForecast = ({ weather }) => {
       <Card
         title={`Daily Forecast`}
         body={
-          <div className={classes['days']}>
-            {daily.slice(0, 8).map((day, index) => {
+          <div className={classes['daily']}>
+            {daily.slice(0, 5).map((day, index) => {
               let title = 'Today';
               if (index > 0) {
                 title = getDay(index);
@@ -28,16 +28,16 @@ const DailyForecast = ({ weather }) => {
               const rain = day.rain ? day.rain : '0';
 
               return (
-                <div className={`${classes['days__item']}`} key={index}>
-                  <h2 className={classes['days__title']}>{title}</h2>
-                  <p className={classes['days__max']}>{maxTemp}&#176;</p>
-                  <p className={classes['days__min']}>{minTemp}&#176;</p>
+                <div className={`${classes['daily__item']}`} key={index}>
+                  <h2 className={classes['daily__title']}>{title}</h2>
+                  <p className={classes['daily__max']}>{maxTemp}&#176;</p>
+                  <p className={classes['daily__min']}>{minTemp}&#176;</p>
                   <img
-                    className={classes['days__img']}
+                    className={classes['daily__img']}
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['days__rain']}>{rain}mm</p>
+                  <p className={classes['daily__rain']}>{rain}mm</p>
                 </div>
               );
             })}
@@ -50,4 +50,4 @@ const DailyForecast = ({ weather }) => {
   }
 };
 
-export default DailyForecast;
+export default Dailydaily;

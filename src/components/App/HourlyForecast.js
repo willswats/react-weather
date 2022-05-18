@@ -6,7 +6,7 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './HourlyForecast.module.css';
 
-const HourlyForecast = ({ weather }) => {
+const Hourlyhourly = ({ weather }) => {
   if (
     weather !== undefined &&
     weather.hourly !== undefined &&
@@ -18,8 +18,8 @@ const HourlyForecast = ({ weather }) => {
       <Card
         title={`Hourly Forecast`}
         body={
-          <div className={classes['hours']}>
-            {hourly.slice(0, 24).map((hour, index) => {
+          <div className={classes['hourly']}>
+            {hourly.slice(0, 5).map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
                 title = `${getTime(hour.dt, weather.timezone, 2)}:00`;
@@ -32,15 +32,15 @@ const HourlyForecast = ({ weather }) => {
               const rain = hour.rain ? hour.rain['1h'] : '0';
 
               return (
-                <div className={classes['hours__item']} key={index}>
-                  <h2 className={classes['hours__title']}>{title}</h2>
-                  <p className={classes['hours__temp']}>{temp}&#176;</p>
+                <div className={classes['hourly__item']} key={index}>
+                  <h2 className={classes['hourly__title']}>{title}</h2>
+                  <p className={classes['hourly__temp']}>{temp}&#176;</p>
                   <img
-                    className={classes['hours__img']}
+                    className={classes['hourly__img']}
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['hours__rain']}>{rain}mm</p>
+                  <p className={classes['hourly__rain']}>{rain}mm</p>
                 </div>
               );
             })}
@@ -53,4 +53,4 @@ const HourlyForecast = ({ weather }) => {
   }
 };
 
-export default HourlyForecast;
+export default Hourlyhourly;

@@ -1,54 +1,52 @@
-.hours {
+.hourly {
   display: flex;
   flex-grow: 1;
-  overflow: scroll;
 }
 
-.hours__item {
+.hourly__item {
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-grow: 1;
   border-right: 1px solid rgba(255, 255, 255, 0.5);
-  padding: 0.5rem;
 }
 
-.hours__item:last-child {
+.hourly__item:last-child {
   border-right: none;
 }
 
-.hours__title {
+.hourly__title {
   font-size: 2rem;
 }
 
-.hours__temp {
+.hourly__temp {
   font-size: 2rem;
 }
 
-.hours__img {
+.hourly__img {
   width: 80px;
   height: 80px;
 }
 
-.hours__rain {
+.hourly__rain {
   font-size: 1rem;
 }
 
 @media screen and (max-width: 768px) {
-  .hours__title {
+  .hourly__title {
     font-size: 1rem;
   }
 
-  .hours__temp {
+  .hourly__temp {
     font-size: 1rem;
   }
 
-  .hours__img {
+  .hourly__img {
     width: 40px;
     height: 40px;
   }
 
-  .hours__rain {
-    font-size: 0.8rem;
+  .hourly__rain {
+    font-size: 0.6rem;
   }
 }
