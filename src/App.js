@@ -138,7 +138,7 @@ const App = () => {
       {!error && <CurrentForecast weather={weather} location={location} />}
       {!error && <HourlyForecast weather={weather} />}
       {!error && <DailyForecast weather={weather} />}
-      {!error && <CurrentWeather weather={weather} />}
+      {!error && <CurrentWeather weather={weather} measurement={measurement} />}
     </div>
   );
 };

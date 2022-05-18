@@ -9,6 +9,8 @@ import { ReactComponent as IconDropHalf } from '../../svgs/contrast-drop-2-line.
 import { ReactComponent as IconEye } from '../../svgs/eye-line.svg';
 import { ReactComponent as IconArrowUpDown } from '../../svgs/arrow-up-down-line.svg';
 
+import { MEASUREMENTS } from '../../App';
+
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
@@ -16,7 +18,7 @@ import getTime from '../../helpers/getTime';
 
 import classes from './CurrentWeather.module.css';
 
-const CurrentWeather = ({ weather }) => {
+const CurrentWeather = ({ weather, measurement }) => {
   if (
     weather !== undefined &&
     weather.current !== undefined &&
@@ -69,7 +71,10 @@ const CurrentWeather = ({ weather }) => {
                 <IconWind className={classes['extra__svg']} />
                 Wind Speed
               </p>
-              <p className={classes['extra__info']}>{windSpeed}</p>
+              <p className={classes['extra__info']}>
+                {windSpeed}
+                {measurement === MEASUREMENTS.METRIC ? 'm/s' : 'mph'}
+              </p>
             </div>
 
             <div className={classes['extra__item']}>

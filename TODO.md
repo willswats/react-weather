@@ -6,7 +6,8 @@
 
 ## Features
 
-- [ ] Add to rain data to hourly and daily forecasts
+- [ ] Convert visibility, pressure and rain dependent upon measurement
+- [ ] Add rain data to hourly and daily forecasts
 - [ ] Add map with data from Weather Map 1.0 (openweathermap.org)
 
 ## Other
