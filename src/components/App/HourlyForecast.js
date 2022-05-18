@@ -1,7 +1,7 @@
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import convertUnixTime from '../../helpers/convertUnixTime';
+import getTime from '../../helpers/getTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './HourlyForecast.module.css';
@@ -22,7 +22,7 @@ const HourlyForecast = ({ weather }) => {
             {hourly.slice(0, 5).map((hour, index) => {
               let title = 'Now';
               if (index > 0) {
-                title = `${convertUnixTime(hour.dt, 2)}:00`;
+                title = `${getTime(hour.dt, weather.timezone, 2)}:00`;
               }
 
               const icon = hour.weather[0].icon;

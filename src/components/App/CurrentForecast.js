@@ -4,12 +4,13 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './CurrentForecast.module.css';
-import convertUnixTime from '../../helpers/convertUnixTime';
+import getTime from '../../helpers/getTime';
 
 const CurrentForecast = ({ weather, location }) => {
   if (
     weather !== undefined &&
     weather.current !== undefined &&
+    weather.timezone !== undefined &&
     location !== undefined &&
     location.name !== undefined &&
     location.country !== undefined
@@ -21,7 +22,7 @@ const CurrentForecast = ({ weather, location }) => {
     const description = capitaliseFirstLetters(current.weather[0].description);
     const icon = current.weather[0].icon;
 
-    const time = convertUnixTime(current.dt, 4);
+    const time = getTime(current.dt, weather.timezone, 4);
 
     return (
       <Card

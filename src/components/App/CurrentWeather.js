@@ -12,16 +12,20 @@ import { ReactComponent as IconArrowUpDown } from '../../svgs/arrow-up-down-line
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
-import convertUnixTime from '../../helpers/convertUnixTime';
+import getTime from '../../helpers/getTime';
 
 import classes from './CurrentWeather.module.css';
 
 const CurrentWeather = ({ weather }) => {
-  if (weather !== undefined && weather.current !== undefined) {
+  if (
+    weather !== undefined &&
+    weather.current !== undefined &&
+    weather.timeZone !== undefined
+  ) {
     const { current } = weather;
 
-    const sunrise = convertUnixTime(current.sunrise, 4);
-    const sunset = convertUnixTime(current.sunset, 4);
+    const sunrise = getTime(current.sunrise, weather.timeZone, 4);
+    const sunset = getTime(current.sunset, weather.timeZone, 4);
     const uvi = Math.round(current.uvi);
     const windSpeed = Math.round(current.wind_speed);
     const rain = current.rain ? current.rain['1h'] : '0';
