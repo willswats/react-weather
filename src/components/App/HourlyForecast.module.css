@@ -24,12 +24,12 @@
 }
 
 .hours__rain {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .hours__img {
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
 }
 
 @media screen and (max-width: 768px) {
@@ -42,11 +42,11 @@
   }
 
   .hours__rain {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
 
   .hours__img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 }

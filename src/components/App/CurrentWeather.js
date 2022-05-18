@@ -26,9 +26,6 @@ const CurrentWeather = ({ weather, measurement }) => {
   ) {
     const { current } = weather;
 
-    console.log(weather);
-    console.log(weather.daily[0].temp);
-
     const sunrise = getTime(current.sunrise, weather.timeZone, 4);
     const sunset = getTime(current.sunset, weather.timeZone, 4);
     const uvi = Math.round(current.uvi);

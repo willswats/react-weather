@@ -15,11 +15,9 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
     const { lat, lon } = location;
 
     const reloadHandler = async () => {
-      if (measurement === MEASUREMENTS.METRIC) {
-        setWeatherData(lat, lon, 'metric');
-      } else if (measurement === MEASUREMENTS.IMPERIAL) {
-        setWeatherData(lat, lon, 'imperial');
-      }
+      measurement === MEASUREMENTS.METRIC
+        ? setWeatherData(lat, lon, 'metric')
+        : setWeatherData(lat, lon, 'imperial');
     };
 
     const measurementClickHandler = async () => {
@@ -29,7 +27,7 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
           payload: { measurement: MEASUREMENTS.IMPERIAL },
         });
         setWeatherData(lat, lon, 'imperial');
-      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+      } else {
         dispatch({
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.METRIC },
@@ -37,6 +35,7 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
         setWeatherData(lat, lon, 'metric');
       }
     };
+
     return (
       <Nav
         left={
@@ -70,7 +69,7 @@ const AppNav = ({ location, measurement, dispatch, setWeatherData }) => {
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.IMPERIAL },
         });
-      } else if (measurement === MEASUREMENTS.IMPERIAL) {
+      } else {
         dispatch({
           type: ACTIONS.SET_MEASUREMENT,
           payload: { measurement: MEASUREMENTS.METRIC },

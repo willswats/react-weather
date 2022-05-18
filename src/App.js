@@ -32,6 +32,15 @@ const initialState = {
   error: null,
 };
 
+// const test = async () => {
+//   const test = await fetch(
+//     `https://tile.openweathermap.org/map/clouds_new/6/13/24.png?appid=${process.env.REACT_APP_WEATHER_API_KEY}`
+//   );
+//   // const test2 = await test.json();
+//   console.log(test);
+// };
+// test();
+
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case ACTIONS.SET_WEATHER:
