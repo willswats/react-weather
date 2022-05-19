@@ -11,14 +11,14 @@ import getTime from '../../helpers/getTime';
 import AlertsModal from './Modals/AlertsModal';
 
 const CurrentSummary = ({ weather, location }) => {
-  const [modal, setModal] = useState(false);
+  const [alertsModal, setAlertsModal] = useState(false);
 
-  const showModalHandler = () => {
-    setModal(true);
+  const showAlertsModal = () => {
+    setAlertsModal(true);
   };
 
-  const hideModalHandler = () => {
-    setModal(false);
+  const hideAlertsModal = () => {
+    setAlertsModal(false);
   };
 
   if (
@@ -44,7 +44,7 @@ const CurrentSummary = ({ weather, location }) => {
         button={
           <ModalButton
             type="warning"
-            clickHandler={showModalHandler}
+            clickHandler={showAlertsModal}
             alerts={weather.alerts}
           />
         }
@@ -55,11 +55,11 @@ const CurrentSummary = ({ weather, location }) => {
                 {temperature}&#176;
               </p>
               <p className={classes['start__description']}>{description}</p>
-              {modal === true && (
+              {alertsModal === true && (
                 <AlertsModal
                   alerts={weather.alerts}
                   timezone={weather.timezone}
-                  hideHandler={hideModalHandler}
+                  hideHandler={hideAlertsModal}
                 />
               )}
             </div>

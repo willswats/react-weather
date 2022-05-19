@@ -11,6 +11,11 @@ const NavigationSearch = ({ measurement, dispatch, setWeatherData }) => {
 
   const submitHandler = async (event) => {
     event.preventDefault();
+
+    if (search.length < 1) {
+      return;
+    }
+
     // Reset state
     dispatch({
       type: ACTIONS.SET_ERROR,
