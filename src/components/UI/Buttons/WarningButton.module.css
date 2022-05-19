@@ -1,0 +1,17 @@
+.warning-btn {
+  background-color: #212b3b;
+  font-size: 2rem;
+  border-radius: 25px;
+  transition: background-color 0.1s;
+  padding: 0.5rem;
+}
+
+.warning-btn:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (max-width: 768px) {
+  .warning-btn {
+    font-size: 1rem;
+  }
+}
