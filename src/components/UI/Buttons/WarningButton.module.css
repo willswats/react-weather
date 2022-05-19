@@ -4,6 +4,7 @@
   border-radius: 25px;
   transition: background-color 0.1s;
   padding: 0.5rem;
+  width: 400px;
 }
 
 .warning-btn:hover {
@@ -13,5 +14,6 @@
 @media screen and (max-width: 768px) {
   .warning-btn {
     font-size: 1rem;
+    width: 200px;
   }
 }
