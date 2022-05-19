@@ -18,11 +18,12 @@ const AlertsModal = ({ alerts, timezone, hideHandler }) => {
           const description = alert.description;
 
           return (
-            <Card
-              key={index}
-              title={`${eventName} at ${start} - ${end}`}
-              body={<p className={classes['item']}>{description}</p>}
-            />
+            <div key={index}>
+              <Card
+                title={`${eventName} at ${start} - ${end}`}
+                body={<p className={classes['item']}>{description}</p>}
+              />
+            </div>
           );
         })}
       />
