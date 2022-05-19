@@ -2,22 +2,22 @@ import { useState } from 'react';
 
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import WarningButton from '../UI/Buttons/WarningButton';
+import ModalButton from '../UI/Buttons/ModalButton';
 
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './CurrentSummary.module.css';
 import getTime from '../../helpers/getTime';
-import AlertsModal from './AlertsModal';
+import AlertsModal from './Modals/AlertsModal';
 
 const CurrentSummary = ({ weather, location }) => {
   const [modal, setModal] = useState(false);
 
-  const showModal = () => {
+  const showModalHandler = () => {
     setModal(true);
   };
 
-  const hideModal = () => {
+  const hideModalHandler = () => {
     setModal(false);
   };
 
@@ -41,6 +41,13 @@ const CurrentSummary = ({ weather, location }) => {
     return (
       <Card
         title={`${name}, ${country} at ${time}`}
+        button={
+          <ModalButton
+            type="warning"
+            clickHandler={showModalHandler}
+            alerts={weather.alerts}
+          />
+        }
         body={
           <div className="horizontal">
             <div className={classes['start']}>
@@ -48,12 +55,11 @@ const CurrentSummary = ({ weather, location }) => {
                 {temperature}&#176;
               </p>
               <p className={classes['start__description']}>{description}</p>
-              <WarningButton alerts={weather.alerts} clickHandler={showModal} />
               {modal === true && (
                 <AlertsModal
                   alerts={weather.alerts}
                   timezone={weather.timezone}
-                  overlayClickHandler={hideModal}
+                  hideHandler={hideModalHandler}
                 />
               )}
             </div>

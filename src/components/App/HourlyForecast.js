@@ -30,7 +30,6 @@ const Hourlyhourly = ({ weather }) => {
               );
               const temp = Math.round(hour.temp);
               const rain = hour.rain ? hour.rain['1h'] : '0';
-
               return (
                 <div className={classes['hourly__item']} key={index}>
                   <h2 className={classes['hourly__title']}>{title}</h2>
