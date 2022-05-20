@@ -10,7 +10,6 @@
 
 ## Features
 
-- [ ] Add buttons and modals for the next 48 hours and next 8 days
 - [ ] Change rain and pressure measurement when the measurement changes
 - [ ] Add map with data from Weather Map 1.0 (openweathermap.org)
 

@@ -1,26 +1,13 @@
-import { useState } from 'react';
-
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import ModalButton from '../UI/Buttons/ModalButton';
+import AlertsButton from '../UI/Buttons/AlertsButton';
 
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
 import classes from './CurrentSummary.module.css';
 import getTime from '../../helpers/getTime';
-import AlertsModal from './Modals/AlertsModal';
 
 const CurrentSummary = ({ weather, location }) => {
-  const [alertsModal, setAlertsModal] = useState(false);
-
-  const showAlertsModal = () => {
-    setAlertsModal(true);
-  };
-
-  const hideAlertsModal = () => {
-    setAlertsModal(false);
-  };
-
   if (
     weather !== undefined &&
     weather.current !== undefined &&
@@ -41,36 +28,25 @@ const CurrentSummary = ({ weather, location }) => {
     return (
       <Card
         title={`${name}, ${country} at ${time}`}
-        button={
-          <ModalButton
-            type="warning"
-            clickHandler={showAlertsModal}
-            alerts={weather.alerts}
-          />
-        }
+        button={<AlertsButton weather={weather} />}
         body={
-          <div className="horizontal">
-            <div className={classes['start']}>
-              <p className={classes['start__temperature']}>
-                {temperature}&#176;
-              </p>
-              <p className={classes['start__description']}>{description}</p>
-              {alertsModal === true && (
-                <AlertsModal
-                  alerts={weather.alerts}
-                  timezone={weather.timezone}
-                  hideHandler={hideAlertsModal}
-                />
-              )}
+          <>
+            <div className="horizontal">
+              <div className={classes['start']}>
+                <p className={classes['start__temperature']}>
+                  {temperature}&#176;
+                </p>
+                <p className={classes['start__description']}>{description}</p>
+              </div>
+              <div className={classes['end']}>
+                <img
+                  className={classes['end__img']}
+                  src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
+                  alt={`${description}`}
+                ></img>
+              </div>
             </div>
-            <div className={classes['end']}>
-              <img
-                className={classes['end__img']}
-                src={`https://openweathermap.org/img/wn/${icon}@4x.png`}
-                alt={`${description}`}
-              ></img>
-            </div>
-          </div>
+          </>
         }
       />
     );

@@ -18,7 +18,7 @@ const Dailydaily = ({ weather }) => {
             {daily.slice(0, 5).map((day, index) => {
               let title = 'Today';
               if (index > 0) {
-                title = getDay(index);
+                title = getDay(weather.timezone, index);
               }
 
               const icon = day.weather[0].icon;

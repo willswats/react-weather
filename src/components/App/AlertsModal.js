@@ -1,8 +1,8 @@
-import getTime from '../../../helpers/getTime';
-import capitaliseFirstLetters from '../../../helpers/capitaliseFirstLetters';
+import getTime from '../../helpers/getTime';
+import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
-import Card from '../../UI/Card';
-import Modal from '../../UI/Modal';
+import Card from '../UI/Card';
+import Modal from '../UI/Modal';
 
 import classes from './AlertsModal.module.css';
 
