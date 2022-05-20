@@ -7,7 +7,6 @@
 ## Refactor
 
 - [ ] Reduce the amount of fetch requests
-- [ ] Use react portals to move the modal/s to a higher level
 
 ## Features
 

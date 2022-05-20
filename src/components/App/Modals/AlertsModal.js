@@ -13,6 +13,7 @@ const AlertsModal = ({ alerts, timezone, hideHandler }) => {
         hideHandler={hideHandler}
         body={alerts.map((alert, index) => {
           const eventName = capitaliseFirstLetters(alert.event);
+          const senderName = alert.sender_name;
           const start = getTime(alert.start, timezone, 4);
           const end = getTime(alert.end, timezone, 4);
           const description = alert.description;
@@ -20,8 +21,14 @@ const AlertsModal = ({ alerts, timezone, hideHandler }) => {
           return (
             <div key={index}>
               <Card
-                title={`${eventName} at ${start} - ${end}`}
-                body={<p className={classes['item']}>{description}</p>}
+                title={`${eventName} (${start} - ${end})`}
+                body={
+                  <>
+                    <p className={classes['item']}>
+                      "{description}" - {senderName}
+                    </p>
+                  </>
+                }
               />
             </div>
           );
