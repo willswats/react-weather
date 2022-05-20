@@ -6,8 +6,16 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
+}
+
+.cross {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  transform: scale(2);
 }
 
 .body {
@@ -22,6 +30,12 @@
 }
 
 @media screen and (max-width: 768px) {
+  .cross {
+    top: 10px;
+    right: 10px;
+    transform: scale(1);
+  }
+
   .body {
     top: 50px;
     width: 95%;

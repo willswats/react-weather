@@ -28,7 +28,7 @@ const CurrentSummary = ({ weather, location }) => {
     return (
       <Card
         title={`${name}, ${country} at ${time}`}
-        button={<CurrentAlerts weather={weather} />}
+        end={<CurrentAlerts weather={weather} />}
         body={
           <>
             <div className="horizontal">

@@ -6,6 +6,8 @@ import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 import Modal from '../UI/Modal';
 import Card from '../UI/Card';
 
+import WarningButton from '../UI/Buttons/WarningButton';
+
 import classes from './CurrentAlerts.module.css';
 
 const AlertsButton = ({ weather }) => {
@@ -24,9 +26,7 @@ const AlertsButton = ({ weather }) => {
 
     return (
       <>
-        <button onClick={showModal} className={classes['alerts-btn']}>
-          {alerts.length < 2 ? 'Warning!' : 'Warnings!'}
-        </button>
+        <WarningButton clickHandler={showModal} alerts={weather.alerts} />
         {modalVisible === true && (
           <Modal
             hideHandler={hideModal}
