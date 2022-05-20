@@ -10,9 +10,17 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
+.item {
+  font-size: 2rem;
+}
+
 @media screen and (max-width: 768px) {
   .alerts-btn {
     width: 100px;
+    font-size: 1rem;
+  }
+
+  .item {
     font-size: 1rem;
   }
 }

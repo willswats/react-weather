@@ -1,9 +1,0 @@
-.item {
-  font-size: 2rem;
-}
-
-@media screen and (max-width: 768px) {
-  .item {
-    font-size: 1rem;
-  }
-}

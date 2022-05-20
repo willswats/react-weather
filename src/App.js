@@ -127,19 +127,24 @@ const App = () => {
   }, []);
 
   return (
-    <div className="app">
-      <Navigation
-        location={location}
-        measurement={measurement}
-        dispatch={dispatch}
-        setWeatherData={setWeatherData}
-      />
-      {error && <Card title={<>Something went wrong!</>} error={error} />}
-      {!error && <CurrentSummary weather={weather} location={location} />}
-      {!error && <HourlyForecast weather={weather} />}
-      {!error && <DailyForecast weather={weather} />}
-      {!error && <CurrentWeather weather={weather} measurement={measurement} />}
-    </div>
+    <>
+      <div id="modal"></div>
+      <div className="app">
+        <Navigation
+          location={location}
+          measurement={measurement}
+          dispatch={dispatch}
+          setWeatherData={setWeatherData}
+        />
+        {error && <Card title={<>Something went wrong!</>} error={error} />}
+        {!error && <CurrentSummary weather={weather} location={location} />}
+        {!error && <HourlyForecast weather={weather} />}
+        {!error && <DailyForecast weather={weather} />}
+        {!error && (
+          <CurrentWeather weather={weather} measurement={measurement} />
+        )}
+      </div>
+    </>
   );
 };
 

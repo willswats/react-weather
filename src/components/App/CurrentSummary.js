@@ -1,6 +1,6 @@
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
-import AlertsButton from '../UI/Buttons/AlertsButton';
+import CurrentAlerts from './CurrentAlerts';
 
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
 
@@ -28,7 +28,7 @@ const CurrentSummary = ({ weather, location }) => {
     return (
       <Card
         title={`${name}, ${country} at ${time}`}
-        button={<AlertsButton weather={weather} />}
+        button={<CurrentAlerts weather={weather} />}
         body={
           <>
             <div className="horizontal">
