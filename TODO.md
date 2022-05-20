@@ -10,6 +10,7 @@
 
 ## Features
 
+- [ ] Add modals for hourly and daily data.
 - [ ] Change rain and pressure measurement when the measurement changes
 - [ ] Add map with data from Weather Map 1.0 (openweathermap.org)
 
