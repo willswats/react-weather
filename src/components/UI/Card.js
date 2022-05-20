@@ -5,7 +5,7 @@ const Card = ({ title, end, body, error }) => {
     <div className={classes['card']}>
       <div className={classes['card__top']}>
         <h1 className={classes['card__title']}>{title}</h1>
-        {end && <div>{end}</div>}
+        {end}
       </div>
       <div className={classes['card__body']}>
         {body}

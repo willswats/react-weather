@@ -10,16 +10,8 @@
   z-index: 1;
 }
 
-.cross {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 2;
-  transform: scale(2);
-}
-
 .body {
-  position: absolute;
+  position: fixed;
   z-index: 2;
   top: 100px;
   left: 0;
@@ -30,12 +22,6 @@
 }
 
 @media screen and (max-width: 768px) {
-  .cross {
-    top: 10px;
-    right: 10px;
-    transform: scale(1);
-  }
-
   .body {
     top: 50px;
     width: 95%;
