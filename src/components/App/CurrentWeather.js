@@ -13,9 +13,10 @@ import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getTime from '../../helpers/getTime';
-import convertWeather from '../../helpers/convertWeather';
 
 import classes from './CurrentWeather.module.css';
+
+import { MEASUREMENTS } from '../../App';
 
 const CurrentWeather = ({ weather, measurement }) => {
   if (
@@ -28,21 +29,25 @@ const CurrentWeather = ({ weather, measurement }) => {
     const sunrise = getTime(current.sunrise, weather.timeZone, 4);
     const sunset = getTime(current.sunset, weather.timeZone, 4);
     const uvi = `${Math.round(current.uvi)}/10`;
-    const windSpeed = convertWeather('wind', current.wind_speed, measurement);
-    const rain = convertWeather(
-      'rain',
-      current.rain ? current.rain['1h'] : 0,
-      measurement
-    );
+    const windSpeed =
+      measurement === MEASUREMENTS.METRIC
+        ? `${Math.round(current.wind_speed * 3.6)}km/h`
+        : `${Math.round(current.wind_speed)}mph`;
+    const rain =
+      measurement === MEASUREMENTS.METRIC
+        ? `${current.rain ? current.rain['1h'] : 0}mm`
+        : `${current.rain ? current.rain['1h'] / 25.4 : 0}in`;
     const feelsLike = Math.round(current.feels_like);
     const humidity = `${current.humidity}%`;
     const dewPoint = `${Math.round(current.dew_point)}`;
-    const visibility = convertWeather(
-      'visibility',
-      current.visibility,
-      measurement
-    );
-    const pressure = convertWeather('pressure', current.pressure, measurement);
+    const visibility =
+      measurement === MEASUREMENTS.METRIC
+        ? `${Math.round(current.visibility / 1000)}km`
+        : `${Math.round((current.visibility / 1000) * 0.6213712)}mi`;
+    const pressure =
+      measurement === MEASUREMENTS.METRIC
+        ? `${current.pressure}mb`
+        : `${(current.pressure * 0.0295).toFixed(2)}in`;
 
     return (
       <Card

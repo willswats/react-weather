@@ -1,5 +1,6 @@
 .cross {
   transform: scale(2);
+  cursor: pointer;
 }
 
 .alert {

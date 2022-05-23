@@ -28,7 +28,7 @@
   height: 80px;
 }
 
-.hourly__rain {
+.hourly__pop {
   font-size: 1rem;
 }
 
@@ -46,7 +46,7 @@
     height: 40px;
   }
 
-  .hourly__rain {
+  .hourly__pop {
     font-size: 0.6rem;
   }
 }

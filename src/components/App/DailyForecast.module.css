@@ -32,7 +32,7 @@
   height: 80px;
 }
 
-.daily__rain {
+.daily__pop {
   font-size: 1rem;
 }
 
@@ -54,7 +54,7 @@
     height: 40px;
   }
 
-  .daily__rain {
+  .daily__pop {
     font-size: 0.6rem;
   }
 }
