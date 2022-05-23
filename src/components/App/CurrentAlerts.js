@@ -44,7 +44,7 @@ const AlertsButton = ({ weather }) => {
 
                   return (
                     <p key={index} className={classes['alert']}>
-                      {eventName} at {start} - {end}
+                      {eventName} ({start} - {end})
                     </p>
                   );
                 })}

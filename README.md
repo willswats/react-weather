@@ -21,11 +21,12 @@ I built this project to further my understanding of interacting with API's, and 
 - Hourly forecast
 - Daily forecast
 - Current weather
+- Current alerts
 - Choice of metric or imperial
 - Use current location
 - Search for locations
 - Reload data without reloading the page
-- Displays the location's time
+- Time is synced with the location
 - Error handling
 
 ## Setup
