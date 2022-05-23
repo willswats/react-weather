@@ -9,12 +9,11 @@ import { ReactComponent as IconDropHalf } from '../../svgs/contrast-drop-2-line.
 import { ReactComponent as IconEye } from '../../svgs/eye-line.svg';
 import { ReactComponent as IconArrowUpDown } from '../../svgs/arrow-up-down-line.svg';
 
-import { MEASUREMENTS } from '../../App';
-
 import Card from '../UI/Card';
 import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getTime from '../../helpers/getTime';
+import convertWeather from '../../helpers/convertWeather';
 
 import classes from './CurrentWeather.module.css';
 
@@ -29,19 +28,21 @@ const CurrentWeather = ({ weather, measurement }) => {
     const sunrise = getTime(current.sunrise, weather.timeZone, 4);
     const sunset = getTime(current.sunset, weather.timeZone, 4);
     const uvi = `${Math.round(current.uvi)}/10`;
-    const windSpeed =
-      measurement === MEASUREMENTS.METRIC
-        ? `${Math.round(current.wind_speed)}m/s`
-        : `${Math.round(current.wind_speed)}mph`;
-    const rain = current.rain ? `${current.rain['1h']}mm` : '0mm';
+    const windSpeed = convertWeather('wind', current.wind_speed, measurement);
+    const rain = convertWeather(
+      'rain',
+      current.rain ? current.rain['1h'] : 0,
+      measurement
+    );
     const feelsLike = Math.round(current.feels_like);
     const humidity = `${current.humidity}%`;
     const dewPoint = `${Math.round(current.dew_point)}`;
-    const visibility =
-      measurement === MEASUREMENTS.METRIC
-        ? `${Math.round(current.visibility / 1000)}km`
-        : `${Math.round((current.visibility / 1000) * 0.6213712)}mi`;
-    const pressure = `${current.pressure}hPa`;
+    const visibility = convertWeather(
+      'visibility',
+      current.visibility,
+      measurement
+    );
+    const pressure = convertWeather('pressure', current.pressure, measurement);
 
     return (
       <Card

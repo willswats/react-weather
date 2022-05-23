@@ -3,10 +3,11 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getTime from '../../helpers/getTime';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
+import convertWeather from '../../helpers/convertWeather';
 
 import classes from './HourlyForecast.module.css';
 
-const Hourlyhourly = ({ weather }) => {
+const HourlyForecast = ({ weather, measurement }) => {
   if (
     weather !== undefined &&
     weather.hourly !== undefined &&
@@ -29,7 +30,11 @@ const Hourlyhourly = ({ weather }) => {
                 hour.weather[0].description
               );
               const temp = Math.round(hour.temp);
-              const rain = hour.rain ? hour.rain['1h'] : '0';
+              const rain = convertWeather(
+                'rain',
+                hour.rain ? hour.rain['1h'] : '0',
+                measurement
+              );
               return (
                 <div className={classes['hourly__item']} key={index}>
                   <h2 className={classes['hourly__title']}>{title}</h2>
@@ -39,7 +44,7 @@ const Hourlyhourly = ({ weather }) => {
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['hourly__rain']}>{rain}mm</p>
+                  <p className={classes['hourly__rain']}>{rain}</p>
                 </div>
               );
             })}
@@ -52,4 +57,4 @@ const Hourlyhourly = ({ weather }) => {
   }
 };
 
-export default Hourlyhourly;
+export default HourlyForecast;

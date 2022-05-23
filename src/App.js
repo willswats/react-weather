@@ -138,8 +138,12 @@ const App = () => {
         />
         {error && <Card title={<>Something went wrong!</>} error={error} />}
         {!error && <CurrentSummary weather={weather} location={location} />}
-        {!error && <HourlyForecast weather={weather} />}
-        {!error && <DailyForecast weather={weather} />}
+        {!error && (
+          <HourlyForecast weather={weather} measurement={measurement} />
+        )}
+        {!error && (
+          <DailyForecast weather={weather} measurement={measurement} />
+        )}
         {!error && (
           <CurrentWeather weather={weather} measurement={measurement} />
         )}

@@ -3,10 +3,11 @@ import LoadingSpinner from '../UI/LoadingSpinner';
 
 import getDay from '../../helpers/getDay';
 import capitaliseFirstLetters from '../../helpers/capitaliseFirstLetters';
+import convertWeather from '../../helpers/convertWeather';
 
 import classes from './DailyForecast.module.css';
 
-const Dailydaily = ({ weather }) => {
+const DailyForecast = ({ weather, measurement }) => {
   if (weather !== undefined && weather.daily !== undefined) {
     const { daily } = weather;
 
@@ -25,7 +26,11 @@ const Dailydaily = ({ weather }) => {
               const description = capitaliseFirstLetters(day.weather[0].icon);
               const maxTemp = Math.round(day.temp.max);
               const minTemp = Math.round(day.temp.min);
-              const rain = day.rain ? day.rain : '0';
+              const rain = convertWeather(
+                'rain',
+                day.rain ? day.rain : 0,
+                measurement
+              );
 
               return (
                 <div className={`${classes['daily__item']}`} key={index}>
@@ -37,7 +42,7 @@ const Dailydaily = ({ weather }) => {
                     src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
                     alt={`${description}`}
                   ></img>
-                  <p className={classes['daily__rain']}>{rain}mm</p>
+                  <p className={classes['daily__rain']}>{rain}</p>
                 </div>
               );
             })}
@@ -50,4 +55,4 @@ const Dailydaily = ({ weather }) => {
   }
 };
 
-export default Dailydaily;
+export default DailyForecast;
