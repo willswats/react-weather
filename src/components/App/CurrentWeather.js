@@ -36,7 +36,7 @@ const CurrentWeather = ({ weather, measurement }) => {
     const rain =
       measurement === MEASUREMENTS.METRIC
         ? `${current.rain ? current.rain['1h'] : 0}mm`
-        : `${current.rain ? current.rain['1h'] / 25.4 : 0}in`;
+        : `${current.rain ? (current.rain['1h'] / 25.4).toFixed(2) : 0}in`;
     const feelsLike = Math.round(current.feels_like);
     const humidity = `${current.humidity}%`;
     const dewPoint = `${Math.round(current.dew_point)}`;
