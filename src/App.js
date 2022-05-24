@@ -2,11 +2,12 @@ import { useEffect, useReducer } from 'react';
 
 import Card from './components/UI/Card';
 
-import Navigation from './components/App/Navigation';
+import AppNav from './components/App/AppNav';
 import CurrentSummary from './components/App/CurrentSummary';
 import HourlyForecast from './components/App/HourlyForecast';
 import DailyForecast from './components/App/DailyForecast';
 import CurrentWeather from './components/App/CurrentWeather';
+import AppFooter from './components/App/AppFooter';
 
 import askForLatLon from './helpers/askForLatLon';
 import { fetchWeatherData, fetchReverseGeocodingData } from './helpers/api';
@@ -130,7 +131,7 @@ const App = () => {
     <>
       <div id="modal"></div>
       <div className="app">
-        <Navigation
+        <AppNav
           location={location}
           measurement={measurement}
           dispatch={dispatch}
@@ -143,6 +144,7 @@ const App = () => {
         {!error && (
           <CurrentWeather weather={weather} measurement={measurement} />
         )}
+        <AppFooter />
       </div>
     </>
   );
