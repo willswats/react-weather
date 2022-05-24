@@ -29,7 +29,7 @@ const HourlyForecast = ({ weather }) => {
                 hour.weather[0].description
               );
               const temp = Math.round(hour.temp);
-              const pop = `${hour.pop * 100}%`;
+              const pop = `${Math.round(hour.pop * 100)}%`;
 
               return (
                 <div className={classes['hourly__item']} key={index}>

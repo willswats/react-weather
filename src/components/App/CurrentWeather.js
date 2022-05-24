@@ -35,10 +35,10 @@ const CurrentWeather = ({ weather, measurement }) => {
         : `${Math.round(current.wind_speed)}mph`;
     const rain =
       measurement === MEASUREMENTS.METRIC
-        ? `${current.rain ? current.rain['1h'] : 0}mm`
+        ? `${current.rain ? current.rain['1h'].toFixed(2) : 0}mm`
         : `${current.rain ? (current.rain['1h'] / 25.4).toFixed(2) : 0}in`;
     const feelsLike = Math.round(current.feels_like);
-    const humidity = `${current.humidity}%`;
+    const humidity = `${Math.round(current.humidity)}%`;
     const dewPoint = `${Math.round(current.dew_point)}`;
     const visibility =
       measurement === MEASUREMENTS.METRIC
@@ -46,7 +46,7 @@ const CurrentWeather = ({ weather, measurement }) => {
         : `${Math.round((current.visibility / 1000) * 0.6213712)}mi`;
     const pressure =
       measurement === MEASUREMENTS.METRIC
-        ? `${current.pressure}mb`
+        ? `${Math.round(current.pressure)}mb`
         : `${(current.pressure * 0.0295).toFixed(2)}in`;
 
     return (

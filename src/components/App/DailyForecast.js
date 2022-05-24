@@ -25,7 +25,7 @@ const DailyForecast = ({ weather }) => {
               const description = capitaliseFirstLetters(day.weather[0].icon);
               const maxTemp = Math.round(day.temp.max);
               const minTemp = Math.round(day.temp.min);
-              const pop = `${day.pop * 100}%`;
+              const pop = `${Math.round(day.pop * 100)}%`;
 
               return (
                 <div className={`${classes['daily__item']}`} key={index}>

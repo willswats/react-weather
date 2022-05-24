@@ -14,5 +14,4 @@
 
 ## Other
 
-- [ ] Add search icon to search
 - [ ] Add links to repository and website
