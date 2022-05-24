@@ -14,4 +14,4 @@
 
 ## Other
 
-- [ ] Add links to repository and website
+- [ ] Remove margin-bottom from last Card
