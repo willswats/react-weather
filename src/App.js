@@ -73,8 +73,6 @@ const App = () => {
 
   const { weather, location, measurement, error } = state;
 
-  console.log(state);
-
   const setWeatherData = async (lat, lon, units) => {
     // Reset state
     dispatch({
