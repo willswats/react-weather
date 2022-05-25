@@ -6,7 +6,7 @@
 
 ## Refactor
 
-- [ ] Reduce the amount of fetch requests
+- [ ] Reduce re-renders
 
 ## Features
 
