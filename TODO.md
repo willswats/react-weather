@@ -11,7 +11,3 @@
 ## Features
 
 - [ ] Add map with data from Weather Map 1.0 (openweathermap.org)
-
-## Other
-
-- [ ] Remove margin-bottom from last Card

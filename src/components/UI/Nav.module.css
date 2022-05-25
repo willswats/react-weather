@@ -4,7 +4,6 @@
   background-color: #212b3b;
   width: 100%;
   overflow: hidden;
-  margin-bottom: 1rem;
   padding: 1rem 2rem 1rem 2rem;
 }
 
@@ -31,7 +30,6 @@
 
 @media screen and (max-width: 768px) {
   .nav {
-    margin-bottom: 0.5rem;
     padding: 0.5rem 1rem 0.5rem 1rem;
   }
 }
