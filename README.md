@@ -13,7 +13,7 @@ A weather application built with React.
 
 This project uses the One Call 1.0 API from [openweathermap.org](https://openweathermap.org) to fetch data and then display it to the user.
 
-I built this project to further my understanding of interacting with API's, and I now have a better understanding of `fetch`, `async`, `await`, and Promises.
+I built this project to further my understanding of API's. I now have a better understanding of `fetch`, `async`, `await`, and Promises.
 
 ## Features
 
