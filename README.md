@@ -39,4 +39,4 @@ I built this project to further my understanding of API's. I now have a better u
 
 ## Acknowledgements
 
-The svg icons are from [Remix Icon](https://github.com/Remix-Design/remixicon) and [feather](https://github.com/feathericons/feather).
+The SVG icons are from [Remix Icon](https://github.com/Remix-Design/remixicon) and [feather](https://github.com/feathericons/feather).

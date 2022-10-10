@@ -11,6 +11,4 @@
 
 ## Low Priority
 
-- [ ] Add weather map
-
 ## Done
