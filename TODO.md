@@ -4,10 +4,10 @@
 
 ## High Priority
 
-- [ ] Re-organize
+- [ ] Reorganize
 - [ ] Update manifest colour
 - [ ] Replace favicons (not rounded)
-- [ ] Add re-size transition
+- [ ] Add resize transition
 
 ## Medium Priority
 
