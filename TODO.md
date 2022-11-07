@@ -5,9 +5,13 @@
 ## High Priority
 
 - [ ] Re-organize
-- [ ] Re-name
+- [ ] Update manifest colour
+- [ ] Replace favicons (not rounded)
+- [ ] Add re-size transition
 
 ## Medium Priority
+
+- [ ] Add accesibility
 
 ## Low Priority
 
