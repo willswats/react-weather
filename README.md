@@ -31,11 +31,11 @@ I built this project to further my understanding of API's. I now have a better u
 
 ## Setup
 
-1. Run `npm install`
-2. Create a `.env.local` file
+1. Run `npm install`.
+2. Create a `.env.local` file.
 3. Generate an API key from [openweathermap.org](https://openweathermap.org).
 4. Insert the API key into the `.env.local` file, with the key as `REACT_APP_WEATHER_API_KEY=`.
-5. Run `npm start`
+5. Run `npm start`.
 
 ## Acknowledgements
 
