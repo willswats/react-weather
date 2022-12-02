@@ -1,6 +1,6 @@
 # React Weather <!-- omit in toc -->
 
-A weather application built with React.
+A weather application built with React and the OpenWeather API.
 
 ## Table of Contents <!-- omit in toc -->
 
