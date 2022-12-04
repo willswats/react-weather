@@ -7,7 +7,7 @@ import { Card, Modal, WarningButton } from 'components';
 import { capitaliseFirstLetters, getTime } from 'features/weather';
 
 // Assets
-import { ReactComponent as IconCross } from 'assets/close-line.svg';
+import { ReactComponent as SvgCross } from 'assets/close-line.svg';
 
 import styles from './styles.module.css';
 
@@ -35,7 +35,7 @@ export const WeatherAlertsButton = ({ weather }) => {
               <Card
                 title={'Current Alerts'}
                 end={
-                  <IconCross onClick={hideModal} className={styles['cross']} />
+                  <SvgCross onClick={hideModal} className={styles['cross']} />
                 }
                 body={alerts.map((alert, index) => {
                   const eventName = capitaliseFirstLetters(alert.event);

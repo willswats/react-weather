@@ -10,8 +10,18 @@
   color: #fff;
 }
 
+.svg {
+  transform: scale(1.8);
+  width: 4rem;
+}
+
 @media screen and (max-width: 768px) {
   .reload-btn {
     font-size: 2rem;
+  }
+
+  .svg {
+    transform: scale(1);
+    width: 2rem;
   }
 }

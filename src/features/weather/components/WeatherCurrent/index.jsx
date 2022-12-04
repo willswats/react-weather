@@ -8,16 +8,16 @@ import { getTime } from 'features/weather';
 import { MEASUREMENTS } from 'features/weather';
 
 // Assets
-import { ReactComponent as IconSunrise } from 'assets/sunrise.svg';
-import { ReactComponent as IconSunset } from 'assets/sunset.svg';
-import { ReactComponent as IconSun } from 'assets/sun-line.svg';
-import { ReactComponent as IconWind } from 'assets/windy-line.svg';
-import { ReactComponent as IconRain } from 'assets/rainy-line.svg';
-import { ReactComponent as IconTemp } from 'assets/temp-hot-line.svg';
-import { ReactComponent as IconDrop } from 'assets/drop-line.svg';
-import { ReactComponent as IconDropHalf } from 'assets/contrast-drop-2-line.svg';
-import { ReactComponent as IconEye } from 'assets/eye-line.svg';
-import { ReactComponent as IconArrowUpDown } from 'assets/arrow-up-down-line.svg';
+import { ReactComponent as SvgSunrise } from 'assets/sunrise.svg';
+import { ReactComponent as SvgSunset } from 'assets/sunset.svg';
+import { ReactComponent as SvgSun } from 'assets/sun-line.svg';
+import { ReactComponent as SvgWind } from 'assets/windy-line.svg';
+import { ReactComponent as SvgRain } from 'assets/rainy-line.svg';
+import { ReactComponent as SvgTemp } from 'assets/temp-hot-line.svg';
+import { ReactComponent as SvgDrop } from 'assets/drop-line.svg';
+import { ReactComponent as SvgDropHalf } from 'assets/contrast-drop-2-line.svg';
+import { ReactComponent as SvgEye } from 'assets/eye-line.svg';
+import { ReactComponent as SvgArrowUpDown } from 'assets/arrow-up-down-line.svg';
 
 import styles from './styles.module.css';
 
@@ -59,7 +59,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
           <>
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconSunrise className={styles['item__svg']} />
+                <SvgSunrise className={styles['item__svg']} />
                 <p className={styles['item__text']}>Sunrise</p>
               </div>
               <div className={styles['item__end']}>
@@ -69,7 +69,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconSunset className={styles['item__svg']} />
+                <SvgSunset className={styles['item__svg']} />
                 <p className={styles['item__text']}>Sunset</p>
               </div>
               <div className={styles['item__end']}>
@@ -79,7 +79,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconSun className={styles['item__svg']} />
+                <SvgSun className={styles['item__svg']} />
                 <p className={styles['item__text']}>UV Index</p>
               </div>
               <div className={styles['item__end']}>
@@ -89,7 +89,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconWind className={styles['item__svg']} />
+                <SvgWind className={styles['item__svg']} />
                 <p className={styles['item__text']}>Wind Speed</p>
               </div>
               <div className={styles['item__end']}>
@@ -99,7 +99,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconRain className={styles['item__svg']} />
+                <SvgRain className={styles['item__svg']} />
                 <p className={styles['item__text']}>Rain</p>
               </div>
               <div className={styles['item__end']}>
@@ -109,7 +109,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconTemp className={styles['item__svg']} />
+                <SvgTemp className={styles['item__svg']} />
                 <p className={styles['item__text']}>Feels Like</p>
               </div>
               <div className={styles['item__end']}>
@@ -119,7 +119,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconDrop className={styles['item__svg']} />
+                <SvgDrop className={styles['item__svg']} />
                 <p className={styles['item__text']}>Humidity</p>
               </div>
               <div className={styles['item__end']}>
@@ -129,7 +129,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconDropHalf className={styles['item__svg']} />
+                <SvgDropHalf className={styles['item__svg']} />
                 <p className={styles['item__text']}>Dew Point</p>
               </div>
               <div className={styles['item__end']}>
@@ -139,7 +139,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconEye className={styles['item__svg']} />
+                <SvgEye className={styles['item__svg']} />
                 <p className={styles['item__text']}>Visibility</p>
               </div>
               <div className={styles['item__end']}>
@@ -149,7 +149,7 @@ export const WeatherCurrent = ({ weather, measurement }) => {
 
             <div className={styles['item']}>
               <div className={styles['item__start']}>
-                <IconArrowUpDown className={styles['item__svg']} />
+                <SvgArrowUpDown className={styles['item__svg']} />
                 <p className={styles['item__text']}>Pressure</p>
               </div>
               <div className={styles['item__end']}>

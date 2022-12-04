@@ -1,4 +1,10 @@
 import styles from './styles.module.css';
+
+// Assets
+import { ReactComponent as SvgCelsius } from 'assets/celsius-line.svg';
+import { ReactComponent as SvgFahrenheit } from 'assets/fahrenheit-line.svg';
+
+// Globals
 import { MEASUREMENTS } from 'features/weather';
 
 export const MeasurementButton = ({
@@ -15,20 +21,12 @@ export const MeasurementButton = ({
       }`}
       onClick={clickHandler}
     >
-      <span
-        className={`
-    ${
-      measurementType === MEASUREMENTS.METRIC
-        ? styles['measurement-btn__celcius']
-        : ''
-    }
-    ${
-      measurementType === MEASUREMENTS.IMPERIAL
-        ? styles['measurement-btn__fahrenheit']
-        : ''
-    }
-    `}
-      ></span>
+      {measurementType === MEASUREMENTS.METRIC && (
+        <SvgCelsius className={styles['svg']} />
+      )}
+      {measurementType === MEASUREMENTS.IMPERIAL && (
+        <SvgFahrenheit className={styles['svg']} />
+      )}
     </button>
   );
 };

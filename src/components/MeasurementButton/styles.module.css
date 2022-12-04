@@ -15,17 +15,18 @@
 .measurement-btn--selected {
   background-color: #2c394e;
 }
-
-.measurement-btn__celcius::before {
-  content: '\2103';
-}
-
-.measurement-btn__fahrenheit::before {
-  content: '\2109';
+.svg {
+  transform: scale(1.5);
+  width: 2rem;
 }
 
 @media screen and (max-width: 768px) {
   .measurement-btn {
     font-size: 1rem;
+  }
+
+  .svg {
+    transform: scale(1);
+    width: 1rem;
   }
 }

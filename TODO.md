@@ -4,7 +4,6 @@
 
 ## High Priority
 
-- [ ] Reorganize
 - [ ] Update manifest colour
 - [ ] Replace favicons (not rounded)
 - [ ] Add resize transition
