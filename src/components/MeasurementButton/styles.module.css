@@ -1,0 +1,32 @@
+.measurement-btn {
+  font-size: 2rem;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0);
+  color: #fff;
+  padding: 0.5rem;
+  transition: background-color 0.1s;
+}
+
+.measurement-btn:hover {
+  background-color: #2c394e;
+}
+
+.measurement-btn--selected {
+  background-color: #2c394e;
+}
+.svg {
+  transform: scale(1.5);
+  width: 2rem;
+}
+
+@media screen and (max-width: 768px) {
+  .measurement-btn {
+    font-size: 1rem;
+  }
+
+  .svg {
+    transform: scale(1);
+    width: 1rem;
+  }
+}
