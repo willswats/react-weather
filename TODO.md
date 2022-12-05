@@ -11,5 +11,3 @@
 - [ ] Add accesibility
 
 ## Low Priority
-
-## Done
