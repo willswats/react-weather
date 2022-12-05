@@ -1,5 +1,5 @@
 // Assets
-import { ReactComponent as IconSearch } from 'assets/search-line.svg';
+import { ReactComponent as SvgSearch } from 'assets/search-line.svg';
 
 import styles from './styles.module.css';
 
@@ -11,7 +11,7 @@ export const Search = ({
 }) => {
   return (
     <form className={styles['form']} onSubmit={submitHandler}>
-      <IconSearch className={styles['icon']} />
+      <SvgSearch className={styles['svg']} />
       <input
         type="text"
         onChange={changeHandler}

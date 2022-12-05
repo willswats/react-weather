@@ -4,8 +4,6 @@
 
 ## High Priority
 
-- [ ] Replace SVGs
-
 ## Medium Priority
 
 - [ ] Add resize transition
