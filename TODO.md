@@ -6,7 +6,7 @@
 
 ## Medium Priority
 
-- [ ] Add resize transition
+- [ ] Redo Search css
 - [ ] Add search results preview
 
 ## Low Priority
