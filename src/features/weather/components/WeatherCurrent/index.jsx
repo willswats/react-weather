@@ -1,4 +1,4 @@
-// Componentsstyles
+// Components
 import { Card, LoadingSpinner } from 'components';
 
 // Utils

@@ -54,7 +54,7 @@ export const WeatherSearch = ({ measurement, dispatch, setWeatherData }) => {
         submitHandler={submitHandler}
         changeHandler={changeHandler}
         value={search}
-        placeholder={'Search City'}
+        placeholder={'Search city'}
       />
     </>
   );

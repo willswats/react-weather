@@ -11,7 +11,8 @@
 }
 
 .svg {
-  transform: scale(2);
+  transform: scale(1.5);
+  width: 4rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -20,7 +21,6 @@
   }
 
   .svg {
-    transform: scale(1.5);
     width: 1rem;
   }
 }
