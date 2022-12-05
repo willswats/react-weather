@@ -5,7 +5,6 @@
 ## High Priority
 
 - [ ] Replace SVGs
-- [ ] Replace favicons
 
 ## Medium Priority
 
