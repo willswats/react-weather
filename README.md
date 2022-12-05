@@ -40,4 +40,4 @@ I built this project to further my understanding of API's, furthermore, I now ha
 
 The SVG icons are from [Remix Icon](https://github.com/Remix-Design/remixicon) and [feather](https://github.com/feathericons/feather).
 
-The architecture is similar to [bulletproof-react](https://github.com/alan2207/bulletproof-react).
+The architecture is inspired by [bulletproof-react](https://github.com/alan2207/bulletproof-react).
