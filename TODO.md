@@ -4,10 +4,12 @@
 
 ## High Priority
 
-- [ ] Add resize transition
+- [ ] Replace SVGs
+- [ ] Replace favicons
 
 ## Medium Priority
 
-- [ ] Add accesibility
+- [ ] Add resize transition
+- [ ] Add search results preview
 
 ## Low Priority
