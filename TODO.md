@@ -6,7 +6,8 @@
 
 ## Medium Priority
 
-- [ ] Redo Search css
+- [ ] Redo Search component css
 - [ ] Add search results preview
+- [ ] Add keyboard shortcuts
 
 ## Low Priority
