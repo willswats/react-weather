@@ -4,6 +4,9 @@
 
 ## High Priority
 
+- [ ] Rewrite in TypeScript
+- [ ] Remove unnecessary vite plugins
+
 ## Medium Priority
 
 - [ ] Redo Search component css
