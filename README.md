@@ -34,7 +34,7 @@ I built this project to further my understanding of API's, furthermore, I now ha
 1. Run `pnpm install`.
 2. Generate an API key from [openweathermap.org](https://openweathermap.org).
 3. Create a `.env.local` file and insert the API key into the `.env.local` file, with the key as `VITE_OPEN_WEATHER_API_KEY=`.
-4. Run `pnpm run dev`.
+4. Run `pnpm dev`.
 
 ## Acknowledgements
 
