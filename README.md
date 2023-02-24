@@ -1,13 +1,18 @@
-# React Weather <!-- omit in toc -->
+# React Weather
 
 A weather application built with React and the OpenWeather API.
 
-## Table of Contents <!-- omit in toc -->
+## Table of Contents
 
-- [General Information](#general-information)
-- [Features](#features)
-- [Setup](#setup)
-- [Acknowledgements](#acknowledgements)
+<!--toc:start-->
+
+- [React Weather](#react-weather)
+  - [Table of Contents](#table-of-contents)
+  - [General Information](#general-information)
+  - [Features](#features)
+  - [Setup](#setup)
+  - [Acknowledgements](#acknowledgements)
+  <!--toc:end-->
 
 ## General Information
 
@@ -39,5 +44,3 @@ I built this project to further my understanding of API's, furthermore, I now ha
 ## Acknowledgements
 
 The SVG icons are from [Remix Icon](https://github.com/Remix-Design/remixicon) and [feather](https://github.com/feathericons/feather).
-
-The architecture is inspired by [bulletproof-react](https://github.com/alan2207/bulletproof-react).
