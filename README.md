@@ -2,7 +2,7 @@
 
 A weather application.
 
-[https://react-weather-willswats.vercel.app/](https://react-weather-willswats.vercel.app/)
+[react-weather-willswats.vercel.app](https://react-weather-willswats.vercel.app/)
 
 ## Table of Contents
 
