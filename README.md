@@ -1,6 +1,6 @@
 # React Weather
 
-A weather application built with React and the OpenWeather API.
+A weather application.
 
 ## Table of Contents
 
@@ -16,7 +16,7 @@ A weather application built with React and the OpenWeather API.
 
 ## General Information
 
-This project uses the One Call 1.0 API from [openweathermap.org](https://openweathermap.org) to fetch data and then display it to the user.
+This project is built with React and it uses the One Call 1.0 API from [openweathermap.org](https://openweathermap.org) to fetch the data.
 
 I built this project to further my understanding of API's, furthermore, I now have a better understanding of `fetch`, `async`, `await`, and Promises.
 
