@@ -7,5 +7,3 @@
 ## Medium Priority
 
 ## Low Priority
-
-- [ ] Rename project
