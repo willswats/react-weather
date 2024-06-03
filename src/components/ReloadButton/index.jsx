@@ -1,6 +1,6 @@
 import styles from './styles.module.css';
 
-import { ReactComponent as SvgRefresh } from 'assets/refresh-line.svg';
+import SvgRefresh from 'assets/refresh-line.svg?react';
 
 export const ReloadButton = ({ reloadHandler }) => {
   return (

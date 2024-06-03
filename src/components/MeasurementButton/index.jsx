@@ -1,8 +1,8 @@
 import styles from './styles.module.css';
 
 // Assets
-import { ReactComponent as SvgCelsius } from 'assets/celsius-line.svg';
-import { ReactComponent as SvgFahrenheit } from 'assets/fahrenheit-line.svg';
+import SvgCelsius from 'assets/celsius-line.svg?react';
+import SvgFahrenheit from 'assets/fahrenheit-line.svg?react';
 
 // Globals
 import { MEASUREMENTS } from 'features/weather';

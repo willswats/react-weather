@@ -7,7 +7,7 @@ import { Card, Modal, WarningButton } from 'components';
 import { capitaliseFirstLetters, getTime } from 'features/weather';
 
 // Assets
-import { ReactComponent as SvgCross } from 'assets/close-line.svg';
+import SvgCross from 'assets/close-line.svg?react';
 
 import styles from './styles.module.css';
 

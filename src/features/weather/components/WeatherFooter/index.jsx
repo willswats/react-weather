@@ -2,7 +2,7 @@
 import { Footer } from 'components';
 
 // Assets
-import { ReactComponent as SvgGitHub } from 'assets/github-fill.svg';
+import SvgGitHub from 'assets/github-fill.svg?react';
 
 import styles from './styles.module.css';
 
