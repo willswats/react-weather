@@ -8,16 +8,16 @@ import { getTime } from 'features/weather';
 import { MEASUREMENTS } from 'features/weather';
 
 // Assets
-import { ReactComponent as SvgSunrise } from 'assets/sunrise.svg';
-import { ReactComponent as SvgSunset } from 'assets/sunset.svg';
-import { ReactComponent as SvgSun } from 'assets/sun-line.svg';
-import { ReactComponent as SvgWind } from 'assets/windy-line.svg';
-import { ReactComponent as SvgRain } from 'assets/rainy-line.svg';
-import { ReactComponent as SvgTemp } from 'assets/temp-hot-line.svg';
-import { ReactComponent as SvgDrop } from 'assets/drop-line.svg';
-import { ReactComponent as SvgDropHalf } from 'assets/contrast-drop-2-line.svg';
-import { ReactComponent as SvgEye } from 'assets/eye-line.svg';
-import { ReactComponent as SvgArrowUpDown } from 'assets/arrow-up-down-line.svg';
+import SvgSunrise from 'assets/sunrise.svg?react';
+import SvgSunset from 'assets/sunset.svg?react';
+import SvgSun from 'assets/sun-line.svg?react';
+import SvgWind from 'assets/windy-line.svg?react';
+import SvgRain from 'assets/rainy-line.svg?react';
+import SvgTemp from 'assets/temp-hot-line.svg?react';
+import SvgDrop from 'assets/drop-line.svg?react';
+import SvgDropHalf from 'assets/contrast-drop-2-line.svg?react';
+import SvgEye from 'assets/eye-line.svg?react';
+import SvgArrowUpDown from 'assets/arrow-up-down-line.svg?react';
 
 import styles from './styles.module.css';
 

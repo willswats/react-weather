@@ -1,5 +1,5 @@
 // Assets
-import { ReactComponent as SvgSearch } from 'assets/search-line.svg';
+import SvgSearch from 'assets/search-line.svg?react';
 
 import styles from './styles.module.css';
 
