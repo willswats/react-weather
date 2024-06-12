@@ -7,10 +7,9 @@ import {
   WeatherHourly,
   WeatherDaily,
   WeatherCurrent,
-  WeatherFooter,
 } from 'features/weather';
 
-import { Card } from 'components';
+import { Card, Footer } from 'components';
 
 // Utils
 import {
@@ -147,7 +146,7 @@ export const Weather = () => {
       {!error && <WeatherHourly weather={weather} />}
       {!error && <WeatherDaily weather={weather} />}
       {!error && <WeatherCurrent weather={weather} measurement={measurement} />}
-      <WeatherFooter />
+      <Footer />
     </>
   );
 };

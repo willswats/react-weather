@@ -7,3 +7,4 @@ export * from './Search';
 export * from './MeasurementButton';
 export * from './WarningButton';
 export * from './ReloadButton';
+export * from './Footer';

@@ -1,7 +1,6 @@
 export * from './components/WeatherNav';
 export * from './components/WeatherSearch';
 export * from './components/WeatherAlertsButton';
-export * from './components/WeatherFooter';
 export * from './components/WeatherSummary';
 export * from './components/WeatherCurrent';
 export * from './components/WeatherHourly';

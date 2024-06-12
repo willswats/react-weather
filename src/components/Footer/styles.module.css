@@ -4,3 +4,19 @@
   position: absolute;
   bottom: 0;
 }
+
+.footer a {
+  cursor: pointer;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.footer svg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 5px;
+  fill: rgba(255, 255, 255, 0.5);
+}
