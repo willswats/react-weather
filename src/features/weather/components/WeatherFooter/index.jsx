@@ -14,10 +14,17 @@ export const WeatherFooter = () => {
           <a
             className={styles['item']}
             href="https://www.github.com/willswats/react-weather"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <SvgGitHub className={styles['svg']} />
           </a>
-          <a className={styles['item']} href="https://williamwatson.dev">
+          <a
+            className={styles['item']}
+            href="https://williamwatson.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             williamwatson.dev
           </a>
         </>
