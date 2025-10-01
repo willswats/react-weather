@@ -2,8 +2,6 @@
 
 A weather application built with React and the OpenWeather API.
 
-[react-weather-willswats.vercel.app](https://react-weather-willswats.vercel.app/)
-
 ## Table of Contents
 
 <!--toc:start-->
